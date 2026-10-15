@@ -1,0 +1,26 @@
+# Bei jedem Push auf main die fertige Website (Ordner dist) auf Vercel veröffentlichen.
+# Braucht das Repository-Secret VERCEL_TOKEN (GitHub: Settings > Secrets and variables > Actions).
+name: Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Secret vorhanden?
+        run: test -n "$VERCEL_TOKEN" || { echo "::error::Das Secret VERCEL_TOKEN fehlt im Repository."; exit 1; }
+      - name: Mit dem Projekt beispiel13241324 verbinden
+        run: npx --yes vercel@latest link --yes --project beispiel13241324 --token "$VERCEL_TOKEN"
+      - name: Veröffentlichen
+        run: npx --yes vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"

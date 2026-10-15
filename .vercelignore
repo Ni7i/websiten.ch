@@ -1,0 +1,4 @@
+# Nur die fertige Website hochladen: dist und die Vercel-Einstellungen
+/*
+!/dist
+!/vercel.json
