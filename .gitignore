@@ -1,0 +1,12 @@
+__pycache__/
+shots/
+node_modules/
+.vercel/
+_art/
+version-2.html
+optionen-leistungen.html
+artifact-index.html
+mockups/*.png
+!mockups/mbp-frame.png
+
+dist/

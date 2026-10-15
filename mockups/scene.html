@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+html,body{margin:0;background:transparent}
+body{width:1200px;height:800px;position:relative;overflow:hidden;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+.stage{position:absolute;inset:0}
+
+/* ---------- MacBook Pro, Frontansicht ---------- */
+.mbp{position:absolute;left:214px;top:56px;width:900px}
+.lid{position:relative;width:900px;height:585px;border-radius:26px 26px 6px 6px;
+  background:linear-gradient(180deg,#4a4a4e 0%,#2c2c2f 3%,#262628 100%);
+  box-shadow:inset 0 0 0 1.5px #56565b,inset 0 2px 1px rgba(255,255,255,.25),0 0 0 .6px #121213}
+.bezel{position:absolute;left:9px;right:9px;top:9px;bottom:6px;border-radius:19px 19px 3px 3px;background:#050505;overflow:hidden}
+.screen{position:absolute;left:14px;right:14px;top:16px;bottom:20px;border-radius:7px 7px 0 0;overflow:hidden;background:#000}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.notch{position:absolute;left:50%;top:0;width:118px;height:17px;margin-left:-59px;background:#050505;border-radius:0 0 9px 9px;z-index:3}
+.notch::after{content:"";position:absolute;left:50%;top:6px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#1a1d26;box-shadow:0 0 0 1px #0d0f14}
+.glare{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.035) 28%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 100%)}
+.hinge{position:relative;width:860px;height:6px;margin:0 auto;background:linear-gradient(180deg,#0e0e0f,#2c2c2f);border-radius:0 0 2px 2px}
+.base{position:relative;width:1020px;height:30px;margin-left:-60px;border-radius:3px 3px 30px 30px / 3px 3px 24px 24px;
+  background:linear-gradient(180deg,#77777c 0%,#4c4c50 12%,#38383b 45%,#232325 80%,#18181a 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 3px rgba(0,0,0,.5)}
+.base::before{content:"";position:absolute;left:50%;top:0;width:160px;height:10px;margin-left:-80px;border-radius:0 0 14px 14px;
+  background:linear-gradient(180deg,#1f1f21,#3a3a3d);box-shadow:inset 0 -1px 0 rgba(255,255,255,.12)}
+.base::after{content:"";position:absolute;left:4%;right:4%;bottom:-3px;height:4px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(1px)}
+.shadow-mbp{position:absolute;left:130px;top:650px;width:1100px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),rgba(0,0,0,0));filter:blur(6px)}
+
+/* ---------- iPhone, seitlich gedreht ---------- */
+.ph-wrap{position:absolute;left:78px;top:196px;width:262px;height:548px;perspective:1600px;perspective-origin:60% 40%}
+.phone{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateY(28deg) rotateX(4deg) rotateZ(-2deg)}
+.slice{position:absolute;inset:0;border-radius:42px;background:var(--c)}
+.btn{position:absolute;left:-2.4px;width:4px;border-radius:2px;background:var(--c)}
+.front{position:absolute;inset:0;border-radius:42px;transform:translateZ(14px);
+  background:linear-gradient(135deg,#d9d3c8,#a8a297 40%,#e6e1d7 60%,#9c968b);padding:3px;box-sizing:border-box}
+.glass{position:relative;width:100%;height:100%;border-radius:39px;background:#030303;padding:8px;box-sizing:border-box}
+.pscreen{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:#000}
+.pscreen{display:flex;flex-direction:column}
+.pscreen img{width:100%;flex:1;min-height:0;object-fit:cover;object-position:top;display:block}
+.sbar{flex:none;height:30px;background:var(--sb,#fff);display:flex;align-items:center;justify-content:space-between;padding:4px 22px 0 26px;box-sizing:border-box;font:600 12.5px -apple-system,"Helvetica Neue",Arial,sans-serif;color:#111}
+.sbar .ic{display:flex;gap:4px;align-items:center}
+.sbar .ic i{display:block;background:#111;border-radius:1px}
+.island{position:absolute;left:50%;top:9px;width:70px;height:20px;margin-left:-35px;border-radius:11px;background:#000;z-index:3}
+.pglare{position:absolute;inset:0;z-index:2;border-radius:32px;background:linear-gradient(105deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 30%,rgba(255,255,255,0) 46%)}
+.shadow-ph{position:absolute;left:60px;top:712px;width:330px;height:50px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),rgba(0,0,0,0));filter:blur(8px)}
+</style></head>
+<body>
+<div class="stage">
+  <div class="shadow-mbp"></div>
+  <div class="mbp">
+    <div class="lid"><div class="bezel"><div class="notch"></div><div class="screen"><img id="dimg" src=""><div class="glare"></div></div></div></div>
+    <div class="hinge"></div>
+    <div class="base"></div>
+  </div>
+  <div class="shadow-ph"></div>
+  <div class="ph-wrap"><div class="phone" id="phone">
+    <div class="front"><div class="glass"><div class="pscreen"><div class="island"></div><div class="sbar"><span>9:41</span><span class="ic"><i style="width:3px;height:5px"></i><i style="width:3px;height:7px;margin-left:-2px"></i><i style="width:3px;height:9px;margin-left:-2px"></i><i style="width:3px;height:11px;margin-left:-2px"></i><i style="width:20px;height:10px;border-radius:3px;margin-left:4px;background:#111"></i></span></div><img id="mimg" src=""><div class="pglare"></div></div></div></div>
+  </div></div>
+</div>
+<script>
+const q = new URLSearchParams(location.search);
+document.getElementById('dimg').src = q.get('d');
+document.getElementById('mimg').src = q.get('m');
+// Gehäuse aus vielen Schichten: ergibt die echte Dicke inkl. runder Ecken
+const ph = document.getElementById('phone'), N = 16, D = 27;
+for (let i = 0; i < N; i++) {
+  const t = i / (N - 1), z = -D / 2 + D * t;
+  const k = Math.sin(t * Math.PI);           // in der Mitte heller: runde Kante
+  const l = Math.round(118 + 70 * k), c = `rgb(${l},${l - 5},${l - 13})`;
+  const s = document.createElement('div'); s.className = 'slice'; s.style.setProperty('--c', c); s.style.transform = `translateZ(${z}px)`;
+  if (i > 3 && i < N - 4) {
+    for (const [top, h] of [[104, 26], [148, 46], [204, 46]]) { const b = document.createElement('i'); b.className = 'btn'; b.style.top = top + 'px'; b.style.height = h + 'px'; b.style.setProperty('--c', `rgb(${l - 18},${l - 22},${l - 30})`); s.appendChild(b); }
+  }
+  ph.insertBefore(s, ph.firstChild);
+}
+</script>
+</body></html>

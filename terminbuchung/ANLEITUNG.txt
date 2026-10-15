@@ -1,0 +1,67 @@
+TERMINBUCHUNG websiten.ch
+Einrichtung in etwa 10 Minuten
+
+Was das Programm macht
+- Zeigt auf der Seite "Termin wählen" nur Zeiten, die in deinem Google Kalender frei sind.
+- Trägt jede Buchung direkt in deinen Google Kalender ein (15 Minuten).
+- Schickt dir eine E-Mail mit allen Angaben des Kunden.
+- Schickt dem Kunden eine Bestätigung und eine Kalendereinladung. Bei Video mit Google-Meet-Link.
+- Läuft gratis auf deinem Google-Konto. Kein Server, keine Datenbank, kein Abo.
+
+
+1. PROJEKT ANLEGEN
+- Öffne script.google.com mit dem Google-Konto, dessen Kalender du verwendest.
+- Klick auf "Neues Projekt". Nenne es "websiten Terminbuchung".
+- Lösche den Inhalt von Code.gs und kopiere den ganzen Inhalt der Datei Code.gs hinein.
+
+2. MANIFEST EINFÜGEN
+- Links auf das Zahnrad "Projekteinstellungen".
+- Häkchen setzen bei "Manifestdatei appsscript.json im Editor anzeigen".
+- Zurück zum Editor, appsscript.json öffnen und den Inhalt der Datei appsscript.json hineinkopieren.
+  Damit ist der Google-Kalender-Dienst aktiv und die Zeitzone steht auf Zürich.
+
+3. EINSTELLUNGEN ANPASSEN (oben in Code.gs, Block CONFIG)
+- OWNER_EMAIL: deine Adresse für die Meldungen.
+- HOURS: deine Sprechzeiten. Vorgabe: Mo bis Do 9 bis 12 und 13.30 bis 17 Uhr, Fr 9 bis 12 Uhr.
+- CHECK_CALENDARS: alle Kalender, die als belegt zählen sollen. Die Kalender-ID findest du in Google Kalender
+  unter Einstellungen > Kalender > "Kalender integrieren".
+- CLOSED_DAYS: Ferien und Feiertage.
+- STEP_MIN 30 heisst: Termine starten zur vollen und halben Stunde, du hast nach jedem Gespräch 15 Minuten Luft.
+  Willst du Termine direkt hintereinander, setz STEP_MIN auf 15.
+
+4. TESTEN
+- Oben im Editor die Funktion "testFreieZeiten" auswählen und auf "Ausführen" klicken.
+- Google fragt nach Berechtigungen (Kalender und E-Mail senden). Erlauben.
+  Bei "Google hat diese App nicht überprüft": Erweitert > Zu websiten Terminbuchung wechseln. Das ist normal bei eigenen Scripts.
+- Im Protokoll siehst du die freien Zeiten.
+- Danach "testBuchung" ausführen. Es entsteht ein Testtermin in deinem Kalender und du bekommst zwei E-Mails.
+  Testtermin danach im Kalender löschen.
+
+5. ALS WEB-APP VERÖFFENTLICHEN
+- Oben rechts "Bereitstellen" > "Neue Bereitstellung".
+- Typ: Web-App.
+- Ausführen als: Ich.
+- Zugriff: Jeder.
+- "Bereitstellen" klicken und die Web-App-URL kopieren. Sie endet auf /exec.
+
+6. URL IN DIE WEBSITE EINTRAGEN
+- Öffne kontakt.html in einem Texteditor.
+- Suche nach:  const BOOKING_API = '';
+- Setze die URL zwischen die Anführungszeichen:
+  const BOOKING_API = 'https://script.google.com/macros/s/.../exec';
+- Speichern und hochladen. Fertig.
+  Solange BOOKING_API leer ist, zeigt die Seite eine Vorschau und bucht nichts.
+
+
+GUT ZU WISSEN
+- Änderst du später Code.gs, musst du neu bereitstellen: "Bereitstellen" > "Bereitstellungen verwalten" > Stift > Version "Neue Version".
+  So bleibt die URL gleich.
+- Die E-Mails gehen von deinem Google-Konto raus. Soll als Absender hallo@websiten.ch stehen,
+  richte die Adresse in Gmail unter "Senden als" ein und nutze dieses Konto für das Script.
+- Gmail-Konten dürfen rund 100 E-Mails pro Tag über Scripts senden. Pro Buchung sind es zwei.
+- Doppelbuchungen sind ausgeschlossen: Vor jeder Buchung prüft das Script die Zeit nochmals.
+- Schutz vor Spam: verstecktes Feld gegen Bots, höchstens 2 offene Termine pro E-Mail-Adresse, höchstens 6 Termine pro Tag.
+- Absagen: Der Kunde kann die Einladung ablehnen oder auf die Bestätigung antworten. Du löschst den Termin dann im Kalender,
+  die Zeit ist sofort wieder frei.
+- Datenschutz: Name, E-Mail, Telefon und Nachricht landen in deinem Google Kalender und Postfach.
+  Das gehört in die Datenschutzerklärung (Google als Auftragsbearbeiter).

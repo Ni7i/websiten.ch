@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.v{display:none;width:1440px;height:900px;position:relative;overflow:hidden}
+.v:not(.on){display:none!important}
+.v.on{display:block}
+.host.on,.mail.on{display:grid}
+
+/* ===== 2 Online-Shop ===== */
+.shop{background:#F6F2EC;color:#2B211A}
+.sh-top{height:40px;background:#2B211A;color:#EADFD2;font-size:13px;display:flex;align-items:center;justify-content:center;letter-spacing:.02em}
+.sh-nav{height:84px;display:flex;align-items:center;padding:0 56px;border-bottom:1px solid #E4DBCF;gap:36px;font-size:15px}
+.sh-logo{font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600;letter-spacing:-.02em;margin-right:auto}
+.sh-nav span{color:#5C4B3D}
+.sh-cart{display:flex;align-items:center;gap:8px;font-weight:600}
+.sh-cart i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#2B211A;color:#fff;font-style:normal;font-size:12px}
+.sh-hero{display:grid;grid-template-columns:1fr 1.1fr;height:372px}
+.sh-hero .tx{padding:44px 56px 0}
+.sh-hero small{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#9A6B43;font-weight:600}
+.sh-hero h1{font-family:Fraunces,Georgia,serif;font-size:52px;line-height:1.02;font-weight:600;letter-spacing:-.03em;margin:16px 0 16px}
+.sh-hero p{font-size:17px;line-height:1.55;color:#5C4B3D;max-width:30ch}
+.sh-hero .b{display:inline-block;margin-top:24px;background:#2B211A;color:#fff;font-weight:600;font-size:15px;padding:14px 22px;border-radius:6px}
+.sh-hero .im{background:url('shop/photo-1562051036-e0eea191d42f.jpg') center 55%/cover}
+.sh-h2{display:flex;justify-content:space-between;align-items:baseline;padding:28px 56px 16px}
+.sh-h2 b{font-family:Fraunces,Georgia,serif;font-size:28px;font-weight:600}
+.sh-h2 span{font-size:14px;color:#5C4B3D;text-decoration:underline}
+.sh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:0 56px}
+.pr .pi{height:220px;border-radius:8px;background:#EDE5DA center/cover}
+.pr b{display:block;font-size:16px;font-weight:600;margin-top:14px}
+.pr span{display:block;font-size:14px;color:#7A6656;margin-top:3px}
+.pr em{font-style:normal;display:block;font-size:16px;font-weight:600;margin-top:8px}
+.pr .tag{position:absolute;margin:12px;background:#fff;font-size:12px;font-weight:600;padding:5px 9px;border-radius:4px}
+
+/* ===== 3 Google und SEO ===== */
+.seo{background:#fff;color:#202124;font-family:Arial,Helvetica,sans-serif}
+.se-top{display:flex;align-items:center;gap:28px;padding:22px 32px 0 180px;height:86px}
+.se-box{width:690px;height:48px;border-radius:24px;border:1px solid #DFE1E5;box-shadow:0 1px 6px rgba(32,33,36,.18);display:flex;align-items:center;padding:0 20px;font-size:16px;gap:14px}
+.se-box svg{flex:none}
+.se-tabs{display:flex;gap:26px;padding:0 0 0 180px;height:44px;align-items:center;border-bottom:1px solid #EBEBEB;font-size:14px;color:#5F6368}
+.se-tabs .on{color:#1A73E8;border-bottom:3px solid #1A73E8;padding-bottom:9px;margin-bottom:-12px}
+.se-main{display:grid;grid-template-columns:652px 1fr;gap:70px;padding:20px 0 0 180px}
+.se-r{margin-bottom:28px}
+.se-src{display:flex;align-items:center;gap:12px;font-size:14px}
+.se-fav{width:28px;height:28px;border-radius:50%;background:#F1F3F4;display:grid;place-items:center;font-size:12px;font-weight:700;color:#1F4E9A;border:1px solid #E5E5E5}
+.se-src b{display:block;font-weight:400;color:#202124}
+.se-src span{display:block;color:#4D5156;font-size:12.5px}
+.se-r h3{font-size:20px;font-weight:400;color:#1A0DAB;margin:6px 0 4px;line-height:1.3}
+.se-r p{font-size:14px;line-height:1.58;color:#4D5156}
+.se-sl{display:grid;grid-template-columns:1fr 1fr;gap:6px 40px;margin-top:10px;padding-left:16px}
+.se-sl a{font-size:15px;color:#1A0DAB}
+.se-map{border:1px solid #DADCE0;border-radius:10px;overflow:hidden;width:440px}
+.se-map svg{display:block}
+.se-pl{padding:14px 18px;border-top:1px solid #EBEBEB}
+.se-pl b{font-size:17px;font-weight:400;color:#1A0DAB}
+.se-pl span{display:block;font-size:13.5px;color:#4D5156;margin-top:4px}
+.se-pl em{font-style:normal;color:#188038}
+
+/* ===== 4 Hosting ===== */
+.host{background:#F4F5F4;color:#151515;display:grid;grid-template-columns:240px 1fr}
+.ho-side{background:#151515;color:#E8E8E8;padding:26px 22px;display:flex;flex-direction:column;gap:6px}
+.ho-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;margin-bottom:30px}
+.ho-logo svg{width:24px;height:26px}
+.ho-side a{font-size:14px;color:#A8A8A8;padding:10px 12px;border-radius:8px}
+.ho-side a.on{background:#262626;color:#fff}
+.ho-main{padding:34px 44px}
+.ho-h{display:flex;justify-content:space-between;align-items:center}
+.ho-h h1{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.ho-h h1 small{display:block;font-size:14px;font-weight:400;color:#6B6B6B;margin-top:4px;letter-spacing:0}
+.ho-ok{display:flex;align-items:center;gap:8px;background:#E3F1E7;color:#1D6B3A;font-size:14px;font-weight:600;padding:8px 14px;border-radius:99px}
+.ho-ok i{width:8px;height:8px;border-radius:50%;background:#2E9A55}
+.ho-k{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}
+.ho-k div{background:#fff;border:1px solid #E6E7E6;border-radius:12px;padding:18px 20px}
+.ho-k span{font-size:13px;color:#6B6B6B}
+.ho-k b{display:block;font-size:24px;font-weight:700;margin-top:8px;letter-spacing:-.02em}
+.ho-k em{font-style:normal;display:block;font-size:12.5px;color:#6B6B6B;margin-top:4px}
+.ho-g{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-top:18px}
+.ho-card{background:#fff;border:1px solid #E6E7E6;border-radius:12px;padding:20px 22px}
+.ho-card h3{font-size:15px;font-weight:600;margin-bottom:14px}
+.ho-bars{display:flex;align-items:flex-end;gap:5px;height:150px}
+.ho-bars i{flex:1;background:#CFE6D6;border-radius:3px 3px 0 0}
+.ho-ax{display:flex;justify-content:space-between;font-size:12px;color:#8A8A8A;margin-top:8px}
+.ho-row{display:flex;justify-content:space-between;font-size:14px;padding:11px 0;border-bottom:1px solid #EFEFEF}
+.ho-row:last-child{border:0}
+.ho-row span{color:#6B6B6B}
+.ho-row b{font-weight:600}
+
+/* ===== 5 Microsoft 365 / E-Mail ===== */
+.mail{background:#fff;color:#242424;display:grid;grid-template-rows:52px 1fr}
+.ml-top{background:#0F4C81;display:flex;align-items:center;padding:0 18px;gap:16px;color:#fff;font-size:15px;font-weight:600}
+.ml-top .grid{width:20px;height:20px;background:radial-gradient(circle,#fff 1.6px,transparent 2px) 0 0/7px 7px}
+.ml-search{margin-left:120px;width:520px;height:32px;border-radius:6px;background:rgba(255,255,255,.92);color:#616161;font-weight:400;font-size:14px;display:flex;align-items:center;padding:0 12px}
+.ml-av{margin-left:auto;width:32px;height:32px;border-radius:50%;background:#C7E0F4;color:#0F4C81;display:grid;place-items:center;font-size:13px}
+.ml-body{display:grid;grid-template-columns:220px 420px 1fr;min-height:0}
+.ml-f{background:#F5F5F5;padding:16px 10px;font-size:14px}
+.ml-f .new{background:#0F6CBD;color:#fff;border-radius:6px;padding:10px 14px;font-weight:600;margin-bottom:16px}
+.ml-f div{padding:8px 12px;border-radius:6px;display:flex;justify-content:space-between}
+.ml-f .on{background:#E1EBF7;font-weight:600}
+.ml-f small{color:#0F6CBD;font-weight:700}
+.ml-l{border-right:1px solid #E5E5E5;overflow:hidden}
+.ml-lh{padding:16px 18px;font-size:18px;font-weight:600;border-bottom:1px solid #EDEDED}
+.ml-m{display:grid;grid-template-columns:36px 1fr auto;gap:10px;padding:14px 18px;border-bottom:1px solid #F0F0F0}
+.ml-m.on{background:#EBF3FC;border-left:3px solid #0F6CBD;padding-left:15px}
+.ml-m i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:600;color:#fff}
+.ml-m b{display:block;font-size:14px}
+.ml-m span{display:block;font-size:13px;color:#424242;margin-top:2px}
+.ml-m p{font-size:12.5px;color:#707070;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:250px}
+.ml-m em{font-style:normal;font-size:12px;color:#707070}
+.ml-r{padding:26px 34px}
+.ml-r h2{font-size:22px;font-weight:600}
+.ml-from{display:flex;align-items:center;gap:12px;margin:20px 0 22px}
+.ml-from i{width:40px;height:40px;border-radius:50%;background:#8764B8;color:#fff;display:grid;place-items:center;font-style:normal;font-weight:600}
+.ml-from b{display:block;font-size:14.5px}
+.ml-from span{font-size:13px;color:#707070}
+.ml-r p{font-size:15px;line-height:1.65;color:#333;margin-bottom:14px;max-width:62ch}
+.ml-att{display:flex;gap:12px;margin-top:8px}
+.ml-att div{border:1px solid #E0E0E0;border-radius:6px;padding:10px 14px;font-size:13px;display:flex;gap:10px;align-items:center}
+.ml-att i{width:26px;height:30px;border-radius:3px;background:#D13438;display:block}
+
+/* ===== 6 KI-Chatbot ===== */
+.chat{background:#151515 url('own-site.png') top/cover}
+.chat::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18)}
+.cw{position:absolute;right:40px;bottom:36px;width:400px;height:560px;background:#fff;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.5);z-index:2;display:flex;flex-direction:column;overflow:hidden;color:#1B1B1B}
+.cw-h{background:#1C1C1C;color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px}
+.cw-h svg{width:30px;height:32px}
+.cw-h b{display:block;font-size:15px}
+.cw-h span{font-size:12.5px;color:#BDBDBD;display:flex;align-items:center;gap:6px}
+.cw-h span i{width:7px;height:7px;border-radius:50%;background:#4CC38A}
+.cw-b{flex:1;padding:18px;display:flex;flex-direction:column;gap:12px;background:#F7F7F5}
+.bu{max-width:82%;font-size:14px;line-height:1.5;padding:11px 14px;border-radius:14px}
+.bu.u{align-self:flex-end;background:#1C1C1C;color:#fff;border-bottom-right-radius:4px}
+.bu.a{align-self:flex-start;background:#fff;border:1px solid #E7E7E3;border-bottom-left-radius:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;border:1px solid #CFCFCA;border-radius:99px;padding:7px 12px;background:#fff}
+.cw-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-top:1px solid #EBEBEB;font-size:14px;color:#8A8A8A}
+.cw-in i{margin-left:auto;width:34px;height:34px;border-radius:50%;background:#1C1C1C}
+.cw-btn{position:absolute;right:40px;bottom:-60px}
+</style></head>
+<body>
+
+<div class="v shop" id="shop">
+  <div class="sh-top">Gratis Versand in der ganzen Schweiz ab CHF 50.–</div>
+  <div class="sh-nav"><div class="sh-logo">Rösterei Linde</div><span>Kaffee</span><span>Zubehör</span><span>Abo</span><span>Über uns</span><span class="sh-cart">Warenkorb <i>2</i></span></div>
+  <div class="sh-hero"><div class="tx"><small>Frisch geröstet in Baden</small><h1>Kaffee, der nach Hause kommt.</h1><p>Jede Woche frisch geröstet und in zwei Tagen bei Ihnen. Bezahlen mit TWINT, Karte oder Rechnung.</p><span class="b">Jetzt bestellen</span></div><div class="im"></div></div>
+  <div class="sh-h2"><b>Beliebt diese Woche</b><span>Alle Produkte</span></div>
+  <div class="sh-grid">
+    <div class="pr"><span class="tag">Neu</span><div class="pi" style="background-image:url('shop/photo-1695245503558-5cdb37f49092.jpg')"></div><b>Hausmischung</b><span>500 g, Bohnen</span><em>CHF 18.50</em></div>
+    <div class="pr"><div class="pi" style="background-image:url('shop/photo-1610701596007-11502861dcfa.jpg')"></div><b>Becher-Set Ton</b><span>4 Stück, handgemacht</span><em>CHF 64.00</em></div>
+    <div class="pr"><div class="pi" style="background-image:url('shop/photo-1720356778312-44d02961d253.jpg')"></div><b>Tasse Rosé</b><span>mit Untersetzer</span><em>CHF 29.00</em></div>
+    <div class="pr"><div class="pi" style="background-image:url('shop/photo-1514228742587-6b1558fcca3d.jpg')"></div><b>Tasse Weiss</b><span>300 ml</span><em>CHF 19.00</em></div>
+  </div>
+</div>
+
+<div class="v seo" id="seo">
+  <div class="se-top"><div class="se-box"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#9AA0A6" stroke-width="2"/><path d="M15 15l5 5" stroke="#9AA0A6" stroke-width="2" stroke-linecap="round"/></svg>gipser buchs ag</div></div>
+  <div class="se-tabs"><span class="on">Alle</span><span>Maps</span><span>Bilder</span><span>News</span><span>Mehr</span></div>
+  <div class="se-main">
+    <div>
+      <div class="se-r"><div class="se-src"><span class="se-fav">KF</span><div><b>KF Bauservice GmbH</b><span>https://kf-bauservice.ch</span></div></div>
+        <h3>KF Bauservice GmbH | Gipser, Maler und Fassaden in Buchs AG</h3>
+        <p>Gipser- und Malerarbeiten, Fassaden- und Trockenbau. Ausgeführt von einem Team aus der Region, geführt von einem Ansprechpartner. Besichtigung vor Ort, ohne Verpflichtung.</p>
+        <div class="se-sl"><a>Leistungen</a><a>Referenzen</a><a>Über uns</a><a>Beratung anfragen</a></div></div>
+      <div class="se-r"><div class="se-src"><span class="se-fav" style="color:#5F6368">M</span><div><b>Malerverband Aargau</b><span>https://www.beispiel-verband.ch › mitglieder</span></div></div>
+        <h3>Mitglieder im Kanton Aargau</h3><p>Verzeichnis der Mitgliedsbetriebe nach Region und Fachgebiet.</p></div>
+      <div class="se-r"><div class="se-src"><span class="se-fav" style="color:#5F6368">V</span><div><b>Branchenverzeichnis</b><span>https://www.beispiel-verzeichnis.ch › gipser › buchs-ag</span></div></div>
+        <h3>Gipser in Buchs AG: Adressen und Öffnungszeiten</h3><p>Firmen in Buchs AG und Umgebung, mit Adresse, Telefonnummer und Webseite.</p></div>
+    </div>
+    <div class="se-map">
+      <svg width="440" height="250" viewBox="0 0 440 250"><rect width="440" height="250" fill="#EEF0EC"/><path d="M0 170 C80 150 140 190 220 160 S360 120 440 140" stroke="#fff" stroke-width="10" fill="none"/><path d="M120 0 L170 250" stroke="#fff" stroke-width="7"/><path d="M0 70 L440 98" stroke="#fff" stroke-width="5"/><path d="M300 0 C290 80 330 150 310 250" stroke="#FCE8B2" stroke-width="9" fill="none"/><rect x="40" y="20" width="60" height="40" rx="4" fill="#E2E7DF"/><rect x="220" y="185" width="70" height="45" rx="4" fill="#DDE6D8"/><circle cx="360" cy="40" r="26" fill="#CFE3F3"/>
+        <g transform="translate(196 104)"><path d="M0 0c-8 0-14 6-14 14 0 10 14 24 14 24s14-14 14-24C14 6 8 0 0 0z" fill="#EA4335"/><circle cx="0" cy="14" r="5" fill="#A50E0E"/></g>
+        <g transform="translate(110 150)"><path d="M0 0c-6 0-10 4-10 10 0 7 10 17 10 17s10-10 10-17C10 4 6 0 0 0z" fill="#9AA0A6"/></g>
+        <g transform="translate(330 170)"><path d="M0 0c-6 0-10 4-10 10 0 7 10 17 10 17s10-10 10-17C10 4 6 0 0 0z" fill="#9AA0A6"/></g>
+        <text x="216" y="122" font-family="Arial" font-size="13" font-weight="700" fill="#202124">KF Bauservice GmbH</text></svg>
+      <div class="se-pl"><b>KF Bauservice GmbH</b><span>Gipser · Buchs AG · <em>Geöffnet</em></span></div>
+      <div class="se-pl"><b>Website</b><span>kf-bauservice.ch</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="v host" id="host">
+  <div class="ho-side">
+    <div class="ho-logo"><svg viewBox="12 10 174 188"><path fill="#4A4A4A" d="%%ML%%"/><path fill="#F1F1F1" d="%%MD%%"/></svg>websiten.ch</div>
+    <a class="on">Übersicht</a><a>Domains</a><a>E-Mail</a><a>Backups</a><a>Rechnungen</a><a>Support</a>
+  </div>
+  <div class="ho-main">
+    <div class="ho-h"><h1>kf-bauservice.ch<small>Hosting bei Infomaniak, Rechenzentrum Genf</small></h1><span class="ho-ok"><i></i>Alles in Ordnung</span></div>
+    <div class="ho-k">
+      <div><span>Erreichbarkeit</span><b>99.98 %</b><em>letzte 30 Tage</em></div>
+      <div><span>Ladezeit</span><b>0.8 s</b><em>Startseite, Durchschnitt</em></div>
+      <div><span>Letztes Backup</span><b>03:00</b><em>heute, automatisch</em></div>
+      <div><span>SSL-Zertifikat</span><b>gültig</b><em>bis 09.2027</em></div>
+    </div>
+    <div class="ho-g">
+      <div class="ho-card"><h3>Besucher, letzte 30 Tage</h3><div class="ho-bars">%%BARS%%</div><div class="ho-ax"><span>15. Sep.</span><span>1. Okt.</span><span>14. Okt.</span></div></div>
+      <div class="ho-card"><h3>Wartung</h3>
+        <div class="ho-row"><span>WordPress</span><b>aktuell</b></div>
+        <div class="ho-row"><span>Plugins</span><b>12 von 12 aktuell</b></div>
+        <div class="ho-row"><span>E-Mail-Konten</span><b>4</b></div>
+        <div class="ho-row"><span>Domain verlängert bis</span><b>03.2027</b></div>
+        <div class="ho-row"><span>Daten</span><b>in der Schweiz</b></div>
+      </div>
+    </div>
+    <div class="ho-card" style="margin-top:18px"><h3>Letzte Aktivitäten</h3>
+      <div class="ho-row"><span>Heute, 03:00</span><b>Backup erstellt, 1.2 GB</b></div>
+      <div class="ho-row"><span>Gestern, 22:14</span><b>2 Plugins aktualisiert</b></div>
+      <div class="ho-row"><span>12. Okt., 09:30</span><b>E-Mail-Konto p.huber@ eingerichtet</b></div>
+      <div class="ho-row"><span>8. Okt., 16:05</span><b>Seite «Referenzen» ergänzt</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="v mail" id="mail">
+  <div class="ml-top"><span class="grid"></span>Outlook<div class="ml-search">Suchen</div><span class="ml-av">MB</span></div>
+  <div class="ml-body">
+    <div class="ml-f"><div class="new">Neue E-Mail</div><div class="on">Posteingang <small>3</small></div><div>Entwürfe</div><div>Gesendet</div><div>Archiv</div><div>Offerten</div><div>Team</div></div>
+    <div class="ml-l"><div class="ml-lh">Posteingang</div>
+      <div class="ml-m on"><i style="background:#8764B8">SR</i><div><b>Sandra Ritter</b><span>Anfrage Badumbau</span><p>Guten Tag, wir planen im Frühling einen Umbau unseres Badezimmers</p></div><em>09:12</em></div>
+      <div class="ml-m"><i style="background:#038387">LM</i><div><b>Lukas Meier</b><span>Lieferung Platten</span><p>Die Platten kommen am Dienstag um 7 Uhr auf die Baustelle</p></div><em>08:40</em></div>
+      <div class="ml-m"><i style="background:#CA5010">TK</i><div><b>Teams</b><span>Besprechung morgen</span><p>Planung Projekt Wettingen, 10:00 bis 10:30</p></div><em>Gestern</em></div>
+      <div class="ml-m"><i style="background:#0F6CBD">IT</i><div><b>Konto eingerichtet</b><span>Neuer Mitarbeiter</span><p>Das Konto für p.huber@ ist bereit, inklusive Teams und OneDrive</p></div><em>Mo</em></div>
+      <div class="ml-m"><i style="background:#498205">BU</i><div><b>Buchhaltung</b><span>Rechnung Oktober</span><p>Im Anhang finden Sie die Rechnung für den Monat Oktober</p></div><em>Mo</em></div>
+      <div class="ml-m"><i style="background:#C239B3">AS</i><div><b>Andrea Steiner</b><span>Termin Besichtigung</span><p>Passt Ihnen Donnerstag um 14 Uhr für die Besichtigung in Baden?</p></div><em>So</em></div>
+      <div class="ml-m"><i style="background:#8E562E">GL</i><div><b>Grosshandel Leu</b><span>Auftragsbestätigung</span><p>Vielen Dank für Ihre Bestellung, die Lieferung erfolgt am Freitag</p></div><em>Fr</em></div>
+      <div class="ml-m"><i style="background:#5C2E91">PH</i><div><b>Peter Huber</b><span>Ferienplanung</span><p>Ich würde gerne die Woche vom 22. Dezember frei nehmen, wenn das geht</p></div><em>Fr</em></div>
+      <div class="ml-m"><i style="background:#0F6CBD">OD</i><div><b>OneDrive</b><span>Ordner geteilt</span><p>«Projekte 2026» wurde mit Ihnen geteilt</p></div><em>Do</em></div>
+    </div>
+    <div class="ml-r"><h2>Anfrage Badumbau</h2>
+      <div class="ml-from"><i>SR</i><div><b>Sandra Ritter</b><span>an info@ihre-firma.ch · 09:12</span></div></div>
+      <p>Guten Tag</p>
+      <p>Wir planen im Frühling einen Umbau unseres Badezimmers im Einfamilienhaus in Wettingen. Das Bad ist etwa 8 m² gross, Dusche und Wanne sollen ersetzt werden.</p>
+      <p>Hätten Sie in den nächsten zwei Wochen Zeit für eine Besichtigung? Fotos und einen Grundriss habe ich angehängt.</p>
+      <p>Freundliche Grüsse<br>Sandra Ritter</p>
+      <div class="ml-att"><div><i></i>Grundriss_Bad.pdf</div><div><i style="background:#2B88D8"></i>Fotos_Bad.zip</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="v chat" id="chat">
+  <div class="cw">
+    <div class="cw-h"><svg viewBox="12 10 174 188"><path fill="#555" d="%%ML%%"/><path fill="#F1F1F1" d="%%MD%%"/></svg><div><b>Fragen an websiten.ch</b><span><i></i>antwortet sofort</span></div></div>
+    <div class="cw-b">
+      <div class="bu a">Grüezi! Ich beantworte Fragen zu Websites, Preisen und Terminen. Was möchten Sie wissen?</div>
+      <div class="bu u">Was kostet eine Website für meinen Malerbetrieb?</div>
+      <div class="bu a">Eine Website mit 4 Seiten kostet CHF 590.–, jede weitere Seite CHF 150.–. Hosting und Domain kosten CHF 25.– im Monat. Soll ich Ihnen einen Termin für ein kurzes Gespräch vorschlagen?</div>
+      <div class="chips"><span>Ja, Termin vorschlagen</span><span>Was ist inbegriffen?</span></div>
+    </div>
+    <div class="cw-in">Nachricht schreiben<i></i></div>
+  </div>
+</div>
+
+<script>
+const v = new URLSearchParams(location.search).get('v');
+document.getElementById(v).classList.add('on');
+</script>
+</body></html>
