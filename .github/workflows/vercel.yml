@@ -44,3 +44,20 @@ jobs:
           fi
           echo "$out"
           echo "::notice::Deploy fertig: $(echo "$out" | grep -Eo 'https://[^ ]+' | tail -n 1)"
+      # Live-Seite prüfen: neue Fassung online, Sicherheits-Header aktiv
+      - name: Live-Seite prüfen
+        run: |
+          sleep 5
+          B=https://beispiel13241324.vercel.app
+          fail=""
+          for p in index.html websites.html google-seo.html ueber-uns.html; do
+            code=$(curl -s -o /tmp/p.html -w '%{http_code}' "$B/$p")
+            [ "$code" = 200 ] || fail="$fail $p:$code"
+          done
+          curl -s "$B/index.html" | grep -q 'websiten-hero-m.mp4' || fail="$fail index:alte-Fassung"
+          h=$(curl -sI "$B/index.html")
+          echo "$h" | grep -qi '^content-security-policy:' || fail="$fail CSP-fehlt"
+          echo "$h" | grep -qi '^strict-transport-security:' || fail="$fail HSTS-fehlt"
+          size=$(curl -s "$B/index.html" | wc -c)
+          if [ -n "$fail" ]; then echo "::error::Live-Prüfung:$fail"; exit 1; fi
+          echo "::notice::Live-Prüfung ok: 4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv, Startseite $size Bytes"
