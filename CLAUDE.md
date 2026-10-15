@@ -49,7 +49,7 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
 
 ## Veröffentlichen
 
-Jeder Push auf `main` von GitHub-Repo Ni7i/websiten.ch geht automatisch live: GitHub Actions (`.github/workflows/vercel.yml`) lädt mit der Vercel-CLI ins Projekt beispiel13241324 hoch. Dafür braucht das Repo das Actions-Secret `VERCEL_TOKEN`. `.vercelignore` sorgt dafür, dass nur `dist/` und `vercel.json` hochgeladen werden. Vercel baut dabei nichts, sondern liefert den fertigen Ordner `dist/` aus (`outputDirectory` in `vercel.json` im Hauptordner). Deshalb gehört `dist/` ins Repo.
+Jeder Push auf `main` von GitHub-Repo Ni7i/websiten.ch geht automatisch live: GitHub Actions (`.github/workflows/vercel.yml`) lädt mit der Vercel-CLI ins Projekt beispiel13241324 hoch. Dafür braucht das Repo das Actions-Secret `VERCEL_TOKEN`. `.vercelignore` sorgt dafür, dass nur `dist/` und `vercel.json` hochgeladen werden. Nach jedem Deploy prüft der Ablauf die Live-Seite (4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv). Ergebnis und Fehler stehen als Hinweise im Actions-Lauf auf GitHub. Vercel baut dabei nichts, sondern liefert den fertigen Ordner `dist/` aus (`outputDirectory` in `vercel.json` im Hauptordner). Deshalb gehört `dist/` ins Repo.
 
 1. `cd build && python3 build.py` (erzeugt die Seiten, `fast.py` optimiert jede Seite)
 2. `python3 dist.py` (stellt `dist/` neu zusammen: alle Seiten und genau die Dateien, auf die sie verweisen)
