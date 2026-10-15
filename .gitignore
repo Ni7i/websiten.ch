@@ -8,5 +8,3 @@ optionen-leistungen.html
 artifact-index.html
 mockups/*.png
 !mockups/mbp-frame.png
-
-dist/

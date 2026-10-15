@@ -49,10 +49,13 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
 
 ## Veröffentlichen
 
+Das Vercel-Projekt beispiel13241324 ist mit dem GitHub-Repo Ni7i/websiten.ch verbunden. Jeder Push auf `main` geht automatisch live. Vercel baut dabei nichts, sondern liefert den fertigen Ordner `dist/` aus (`outputDirectory` in `vercel.json` im Hauptordner). Deshalb gehört `dist/` ins Repo.
+
 1. `cd build && python3 build.py` (erzeugt die Seiten, `fast.py` optimiert jede Seite)
-2. `python3 dist.py` (stellt den Ordner `dist/` zusammen: alle Seiten und genau die Dateien, auf die sie verweisen, plus `vercel.json` und `_headers`)
-3. Im Ordner `dist`: `vercel deploy --prod --yes` (Projekt beispiel13241324, vorher `vercel login` und `vercel link`). Cloudflare Pages oder Netlify gehen auch: Ordner `dist` hochladen, `_headers` gilt dort automatisch.
-   In einer Claude-Cloud-Sitzung: `vercel deploy --prod --yes --token "$VERCEL_TOKEN"` im Ordner `dist` (vorher einmal `vercel link --yes --project beispiel13241324 --token "$VERCEL_TOKEN"`). Dafür müssen vercel.com und api.vercel.com im Netzwerkzugriff der Umgebung erlaubt und VERCEL_TOKEN als Umgebungsvariable hinterlegt sein.
+2. `python3 dist.py` (stellt `dist/` neu zusammen: alle Seiten und genau die Dateien, auf die sie verweisen)
+3. Alles committen, auch `dist/`, und auf `main` pushen. Vercel übernimmt den Rest.
+
+Die Sicherheits- und Cache-Header stehen in `vercel.json` im Hauptordner (gilt für Vercel) und in `_headers` (für Cloudflare Pages oder Netlify, falls einmal gewechselt wird).
 
 Vor jedem Deploy prüfen: keine "–" und "—" in den HTML-Dateien (dist.py warnt), keine Telefonnummer, kein horizontales Scrollen bei 390 px Breite.
 
