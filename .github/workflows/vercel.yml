@@ -1,5 +1,6 @@
 # Bei jedem Push auf main die fertige Website (Ordner dist) auf Vercel veröffentlichen.
 # Braucht das Repository-Secret VERCEL_TOKEN (GitHub: Settings > Secrets and variables > Actions).
+# Optional: Repository-Variable VERCEL_SCOPE, falls das Projekt zu einem Vercel-Team gehört.
 name: Vercel
 
 on:
@@ -16,11 +17,30 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      SCOPE: ${{ vars.VERCEL_SCOPE }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Secret vorhanden?
         run: test -n "$VERCEL_TOKEN" || { echo "::error::Das Secret VERCEL_TOKEN fehlt im Repository."; exit 1; }
+      - name: Vercel-CLI installieren
+        run: npm install --global vercel@latest >/dev/null && vercel --version
+      # Fehler werden als Annotation ausgegeben (eine Zeile), damit man sie ohne Log-Zugriff sieht
       - name: Mit dem Projekt beispiel13241324 verbinden
-        run: npx --yes vercel@latest link --yes --project beispiel13241324 --token "$VERCEL_TOKEN"
+        run: |
+          S=${SCOPE:+--scope $SCOPE}
+          if ! out=$(vercel link --yes --project beispiel13241324 $S --token "$VERCEL_TOKEN" 2>&1); then
+            echo "$out"
+            who=$(vercel whoami --token "$VERCEL_TOKEN" 2>&1 | tail -n 1)
+            teams=$(vercel teams ls --token "$VERCEL_TOKEN" 2>&1 | tail -n 6 | tr '\n' ' ')
+            echo "::error::Link fehlgeschlagen: $(echo "$out" | tail -n 6 | tr '\n' ' ') | Konto: $who | Teams: $teams"
+            exit 1
+          fi
+          echo "$out"
       - name: Veröffentlichen
-        run: npx --yes vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
+        run: |
+          S=${SCOPE:+--scope $SCOPE}
+          if ! out=$(vercel deploy --prod --yes $S --token "$VERCEL_TOKEN" 2>&1); then
+            echo "$out"; echo "::error::Deploy fehlgeschlagen: $(echo "$out" | tail -n 8 | tr '\n' ' ')"; exit 1
+          fi
+          echo "$out"
+          echo "::notice::Deploy fertig: $(echo "$out" | grep -Eo 'https://[^ ]+' | tail -n 1)"
