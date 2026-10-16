@@ -56,8 +56,10 @@ jobs:
             echo "::notice::Domain $d Stand: $(echo "$ins" | grep -iE 'nameserver|record|misconfig|verified|A |CNAME|TXT|intended|current' | tr -s ' ' | tr '\n' ' ' | cut -c1-900)"
           done
           echo "::notice::DNS jetzt: NS $(dig +short NS websiten.ch | tr '\n' ' ') | A $(dig +short A websiten.ch | tr '\n' ' ') | www $(dig +short www.websiten.ch | tr '\n' ' ') | Registrar $(whois websiten.ch 2>/dev/null | grep -iA2 registrar | tr -s ' ' | tr '\n' ' ' | cut -c1-200)"
-          code=$(curl -s -o /dev/null -w '%{http_code}' https://websiten.ch/index.html || true)
-          echo "::notice::https://websiten.ch antwortet mit: $code"
+          for u in https://websiten.ch/ https://www.websiten.ch/; do
+            r=$(curl -s -o /tmp/d.html -w '%{http_code} %{remote_ip} %{url_effective}' -L --max-time 20 "$u" || true)
+            echo "::notice::$u antwortet: $r | Server: $(curl -sI --max-time 20 "$u" | grep -iE '^(server|x-vercel-id):' | tr -d '\r' | tr '\n' ' ') | neue Fassung: $(grep -q websiten-hero-m.mp4 /tmp/d.html && echo ja || echo nein)"
+          done
       # Live-Seite prüfen: neue Fassung online, Sicherheits-Header aktiv
       - name: Live-Seite prüfen
         run: |
