@@ -41,7 +41,7 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
 - Preise auf den Leistungsseiten (price in pages3.py): keine Riesenzahlen, sondern eine ruhige Liste "Leistung links, Preis rechts" unter "Was es kostet". Der Kunde fand die grosse Zahl ohne Zusammenhang unübersichtlich.
 - Google-Suche auf google-seo.html: Browserfenster in 1280 x 800 gebaut und ins MacBook verkleinert, damit es wie ein echter Bildschirm wirkt (nicht wie ein generiertes Bild).
 - MacBook-Grafiken: immer ohne Notch, nur Kamerapunkt im Rand (`macbook()` in pages3.py, `assets/img/mac-frame.webp`).
-- Menü (MENU in parts.py, Logik in site.js): fährt man über eine Leistung, zeigt ein MacBook in der Mitte deren Bildschirm (scr-*.jpg), darunter Titel und Kurztext. Die Bilder laden erst beim ersten Öffnen. Unter 1100 px und auf Touch-Geräten ausgeblendet.
+- Menü (MENU in parts.py, Logik in site.js): fährt man über eine Leistung, zeigt ein MacBook in der Mitte echte Inhalte (assets/img/mp-*.jpg: echte Websites von KF Bauservice und Kastrati, sonst echte Fotos ohne Personen, keine nachgebauten Bildschirme), darunter Titel und Kurztext. Die Bilder laden erst beim ersten Öffnen. Unter 1100 px und auf Touch-Geräten ausgeblendet.
 - `build/pages2.py` und `build/pages.py`: ältere Fassungen, liefern noch Daten und die Terminbuchung (KONTAKT_JS) an pages3.
 - `assets/site.css`, `assets/site.js`: gemeinsame Gestaltung und Skripte (Logo-Farbe je nach Hintergrund, Menü, Pixel-Schriftzug im Footer).
 - `assets/websiten-ad.mp4` (1080p mit Ton) und `assets/websiten-ad-poster.jpg`: Werbefilm für ueber-uns.html. Quelle ist der Ordner `web/` im Design-Repo (Claude Design Export "Websiten Ad v3"), gerendert mit `node render/render.mjs`. Dort liegt auch die 4K-Fassung.
