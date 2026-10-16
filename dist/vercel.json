@@ -105,5 +105,47 @@
       ]
     }
   ],
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/leistungen",
+      "destination": "/de/leistungen",
+      "permanent": false
+    },
+    {
+      "source": "/preise",
+      "destination": "/de/preise",
+      "permanent": false
+    },
+    {
+      "source": "/ueber-uns",
+      "destination": "/de/ueber-uns",
+      "permanent": false
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/de/kontakt",
+      "permanent": false
+    },
+    {
+      "source": "/fragen",
+      "destination": "/de/fragen",
+      "permanent": false
+    },
+    {
+      "source": "/impressum",
+      "destination": "/de/impressum",
+      "permanent": false
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/de/datenschutz",
+      "permanent": false
+    },
+    {
+      "source": "/ki-chatbots",
+      "destination": "/de/ki-chatbots",
+      "permanent": false
+    }
+  ]
 }

@@ -403,7 +403,7 @@ def preise():
   </section>'''
     groups = [('Website', [('4 Seiten', 'CHF 590'), ('6 Seiten', 'CHF 890'), ('8 Seiten', 'CHF 1’190'), ('10 Seiten', 'CHF 1’490'), ('Jede weitere Seite', 'CHF 150')], 'Mit Gestaltung, Handy-Version, Kontaktformular, Google Maps und SSL.'),
               ('Online-Shop', [('4 Seiten, bis 30 Produkte', 'CHF 1’890'), ('Bis 150 Produkte', '+ CHF 490'), ('Bis 500 Produkte', '+ CHF 990'), ('Über 500, mit Import', '+ CHF 1’890')], 'Mit TWINT, Karte, Rechnung und Versand. Das Shopify-Abo zahlen Sie direkt an Shopify.'),
-              ('Dazu nach Wunsch', [('Texte von uns, pro Seite', 'CHF 90'), ('Weitere Sprache', 'CHF 50'), ('Online-Terminbuchung', 'CHF 290'), ('News oder Blog', 'CHF 190'), ('Google-Profil einrichten', 'CHF 150'), ('Google Ads einrichten', 'CHF 390')], ''),
+              ('Dazu nach Wunsch', [('Texte von uns, pro Seite', 'CHF 45'), ('Weitere Sprache', 'CHF 50'), ('Online-Terminbuchung', 'CHF 290'), ('News oder Blog', 'CHF 190'), ('Google-Profil einrichten', 'CHF 150'), ('Google Ads einrichten', 'CHF 390')], ''),
               ('Hosting', [('Hosting und .ch-Domain', 'CHF 25 im Monat')], 'Server bei Infomaniak in Genf. Mit SSL, E-Mail-Adresse, Backups und Updates.')]
     gl = ''.join(f'<div class="pg"><h3>{h}</h3><dl class="tiers">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in rows) + '</dl>' + (f'<p class="pnote">{n}</p>' if n else '') + '</div>' for h, rows, n in groups)
     allp = f'<section class="xs pad" aria-labelledby="apT">{head("Alle Preise", "In CHF, einmalig, wenn nichts anderes steht.", "apT")}<div class="pgs">{gl}</div></section>'
@@ -1101,7 +1101,7 @@ PREISE_JS = r'''
     if (S.pages > 4) L.push([(S.pages - 4) + ' weitere Seite' + (S.pages > 5 ? 'n' : ''), (S.pages - 4) * 150]);
     if (shop && PROD[S.prod][1]) L.push(['Produkte ' + PROD[S.prod][0], PROD[S.prod][1]]);
     if (S.lang > 1) L.push([(S.lang - 1) + ' weitere Sprache' + (S.lang > 2 ? 'n' : ''), (S.lang - 1) * 50]);
-    if (S.texts) L.push(['Texte für ' + S.pages + ' Seiten', S.pages * 90]);
+    if (S.texts) L.push(['Texte für ' + S.pages + ' Seiten', S.pages * 45]);
     document.querySelectorAll('.cf-x').forEach(b => { if (S.x[b.dataset.x]) L.push([b.textContent, +b.dataset.p]); });
     const total = L.reduce((a, l) => a + l[1], 0);
     count(total);

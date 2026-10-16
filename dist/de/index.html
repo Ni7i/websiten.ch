@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>websiten.ch</title>
+<meta name="description" content="Websites, Online-Shops und Hosting für Schweizer KMU. Mit festem Preis, Domains und Hosting in der Schweiz.">
+<link rel="preload" as="image" href="/assets/img/x/e2a21825caa3.webp" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/x/72e31002dfae.webp" media="(max-width: 860px)" fetchpriority="high">
+<link rel="preload" href="/assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" hreflang="en" href="https://websiten.ch/">
+<link rel="alternate" hreflang="de" href="https://websiten.ch/de">
+<link rel="alternate" hreflang="x-default" href="https://websiten.ch/">
+<link rel="canonical" href="https://websiten.ch/de">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<style>
+
+@font-face{font-family:"Hanken Grotesk";font-style:normal;font-display:swap;font-weight:100 900;src:url(/assets/fonts/hanken-grotesk-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/fraunces-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-style:italic;font-display:swap;font-weight:400;src:url(/assets/fonts/fraunces-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-style:normal;font-display:swap;font-weight:600;src:url(/assets/fonts/fraunces-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Newsreader";font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/newsreader-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Newsreader";font-style:normal;font-display:swap;font-weight:500;src:url(/assets/fonts/newsreader-latin-500-normal.woff2) format("woff2")}
+
+
+:root{
+  color-scheme:dark;
+  --bg:#151515;
+  --bg-2:#1A1A1A;
+  --surface:#1F1F1F;
+  --line:#2F2F2F;
+  --line-soft:#252525;
+  --text:#EBEBEB;
+  --muted:#9F9F9F;
+  --dim:#646464;
+  --sage:#8FAE96;
+  --sand:#F1ECE3;
+  --clay:#C2613A;
+  --clay-light:#E2875F;
+  --sage-deep:#606060;
+  --sage-light:#BCD2C1;
+  --ink:#151515;
+  --ink-soft:#414141;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad:clamp(20px,6.5vw,128px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip}
+body{overflow-x:clip;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sage-light);outline-offset:3px;border-radius:6px}
+img,svg,canvas{display:block}
+h1,h2,h3{text-wrap:balance}
+.quiet{color:#7F7F7F}
+.on-sage .quiet{color:var(--ink-soft)}
+.pad{padding-left:var(--pad);padding-right:var(--pad)}
+section{position:relative}
+.h-sec{font-size:clamp(36px,4.4vw,74px);line-height:1;font-weight:700;letter-spacing:-.05em}
+
+
+.logo{position:fixed;z-index:70;top:calc(env(safe-area-inset-top,0px) + 16px);left:calc(var(--pad) - 10px);display:flex;align-items:center;gap:12px;height:48px;padding:0 10px}
+.logo-mark{display:block;height:33px;width:auto}
+.logo-mark path{transition:fill .3s}
+.lm-l{fill:rgba(239,239,239,.3)}.lm-d{fill:#EFEFEF}
+.wm{height:19px;width:136px;fill:var(--text);transition:opacity .35s,width .45s var(--ease),margin .45s var(--ease),fill .3s}
+.scrolled .wm{opacity:0;width:0;margin-left:-12px;pointer-events:none}
+
+[data-tone=mid] .lm-l{fill:rgba(255,255,255,.5)}
+[data-tone=mid] .lm-d{fill:var(--ink)}
+[data-tone=mid] .wm{fill:var(--ink)}
+[data-tone=light] .lm-l{fill:#D6D6D6}
+[data-tone=light] .lm-d{fill:#282828}
+[data-tone=light] .wm{fill:#1C1C1C}
+[data-tone=color] .lm-l{fill:rgba(255,255,255,.45)}
+[data-tone=color] .lm-d{fill:#fff}
+[data-tone=color] .wm{fill:#fff}
+.menu-open .wm{opacity:1;width:136px;margin-left:0}
+
+
+.menu-btn{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 14px);right:max(16px,calc(var(--pad) - 44px));width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--text);transition:background .3s,color .3s}
+.menu-btn:hover{background:rgba(255,255,255,.06)}
+.menu-btn .bars{position:relative;width:24px;height:14px}
+.menu-btn .bars i{position:absolute;right:0;height:1.5px;background:currentColor;border-radius:2px;transition:transform .5s var(--ease),width .4s var(--ease),top .4s var(--ease),opacity .3s}
+.menu-btn .bars i:nth-child(1){top:0;width:24px}
+.menu-btn .bars i:nth-child(2){top:6px;width:16px}
+.menu-btn .bars i:nth-child(3){top:12px;width:20px}
+.menu-btn:hover .bars i{width:24px}
+.menu-open .menu-btn .bars i:nth-child(1){top:6px;width:24px;transform:rotate(45deg)}
+.menu-open .menu-btn .bars i:nth-child(2){opacity:0;width:0}
+.menu-open .menu-btn .bars i:nth-child(3){top:6px;width:24px;transform:rotate(-45deg)}
+[data-tone=mid] .menu-btn,[data-tone=light] .menu-btn{color:var(--ink)}
+
+
+.glass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.05) 55%,rgba(255,255,255,.1));-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(255,255,255,.08),inset 1px 0 0 rgba(255,255,255,.14),0 22px 50px -24px rgba(0,0,0,.55)}
+.glass-l{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(255,255,255,.3));-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.35),0 24px 50px -26px rgba(40,20,0,.35)}
+.menu-btn{background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 30px -12px rgba(0,0,0,.4)}
+.menu-btn:hover{background:rgba(255,255,255,.22)}
+[data-tone=mid] .menu-btn,[data-tone=light] .menu-btn{background:rgba(255,255,255,.4);border-color:rgba(255,255,255,.7)}
+
+
+.menu-open .wm{opacity:1;width:136px;margin-left:0}
+.menu-open .menu-btn .bars i:first-child{transform:translateY(3.3px) rotate(45deg)}
+.menu-open .menu-btn .bars i:last-child{transform:translateY(-3.3px) rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:65;background:var(--sage);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;gap:48px;padding:120px var(--pad) 40px;overflow:auto;clip-path:circle(0px at calc(100% - max(16px,calc(var(--pad) - 44px)) - 26px) 40px);visibility:hidden;transition:clip-path .35s cubic-bezier(.6,0,.2,1),visibility 0s .35s}
+.menu.open{clip-path:circle(150vmax at calc(100% - max(16px,calc(var(--pad) - 44px)) - 26px) 40px);visibility:visible;transition:clip-path .42s cubic-bezier(.6,0,.2,1)}
+.menu > *:not(.grain){position:relative}
+.menu-in{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(32px,5vw,96px);align-items:start}
+.menu-big{list-style:none}
+.menu-big a{display:inline-block;font-size:clamp(44px,6.6vw,116px);line-height:1.03;font-weight:700;letter-spacing:-.05em;opacity:0;transform:translateY(18px);transition:opacity .3s,transform .4s var(--ease),color .2s}
+.menu-big a:hover,.menu-big a[aria-current="page"]{color:#FFFFFF}
+.menu.open .menu-big a{opacity:1;transform:none}
+.menu.open .menu-big li:nth-child(1) a{transition-delay:.1s,.1s,0s}
+.menu.open .menu-big li:nth-child(2) a{transition-delay:.14s,.14s,0s}
+.menu.open .menu-big li:nth-child(3) a{transition-delay:.18s,.18s,0s}
+.menu.open .menu-big li:nth-child(4) a{transition-delay:.22s,.22s,0s}
+.menu.open .menu-big li:nth-child(5) a{transition-delay:.46s,.46s,0s}
+.menu.open .menu-big li:nth-child(6) a{transition-delay:.52s,.52s,0s}
+.menu-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding-top:18px;opacity:0;transition:opacity .3s .2s}
+.menu.open .menu-cols{opacity:1}
+.menu-cols h5{font-size:14px;font-weight:500;color:var(--ink-soft);margin-bottom:12px}
+.menu-cols a{display:block;padding:4px 0;font-size:17px;transition:opacity .2s}
+.menu-cols a:hover{opacity:.6}
+.menu-foot{display:flex;gap:32px;flex-wrap:wrap;padding-top:24px;font-size:17px}
+.menu-foot span:first-child{font-weight:500}
+.menu-open .menu-btn{color:var(--ink);background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.6)}
+
+
+
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border-radius:999px;font-size:17px;font-weight:500;transition:background .25s,color .25s,border-color .25s}
+.btn svg{transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.btn-sage{background:var(--sage);color:var(--ink)}
+.btn-clay{background:var(--clay);color:#FFF7F2}
+.btn-clay:hover{background:var(--clay-light)}
+.btn-sage:hover{background:var(--sage-light)}
+.btn-ghost{border:1px solid #414141;color:var(--text)}
+.btn-ghost:hover{border-color:var(--sage-light)}
+.btn-ink{background:var(--ink);color:var(--text)}
+.btn-ink:hover{background:#282828}
+.btn-line{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-line:hover{background:rgba(10,40,30,.1)}
+.more{display:inline-flex;align-items:center;gap:14px;padding-bottom:10px;border-bottom:1.5px solid var(--text);font-size:18px;transition:color .2s,border-color .2s}
+.more:hover{color:var(--sage-light);border-color:var(--sage-light)}
+
+
+.page-hero{padding-top:clamp(150px,18vw,260px);padding-bottom:clamp(64px,8vw,120px)}
+.page-hero h1{font-size:clamp(56px,10vw,190px);line-height:.9;font-weight:700;letter-spacing:-.06em;max-width:14ch}
+.page-hero p{font-size:clamp(18px,1.5vw,22px);line-height:1.6;color:#CDCDCD;max-width:52ch;margin-top:clamp(28px,3vw,44px)}
+.rule{border:0;border-top:1px solid var(--line);margin:0 var(--pad)}
+
+
+.grain{position:absolute;inset:0;width:100%;height:100%;opacity:.22;mix-blend-mode:multiply;pointer-events:none}
+
+
+.qa{border-top:1px solid var(--line)}
+.qa:last-child{border-bottom:1px solid var(--line)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:28px 0;text-align:left;font-size:clamp(18px,1.5vw,22px);font-weight:500}
+.pm{position:relative;flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);transition:background .25s,border-color .25s}
+.pm::before,.pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--text);transform:translate(-50%,-50%);transition:transform .35s var(--ease)}
+.pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa button[aria-expanded="true"] .pm{background:var(--sage);border-color:var(--sage)}
+.qa button[aria-expanded="true"] .pm::before,.qa button[aria-expanded="true"] .pm::after{background:var(--ink)}
+.qa button[aria-expanded="true"] .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.ans > div{overflow:hidden}
+.ans p{color:#C1C1C1;font-size:17px;line-height:1.7;max-width:58ch;padding-bottom:30px}
+.qa button[aria-expanded="true"] + .ans{grid-template-rows:1fr}
+
+
+.closing{position:relative;background:var(--sage);color:var(--ink);padding-top:clamp(100px,12vw,200px);padding-bottom:clamp(80px,9vw,140px);overflow:hidden}
+.closing > *:not(.grain){position:relative}
+.closing h2{font-size:clamp(52px,8.6vw,176px);line-height:.9;font-weight:700;letter-spacing:-.06em;max-width:12ch}
+.closing-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:clamp(48px,6vw,96px);padding-top:32px}
+.closing-row p{font-size:20px;max-width:40ch;color:#252525}
+.closing-row .actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.mail{font-size:clamp(24px,2.8vw,48px);font-weight:500;letter-spacing:-.03em;user-select:all}
+footer{position:relative;padding-top:clamp(64px,7vw,110px);overflow:hidden}
+.f-top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px 48px;flex-wrap:wrap;padding-bottom:clamp(40px,5vw,72px);border-bottom:1px solid var(--line)}
+.f-claim{font-weight:500;font-size:clamp(28px,2.8vw,48px);line-height:1.12;letter-spacing:-.04em;color:var(--text);max-width:24ch}
+.f-claim span{color:#C3C3C3}
+.f-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.f-cta .mail{font-size:clamp(20px,1.8vw,28px);border-color:var(--text);color:var(--text)}
+.fi{padding:clamp(56px,6vw,96px) 0 clamp(24px,3vw,40px)}
+.fi h4{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:.04em;margin-bottom:22px}
+.fi-row{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,2fr);gap:clamp(20px,4vw,72px);align-items:baseline;padding:clamp(20px,2.2vw,30px) 0;border-top:1px solid var(--line)}
+.fi-row:last-child{border-bottom:1px solid var(--line)}
+.fi-h{display:inline-flex;align-items:flex-start;gap:8px;font-size:clamp(24px,2.3vw,38px);line-height:1.05;font-weight:700;letter-spacing:-.045em;color:var(--text)}
+.fi-h sup{font-size:12px;font-weight:500;letter-spacing:0;color:var(--dim);margin-top:.35em;font-variant-numeric:tabular-nums}
+.fi-items{font-size:clamp(16px,1.3vw,20px);line-height:1.75;color:var(--muted)}
+.fi-items a{transition:color .2s}
+.fi-items a:hover{color:var(--text)}
+.fi-items i{font-style:normal;color:var(--dim);margin:0 .55em}
+.fi-row:hover .fi-h{color:#fff}
+.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;padding-top:clamp(48px,5vw,72px)}
+.foot h5{font-size:15px;font-weight:500;margin-bottom:14px}
+.foot a,.foot span.l{display:block;padding:4px 0;color:var(--muted);font-size:15.5px;transition:color .2s}
+.foot a:hover{color:var(--text)}
+.foot p{color:var(--muted);font-size:15.5px;max-width:32ch}
+.ground{position:relative;margin-top:clamp(36px,5vw,72px);aspect-ratio:840/94;overflow:hidden}
+.giant-src{position:absolute;left:0;top:0;width:100%;height:auto;fill:#1F1F1F}
+.giant-px{position:absolute;left:0;top:0;width:100%;display:block}
+.ground.live .giant-src{visibility:hidden}
+.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:clamp(48px,5vw,80px);padding-top:24px;font-size:14px;color:var(--muted)}
+footer{padding-bottom:0}
+.legal span:last-child{display:flex;gap:20px}
+
+
+
+.frame-b{border-radius:14px;overflow:hidden;background:#111111;border:1px solid #333333;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
+.bar{display:flex;align-items:center;gap:7px;padding:12px 16px}
+.bar i{width:10px;height:10px;border-radius:50%;background:#353535}
+.bar span{margin:0 auto;font-size:13px;color:var(--muted);background:#1B1B1B;border-radius:6px;padding:3px 40px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%}
+.mock{container-type:inline-size;aspect-ratio:16/9.4;position:relative;overflow:hidden;user-select:none;max-width:100%}
+.m1{background:#fff;color:#1B1F22;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;display:grid;grid-template-rows:6.6cqw minmax(0,1fr) auto}
+.m1 .k-top{display:flex;align-items:center;justify-content:space-between;padding:0 3.6cqw;border-bottom:1px solid #E6E8EA}
+.m1 .k-logo{display:flex;align-items:center;gap:.9cqw;font-size:1.55cqw;color:#163A5C;letter-spacing:-.01em}
+.m1 .k-logo svg{width:1.5cqw;height:auto}
+.m1 .k-logo b{font-weight:700}
+.m1 .k-links{display:flex;gap:2.5cqw;font-size:1.12cqw;color:#40474D}
+.m1 .k-tel{font-size:1.15cqw;font-weight:700;color:#163A5C;border:1.5px solid #163A5C;border-radius:.3cqw;padding:.7cqw 1.2cqw}
+.m1 .k-hero{display:grid;grid-template-columns:42% 58%;min-height:0}
+.m1 .k-copy{padding:4.4cqw 3cqw 0 3.6cqw}
+.m1 .k-kick{font-size:1.08cqw;color:#5D6770}
+.m1 h4{font-size:4.1cqw;line-height:1.02;font-weight:700;letter-spacing:-.035em;margin-top:1.3cqw;color:#11161A}
+.m1 .k-p{font-size:1.28cqw;line-height:1.55;color:#4A535B;margin-top:1.8cqw;max-width:31ch}
+.m1 .k-acts{display:flex;align-items:center;gap:1.8cqw;margin-top:2.6cqw}
+.m1 .k-btn{background:#163A5C;color:#fff;font-size:1.15cqw;font-weight:700;padding:1.15cqw 1.8cqw;border-radius:.3cqw}
+.m1 .k-more{font-size:1.15cqw;font-weight:700;color:#163A5C;border-bottom:1.5px solid #163A5C;padding-bottom:.2cqw}
+.m1 .k-photo{position:relative;overflow:hidden;min-height:0}
+.m1 .k-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block}
+.m1 .k-cap{position:absolute;left:0;bottom:0;background:#fff;color:#40474D;font-size:.95cqw;padding:.9cqw 1.4cqw .9cqw 0;margin-left:0}
+.m1 .k-strip{display:grid;grid-template-columns:repeat(3,1fr) 1.1fr;border-top:1px solid #E6E8EA}
+.m1 .k-strip span{padding:1.9cqw 2cqw 1.9cqw 3.6cqw;font-size:1cqw;color:#5D6770;line-height:1.45;border-right:1px solid #E6E8EA}
+.m1 .k-strip span + span{padding-left:2cqw}
+.m1 .k-strip b{display:block;font-size:1.3cqw;color:#11161A;margin-bottom:.3cqw}
+.m1 .k-strip .k-sos{background:#163A5C;color:#C9D6E2;border:0}
+.m1 .k-sos b{color:#fff}
+.m2{background:#F1F4F7;color:#18263A}
+.m2 .nav{display:flex;align-items:center;justify-content:space-between;padding:2.4cqw 4cqw;font-family:var(--sans)}
+.m2 .lg{font-family:"Newsreader",Georgia,serif;font-size:2cqw;letter-spacing:-.01em}
+.m2 .ln{display:flex;gap:2.6cqw;font-size:1.25cqw;color:#45546A}
+.m2 .bt{font-size:1.2cqw;background:#2E4A6B;color:#fff;border-radius:.6cqw;padding:.9cqw 1.8cqw}
+.m2 .hero2{display:grid;grid-template-columns:1.15fr 1fr;gap:4cqw;padding:3cqw 4cqw 0;align-items:start}
+.m2 small{font-size:1.15cqw;color:#5B7392;font-family:var(--sans);font-weight:500}
+.m2 h4{font-family:"Newsreader",Georgia,serif;font-weight:400;font-size:5.4cqw;line-height:1.02;letter-spacing:-.02em;margin-top:1.2cqw}
+.m2 h4 em{color:#5B7392}
+.m2 .copy p{font-size:1.4cqw;line-height:1.6;color:#4A586C;margin-top:2cqw;max-width:36ch;font-family:var(--sans)}
+.m2 .acts{display:flex;gap:1.4cqw;align-items:center;margin-top:2.6cqw;font-family:var(--sans)}
+.m2 .acts .bt{font-size:1.25cqw;padding:1.1cqw 2.2cqw}
+.m2 .acts span{font-size:1.25cqw;color:#2E4A6B}
+.m2 .arch{position:relative;height:34cqw;border-radius:16cqw 16cqw 1.2cqw 1.2cqw;background:linear-gradient(170deg,#C9D6E4,#8BA2BC 70%,#6F88A5);overflow:hidden}
+.m2 .arch::before{content:"";position:absolute;right:-6cqw;top:6cqw;width:22cqw;height:22cqw;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.55),rgba(255,255,255,0) 70%)}
+.m2 .hours{position:absolute;left:2cqw;right:2cqw;bottom:2cqw;background:#fff;border-radius:1cqw;padding:1.8cqw 2cqw;font-family:var(--sans);box-shadow:0 1cqw 3cqw rgba(24,38,58,.15)}
+.m2 .hours h5{font-family:"Newsreader",Georgia,serif;font-weight:500;font-size:1.9cqw}
+.m2 .hours div{display:flex;justify-content:space-between;font-size:1.15cqw;color:#45546A;padding:.7cqw 0;border-top:1px solid #E3E9EF;margin-top:.5cqw}
+.m2 .hours div b{font-weight:500;color:#18263A}
+.m2 .hours .sos{color:#9A3B3B}
+.m3{background:#F3EADD;color:#3A2618}
+.m3 .nav{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:2.4cqw 4cqw;font-family:var(--sans)}
+.m3 .lg{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:2.6cqw;letter-spacing:-.02em}
+.m3 .ln{display:flex;gap:2.6cqw;font-size:1.25cqw;color:#6B4F3B}
+.m3 .bt{font-size:1.2cqw;background:#3A2618;color:#F3EADD;border-radius:99px;padding:.9cqw 1.8cqw}
+.m3 .hero3{display:grid;grid-template-columns:1.3fr 1fr;gap:4cqw;padding:2cqw 4cqw 0;align-items:end}
+.m3 h4{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:7.4cqw;line-height:.95;letter-spacing:-.035em}
+.m3 h4 em{color:#B5643A}
+.m3 .copy p{font-family:var(--sans);font-size:1.4cqw;line-height:1.6;color:#6B4F3B;margin-top:2.2cqw;max-width:34ch}
+.m3 .loaf{position:absolute;right:-5cqw;top:7cqw;width:30cqw;height:30cqw;border-radius:50%;background:radial-gradient(circle at 40% 35%,#E7B57E,#C27C45 55%,#8E522B);box-shadow:inset -2cqw -2cqw 4cqw rgba(60,30,10,.35);opacity:.9}
+.m3 .loaf::before,.m3 .loaf::after{content:"";position:absolute;left:22%;right:22%;height:.6cqw;border-radius:99px;background:rgba(250,230,200,.6);transform:rotate(-24deg)}
+.m3 .loaf::before{top:38%}.m3 .loaf::after{top:56%}
+.m3 .menu3{position:relative;background:#FBF6EE;border-radius:1.2cqw;padding:2cqw 2.2cqw;font-family:var(--sans);box-shadow:0 1cqw 3cqw rgba(58,38,24,.12)}
+.m3 .menu3 h5{font-family:"Fraunces",Georgia,serif;font-weight:400;font-style:italic;font-size:2cqw;margin-bottom:.6cqw}
+.m3 .menu3 div{display:flex;justify-content:space-between;gap:1cqw;font-size:1.25cqw;padding:.75cqw 0;border-top:1px dashed #DCC9B3}
+.m3 .menu3 div span{color:#8A6A52}
+.m3 .foot3{position:absolute;left:4cqw;right:4cqw;bottom:2.4cqw;display:flex;justify-content:space-between;font-family:var(--sans);font-size:1.15cqw;color:#8A6A52;border-top:1px solid #DCC9B3;padding-top:1.4cqw}
+
+@media (max-width: 860px){
+  .wm{height:17px;width:121px}
+  .menu-open .wm{width:121px}
+  .logo-mark{height:29px}
+  .menu{padding:96px 20px 32px;clip-path:circle(0px at calc(100% - 46px) 40px)}
+  .menu.open{clip-path:circle(150vmax at calc(100% - 46px) 40px)}
+  .menu-in{grid-template-columns:1fr}
+  .mf-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;align-content:start;gap:48px}
+  .mf-side{gap:28px 18px}
+  .mf-ic{width:64px;margin-bottom:12px}
+  .mf-card{font-size:14px}
+  .mf-card h5{font-size:18px}
+  .mf-foot{flex-wrap:wrap;gap:18px}
+  .mf-glow i{filter:blur(60px)}
+  .mf-big a{font-size:52px}
+  .closing-row{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .fi-row{grid-template-columns:1fr;gap:10px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+body.menu-open{overflow:hidden}
+
+
+.menu-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}
+.menu-prev{width:100%;max-width:460px;justify-self:center;padding-top:10px;opacity:0;transform:translateY(14px);transition:opacity .35s .25s,transform .5s .25s var(--ease)}
+.menu.open .menu-prev{opacity:1;transform:none}
+.mp-mac{position:relative;aspect-ratio:1060/690;filter:drop-shadow(0 30px 34px rgba(18,18,18,.28))}
+.mp-scr{position:absolute;left:9.717%;top:6.522%;width:80.566%;height:77.391%;overflow:hidden;background:#0B0B0B;border-radius:.6% .6% 0 0}
+.mp-scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .35s}
+.mp-scr img.on{opacity:1}
+.mp-fr{position:absolute;inset:0;width:100%;height:100%}
+.mp-tx{position:relative;margin-top:22px;min-height:8.5em}
+.md{position:absolute;left:0;top:0;max-width:36ch;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .35s var(--ease)}
+.md b{display:block;font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-.03em}
+.md p{font-size:16.5px;line-height:1.55;margin-top:8px;color:#2A2A2A}
+.md.on{opacity:1;transform:none}
+.menu-cols a[data-k].on{opacity:.55}
+@media (max-width: 1100px), (hover: none){ .menu-in{grid-template-columns:1.2fr 1fr} .menu-prev{display:none} }
+
+.fg{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px clamp(18px,2vw,32px);padding:clamp(56px,6vw,96px) 0;border-bottom:1px solid var(--line)}
+.fg-h{display:block;font-size:18px;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:16px}
+.fg ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.fg li a{font-size:15px;line-height:1.4;color:var(--muted);transition:color .2s}
+.fg li a:hover,.fg-h:hover{color:#fff}
+@media (max-width: 1200px){ .fg{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width: 860px){
+  .fg{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px}
+  .menu{clip-path:circle(0px at calc(100% - 38px) 36px)}
+  .menu.open{clip-path:circle(150vmax at calc(100% - 38px) 36px)}
+}
+
+
+.menu-btn,.menu-btn:hover,[data-tone=mid] .menu-btn,[data-tone=light] .menu-btn,.menu-open .menu-btn{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.menu-btn{transition:opacity .45s ease,transform .45s var(--ease),color .3s}
+.menu-btn .bars i{height:2px}
+body.is-scrolling:not(.menu-open) .menu-btn{opacity:.18;transform:scale(.92)}
+.menu-btn:hover,.menu-btn:focus-visible{opacity:1!important;transform:none!important}
+
+.hl-d{font-style:normal;color:#24382C}
+
+
+:root{--acc-a1:#C4D8C8;--acc-a2:#8FAE96;--acc-s:#A3C2AA;--acc-d1:#4F6B58;--acc-d2:#3B5244}
+.lm-d,[data-tone=color] .lm-d{fill:var(--acc-s);transition:fill .3s}
+[data-tone=mid] .lm-d,[data-tone=light] .lm-d,.menu-open .lm-d{fill:#1F3127}
+
+
+@media (max-width: 860px){
+  .menu{justify-content:flex-start;gap:0;padding:calc(env(safe-area-inset-top,0px) + 100px) max(24px,var(--pad)) calc(env(safe-area-inset-bottom,0px) + 28px)}
+  .menu-in{grid-template-columns:minmax(0,1fr);gap:34px}
+  .menu-big a{font-size:clamp(40px,11.5vw,60px);line-height:1.1;padding:2px 0}
+  .menu-cols{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:0;max-width:560px}
+  .menu-cols a[data-k].on{opacity:1}
+  .menu-cols > div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
+  .menu-cols h5{grid-column:1 / -1;font-size:13px;letter-spacing:.02em;text-transform:uppercase;margin-bottom:6px}
+  .menu-cols a{font-size:16px;line-height:1.3;padding:9px 0}
+  .menu-foot{margin-top:auto;padding-top:36px;flex-direction:column;gap:12px;font-size:16px}
+  .menu-foot span:first-child{font-size:18px}
+}
+@media (max-width: 860px) and (max-height: 700px){
+  .menu{padding-top:calc(env(safe-area-inset-top,0px) + 88px)}
+  .menu-in{gap:26px}
+  .menu-big a{font-size:clamp(34px,10vw,48px)}
+  .menu-cols a{padding:6px 0}
+  .menu-cols{gap:20px}
+  .menu-foot{padding-top:24px;gap:8px}
+}
+
+@media (max-width: 560px){
+  #cfGo{width:100%;justify-content:center;white-space:normal;text-align:center;padding-left:18px;padding-right:18px}
+}
+
+
+.lang{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 14px);right:calc(max(16px,calc(var(--pad) - 44px)) + 54px);height:52px;display:flex;align-items:center;gap:2px;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--text);transition:opacity .45s ease,color .3s}
+.lang a{padding:8px 6px;opacity:.42;transition:opacity .2s}
+.lang a:hover,.lang a[aria-current]{opacity:1}
+[data-tone=mid] .lang,[data-tone=light] .lang,.menu-open .lang{color:var(--ink)}
+body.is-scrolling:not(.menu-open) .lang{opacity:.18}
+.lang:hover,.lang:focus-within{opacity:1!important}
+
+</style>
+<style>
+
+
+
+.hero{min-height:min(100svh,1000px);padding-top:clamp(140px,18vh,200px);padding-bottom:clamp(56px,9vh,110px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-art{position:absolute;right:calc(var(--pad) * -1 - 9vw);top:clamp(70px,10vh,120px);height:112%;width:auto;pointer-events:none}
+.hero-art .pl{fill:#9B9B9B}.hero-art .pd{fill:#606060}
+.hero-art g{transition:transform 1.1s var(--ease)}
+.hero-art .gl{animation:inL 1.5s cubic-bezier(.16,1,.3,1) .15s both}
+.hero-art .gd{animation:inD 1.5s cubic-bezier(.16,1,.3,1) .3s both}
+.hero-art .gl > g{transform:translate(calc(var(--px,0) * 6px),calc(var(--py,0) * 5px))}
+.hero-art .gd > g{transform:translate(calc(var(--px,0) * -4px),calc(var(--py,0) * -3px))}
+@keyframes inL{from{transform:translate(60px,-80px);opacity:0}to{transform:none;opacity:1}}
+@keyframes inD{from{transform:translate(-60px,80px);opacity:0}to{transform:none;opacity:1}}
+.hero-copy{position:relative;max-width:min(58vw,980px)}
+.hero h1{font-size:clamp(48px,6.6vw,128px);line-height:.96;font-weight:700;letter-spacing:-.05em}
+.hero h1 .quiet{color:#878787}
+.hero h1 span{display:block}
+.hero-row{display:flex;align-items:center;gap:28px;margin-top:44px;flex-wrap:wrap}
+.hero-row p{font-size:17px;line-height:1.55;color:var(--muted);max-width:32ch}
+
+.statement{padding-top:clamp(110px,14vw,220px);padding-bottom:clamp(100px,12vw,180px)}
+.statement h2{font-size:clamp(32px,3.8vw,68px);line-height:1.08;font-weight:600;letter-spacing:-.04em;max-width:24ch}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,96px);margin-top:clamp(48px,6vw,96px);max-width:1300px}
+.two-col p{color:#BFBFBF;font-size:19px;line-height:1.75;max-width:50ch}
+
+.ax{position:relative;margin-top:56px;padding-bottom:8px}
+.ax-btn{position:relative;z-index:1;display:inline-flex;align-items:center;gap:14px;padding-bottom:10px;cursor:default;font-size:18px;color:var(--text);transition:color .2s}
+.ax-btn:hover{color:var(--sage-light)}
+.ax-ar{transition:transform .5s var(--ease)}
+.ax.open .ax-ar{transform:rotate(90deg)}
+.ax-svg{display:block;width:100%;height:64px;margin-top:-36px;overflow:visible;pointer-events:none}
+.ax-svg path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ax-base{stroke:var(--text);stroke-width:1.5;transition:stroke .3s}
+.ax-loop{stroke:var(--sage-light);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s var(--ease)}
+.ax-dot{fill:var(--sage);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(0);transition:opacity .2s,transform .3s var(--ease)}
+.ax.open .ax-base{stroke:var(--sage-light)}
+.ax.open .ax-loop{stroke-dashoffset:0;transition:stroke-dashoffset 1.3s cubic-bezier(.6,.05,.2,1)}
+.ax.open .ax-dot{opacity:1;transform:scale(1);transition-delay:1.15s}
+.ax-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease) .1s}
+.ax.open .ax-panel{grid-template-rows:1fr;transition-delay:.55s}
+.ax-in{overflow:hidden;min-height:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:start}
+.ax-in > *{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .6s var(--ease)}
+.ax.open .ax-in > *{opacity:1;transform:none}
+.ax.open .ax-in > :nth-child(1){transition-delay:.85s}
+.ax.open .ax-in > :nth-child(2){transition-delay:.95s}
+.ax.open .ax-in > :nth-child(3){transition-delay:1.05s}
+.ax.open .ax-in > :nth-child(4){transition-delay:1.15s}
+.ax-co{display:flex;align-items:center;gap:16px;padding-top:20px}
+.ax-co svg{width:44px;height:auto;flex:none}
+.ax-co b{display:block;font-size:22px;font-weight:700;letter-spacing:-.03em}
+.ax-co span{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.ax-desc{padding-top:20px;color:#CDCDCD;font-size:18px;line-height:1.7;max-width:46ch}
+.ax-facts{padding-top:24px}
+.ax-facts div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.ax-facts div:first-child{padding-top:0}
+.ax-facts dt{color:var(--muted)}
+.ax-facts dd{color:var(--text)}
+.ax-link{grid-column:1/-1;justify-self:start;display:inline-flex;align-items:center;gap:12px;font-size:16px;color:var(--sage-light);padding-bottom:6px;border-bottom:1px solid var(--sage-deep);margin-bottom:6px}
+.ax-link:hover{color:var(--text)}
+@media (max-width: 860px){
+  .ax-in{grid-template-columns:minmax(0,1fr);gap:0}
+  .ax-desc,.ax-facts{padding-top:24px}
+  .ax-link{margin-top:28px}
+}
+@media (prefers-reduced-motion: reduce){
+  .ax-loop,.ax-panel,.ax-in > *,.ax-dot{transition:none!important}
+}
+
+.teaser{padding-top:clamp(100px,12vw,180px);padding-bottom:clamp(80px,10vw,140px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,6vw,120px);align-items:start}
+.teaser .h-sec{max-width:14ch}
+.teaser p{color:#BFBFBF;font-size:19px;line-height:1.7;max-width:44ch}
+.teaser .ex{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);font-size:17px;color:var(--muted)}
+.teaser .ex b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
+.teaser .btn{margin-top:32px}
+
+.faq{padding-top:clamp(80px,10vw,140px);padding-bottom:clamp(100px,12vw,180px);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,120px);align-items:start}
+.faq-intro{position:sticky;top:110px}
+.faq-intro p{color:var(--muted);margin-top:22px;font-size:17px;max-width:36ch}
+
+@media (max-width: 860px){
+  .hero{min-height:0;padding-top:300px}
+  .hero-art{height:250px;top:72px;right:-70px}
+  .hero-copy{max-width:none}
+  .hero h1 span{display:inline}
+  .two-col,.faq,.teaser{grid-template-columns:1fr}
+  .faq-intro{position:static}
+  .build{height:400vh}
+  .build-stage{left:16px;right:16px;width:auto;top:96px;transform:none}
+  .build-copy{left:20px;right:20px;width:auto;top:auto;bottom:36px;transform:none}
+  .steps{min-height:210px}
+  .step h2{font-size:28px}
+  .step p{font-size:15.5px;margin-top:12px}
+  .bnotif{right:8px;top:auto;bottom:-40px;width:78%}
+}
+@media (prefers-reduced-motion: reduce){
+  .build{height:auto}
+  .build-sticky{position:relative;height:auto;min-height:100vh}
+  #bcv{display:none}
+  #bsite{opacity:1;clip-path:none}
+  .bnotif{opacity:1;transform:none}
+}
+
+
+
+.hv{position:relative;min-height:max(100svh,640px);justify-content:center;background:#151515;isolation:isolate}
+.hv-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 50%;z-index:-2}
+.hv h1{font-size:clamp(44px,5.4vw,104px)}
+.hv-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#151515 0%,rgba(21,21,21,.92) 26%,rgba(21,21,21,.35) 52%,rgba(21,21,21,0) 70%),linear-gradient(0deg,#151515 0%,rgba(21,21,21,0) 22%)}
+.hv .hero-copy{max-width:min(54vw,920px)}
+.vid-btn{position:absolute;right:var(--pad);bottom:clamp(24px,4vh,48px);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:rgba(21,21,21,.5);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:.6;transition:opacity .2s}
+.vid-btn:hover{opacity:1}
+.vid-btn svg{width:18px;height:18px}
+.vid-btn .i-play,.paused .vid-btn .i-pause{display:none}
+.paused .vid-btn .i-play{display:block}
+
+
+.svt{padding-top:clamp(100px,12vw,180px);padding-bottom:clamp(100px,12vw,180px)}
+.svt-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.svt-head h2{font-size:clamp(40px,4.6vw,80px);line-height:1;font-weight:700;letter-spacing:-.05em}
+.wm-all{display:inline-flex;align-items:center;gap:12px;font-size:17px;padding-bottom:6px;border-bottom:1px solid var(--text)}
+.svt-grid{list-style:none;margin:clamp(40px,5vw,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3vw,48px) clamp(16px,2vw,28px)}
+.st{position:relative;display:block}
+.st-img{display:block;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#222}
+.st-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.75) brightness(.92);transform:scale(1.001);transition:transform .8s var(--ease),filter .5s}
+.st:hover .st-img img{transform:scale(1.05);filter:none}
+.st-tx{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:baseline;padding:18px 40px 0 0}
+.st .n{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.st-t{font-size:clamp(22px,1.9vw,30px);line-height:1.1;font-weight:700;letter-spacing:-.04em}
+.st-d{grid-column:2;font-size:15.5px;line-height:1.5;color:var(--muted);margin-top:6px}
+.st-ar{position:absolute;right:0;top:calc(100% - 52px);color:var(--muted);transition:transform .35s var(--ease),color .2s}
+.st:hover .st-ar{transform:translateX(4px);color:var(--text)}
+@media (max-width: 1000px){ .svt-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width: 860px){
+  .hv{justify-content:flex-end;padding-top:56vh;padding-bottom:48px}
+  .hv-vid{object-position:50% 30%;height:72%}
+  .hv-shade{background:linear-gradient(0deg,#151515 30%,rgba(21,21,21,.6) 45%,rgba(21,21,21,0) 62%)}
+  .hv .hero-copy{max-width:none}
+  .vid-btn{top:calc(env(safe-area-inset-top,0px) + 84px);bottom:auto;right:16px;width:38px;height:38px}
+  .svt-grid{grid-template-columns:1fr}
+}
+.build{height:440vh}
+.build-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+#bcv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.build-copy{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);width:min(27vw,410px);z-index:3}
+.steps{position:relative;min-height:300px}
+.step{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .6s var(--ease);pointer-events:none}
+.step.on{opacity:1;transform:none}
+.step h2{font-size:clamp(30px,2.8vw,50px);line-height:1.04;font-weight:700;letter-spacing:-.045em}
+.step p{color:var(--muted);font-size:17px;line-height:1.6;margin-top:20px;max-width:36ch}
+.bp{display:flex;gap:8px;margin-top:8px}
+.bp i{width:44px;height:2px;background:#333333;border-radius:2px;overflow:hidden}
+.bp b{display:block;height:100%;width:0;background:var(--sage-light)}
+.build-stage{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);width:min(52vw,calc((100vh - 180px) * 1.58))}
+#bsite{opacity:0}
+.bnotif{position:absolute;right:-24px;top:34%;width:min(330px,60%);z-index:4;background:rgba(37,37,37,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--text);border:1px solid #3C3C3C;border-radius:18px;padding:14px 16px;box-shadow:0 24px 60px rgba(0,0,0,.45);opacity:0;transform:translateY(-14px) scale(.96)}
+.bn-top{display:flex;align-items:center;gap:8px;font-size:12px;color:#B0B0B0;margin-bottom:4px}
+.bn-logo{width:18px;height:auto;flex:none}
+.bn-top span{margin-left:auto}
+.bnotif strong{display:block;font-size:15px;font-weight:600}
+.bnotif p{font-size:14px;line-height:1.4;color:#CECECE}
+
+
+
+
+@media (max-width: 860px){
+  .hero{min-height:0;padding-top:300px}
+  .hero-copy{max-width:none}
+  .hero h1 span{display:inline}
+  .two-col{grid-template-columns:1fr}
+  .build{height:400vh}
+  .build-stage{left:16px;right:16px;width:auto;top:96px;transform:none}
+  .build-copy{left:20px;right:20px;width:auto;top:auto;bottom:36px;transform:none}
+  .steps{min-height:210px}
+  .step h2{font-size:28px}
+  .step p{font-size:15.5px;margin-top:12px}
+  .bnotif{right:8px;top:auto;bottom:-40px;width:78%}
+}
+@media (prefers-reduced-motion: reduce){
+  .build{height:auto}
+  .build-sticky{position:relative;height:auto;min-height:100vh}
+  #bcv{display:none}
+  #bsite{opacity:1}
+  .bnotif{opacity:1;transform:none}
+}
+
+.sv-all{display:inline-flex;align-items:center;gap:12px;font-size:17px;padding-bottom:6px;border-bottom:1px solid var(--text);transition:gap .3s var(--ease)}
+.sv-all:hover{gap:18px}
+
+
+.pr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(40px,7vw,140px);padding-top:clamp(90px,10vw,160px);padding-bottom:clamp(90px,10vw,160px)}
+.pr-left p{font-size:clamp(17px,1.35vw,20px);line-height:1.6;color:#BDBDBD;max-width:34ch;margin:24px 0 32px}
+.pr-list{margin:0;border-top:1px solid var(--line)}
+.pr-list > div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:clamp(22px,2.4vw,34px) 0;border-bottom:1px solid var(--line)}
+.pr-list dt{font-size:clamp(19px,1.5vw,23px);font-weight:600;letter-spacing:-.02em}
+.pr-list dt small{display:block;font-size:15px;font-weight:400;letter-spacing:0;color:var(--muted);margin-top:6px}
+.pr-list dd{margin:0;white-space:nowrap;font-size:clamp(32px,3.2vw,54px);font-weight:700;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.pr-list dd small{font-size:14px;font-weight:500;letter-spacing:0;color:var(--muted);margin:0 8px}
+.pr-list dd small:last-child{margin-right:0}
+
+
+.build .frame-b{background:#1A1A1A;border-color:#2A2A2A;box-shadow:none}
+.build .m1{background:#1B1B1B;color:#D6D6D6}
+.build .m1 .k-top,.build .m1 .k-strip{border-color:#2A2A2A}
+.build .m1 .k-logo,.build .m1 .k-tel,.build .m1 .k-more{color:#E4E4E4;border-color:#5A5A5A}
+.build .m1 .k-logo svg path{fill:#9A9A9A}
+.build .m1 .k-links,.build .m1 .k-kick,.build .m1 .k-p,.build .m1 .k-strip span{color:#8E8E8E}
+.build .m1 h4,.build .m1 .k-strip b{color:#EDEDED}
+.build .m1 .k-btn{background:#E4E4E4;color:#151515}
+.build .m1 .k-cap{background:#1B1B1B;color:#8E8E8E}
+.build .m1 .k-strip span{border-color:#2A2A2A}
+.build .m1 .k-strip .k-sos{background:#242424;color:#8E8E8E}
+.build .m1 .k-sos b{color:#EDEDED}
+
+@media (max-width: 1000px){ .sws-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width: 860px){ .pr{grid-template-columns:1fr} .pr-list dd{font-size:30px} }
+@media (max-width: 560px){ .sws-grid{grid-template-columns:1fr} }
+
+
+:root{--hl:linear-gradient(100deg,var(--acc-a1),var(--acc-a2))}
+.hl{font-style:normal;color:var(--acc-s)}
+.hl-s{font-style:normal;color:var(--acc-s)}
+.hero h1 .quiet .hl{color:var(--acc-s)}
+.statement h2{max-width:22ch}
+.lx-list a:hover .lx-t{color:var(--acc-s)}
+.lx-list a:hover .lx-a{color:var(--acc-s)}
+.pr-list dd{transition:color .3s}
+.pr-list > div:hover dd{color:var(--acc-s)}
+.btn-sage{background:var(--acc-s);color:#0C201A}
+.btn-sage:hover{background:var(--acc-a1);color:#0C201A}
+.lx-list .lx-a{color:var(--acc-d1)}
+.sv-all{border-bottom:0;padding-bottom:0}
+.sv-all svg{color:var(--acc-s)}
+.pr-list dd small{color:var(--acc-s)}
+.build .bp b{background:var(--acc-s)}
+.build .bn-logo path:last-child{fill:var(--acc-s)}
+.vid-btn{border-color:rgba(163,194,170,.35)}
+
+.mv{padding-top:clamp(90px,10vw,160px);padding-bottom:clamp(90px,10vw,160px)}
+.mv-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:clamp(32px,5vw,90px);align-items:center}
+.mv-list{list-style:none;margin:0;padding:0}
+.mv-i button{width:100%;display:flex;align-items:baseline;gap:16px;padding:18px 0;text-align:left;color:var(--text);cursor:pointer}
+.mv-n{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;width:22px;flex:none;transition:color .3s}
+.mv-t{font-size:clamp(22px,1.9vw,30px);font-weight:700;letter-spacing:-.035em;color:#6C6C6C;transition:color .3s}
+.mv-i button:hover .mv-t{color:#BDBDBD}
+.mv-i.on .mv-t{color:var(--text)}
+.mv-i.on .mv-n{color:var(--acc-s)}
+.mv-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.mv-bi{min-height:0;overflow:hidden}
+.mv-i.on .mv-b{grid-template-rows:1fr}
+.mv-b{overflow:hidden}
+.mv-b p{font-size:16px;line-height:1.6;color:#BDBDBD;padding-left:38px;max-width:44ch}
+.mv-b ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px 16px;margin:12px 0 0;padding:0 0 0 38px;font-size:14px;color:var(--muted)}
+.mv-b li::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--acc-s);margin-right:8px;vertical-align:middle}
+.mv-b a{display:inline-flex;align-items:center;gap:10px;margin:16px 0 22px 38px;font-size:15px}
+.mv-b a svg{width:16px;height:11px;color:var(--acc-s)}
+.mv-mac{position:relative;width:100%;aspect-ratio:1060/690}
+.mv-screen{position:absolute;left:9.717%;top:6.522%;width:80.566%;height:77.391%;overflow:hidden;background:#0B0B0B;border-radius:.6% .6% 0 0}
+.mv-s{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .6s ease}
+.mv-s.on{opacity:1}
+.mv-glare{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.08),rgba(255,255,255,.02) 30%,rgba(255,255,255,0) 44%);pointer-events:none}
+.mv-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media (max-width: 860px){
+  .mv-grid{grid-template-columns:1fr;gap:28px}
+  .mv-dev{order:-1;position:sticky;top:64px;z-index:2;background:var(--bg);padding:8px 0}
+  .mv-t{font-size:22px}
+}
+
+.pr-list,.pr-list > div{border:0!important}
+.pr-list{display:grid;gap:clamp(26px,3vw,44px)}
+.pr-list > div{padding:0!important}
+.pr-list dd{font-size:clamp(48px,5vw,92px)!important}
+
+.wks{padding-top:clamp(90px,10vw,160px);padding-bottom:clamp(60px,7vw,110px)}
+.wk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(40px,7vw,140px);align-items:center;padding:clamp(40px,5vw,72px) 0}
+.wk-n{font-size:14px;color:var(--acc-s);font-variant-numeric:tabular-nums}
+.wk h3{font-size:clamp(26px,2.4vw,40px);line-height:1.08;font-weight:700;letter-spacing:-.04em;margin-top:14px}
+.wk-p{display:block;font-size:15px;color:var(--muted);margin-top:8px}
+.wk p{font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#C4C4C4;margin-top:22px;max-width:42ch}
+.wk ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;font-size:14.5px;color:var(--muted)}
+.wk li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--acc-s);margin-right:8px;vertical-align:middle}
+.wk-l{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:16.5px;transition:gap .3s var(--ease)}
+.wk-l:hover{gap:14px}
+.wk-l svg{color:var(--acc-s)}
+.wk-v{display:block;margin:-3% -4% -4% -2%}
+.wk-v img{display:block;width:100%;height:auto;transition:transform .8s var(--ease)}
+.wk-v:hover img{transform:translateY(-6px) scale(1.01)}
+.wk-d{display:block;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #2C2C2C;box-shadow:0 40px 80px -40px rgba(0,0,0,.7);transition:transform .7s var(--ease)}
+.wk-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#242424;border-bottom:1px solid #2C2C2C}
+.wk-bar i{width:9px;height:9px;border-radius:50%;background:#444}
+.wk-bar em{font-style:normal;font-size:12px;color:#9A9A9A;margin:0 auto;transform:translateX(-20px)}
+.wk-d img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.wk-m{position:absolute;right:0;bottom:0;width:clamp(110px,22%,170px);border-radius:22px;overflow:hidden;border:5px solid #0E0E0E;background:#0E0E0E;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);transition:transform .7s var(--ease)}
+.wk-m img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover;object-position:top}
+.wk-v:hover .wk-d{transform:translateY(-6px)}
+.wk-v:hover .wk-m{transform:translateY(-12px)}
+.wk.flip{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.wk.flip .wk-tx{order:2}
+@media (max-width: 860px){
+  .wk,.wk.flip{grid-template-columns:1fr;gap:32px}
+  .wk.flip .wk-tx{order:0}
+  .wk-v{order:-1}
+  .wk-bar em{transform:none}
+}
+
+.pr h2{font-size:clamp(40px,4.6vw,80px);line-height:1;font-weight:700;letter-spacing:-.05em}
+
+.lx{padding-top:clamp(90px,10vw,160px);padding-bottom:clamp(90px,10vw,160px);border-top:1px solid var(--line)}
+.lx-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(40px,7vw,140px);align-items:end;margin-bottom:clamp(48px,6vw,90px)}
+.lx-head h2{font-size:clamp(40px,4.6vw,80px);line-height:1;font-weight:700;letter-spacing:-.05em}
+.lx-head p{font-size:clamp(17px,1.35vw,20px);line-height:1.6;color:#BDBDBD;max-width:40ch}
+.lx-list{list-style:none;margin:0 0 clamp(40px,5vw,64px);padding:0;border-top:1px solid var(--line)}
+.lx-list li{border-bottom:1px solid var(--line)}
+.lx-list a{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);column-gap:clamp(40px,7vw,140px);align-items:center;padding:clamp(24px,2.6vw,38px) 0;position:relative}
+.lx-n{display:none}
+.lx-t{font-size:clamp(28px,3vw,50px);line-height:1.05;font-weight:700;letter-spacing:-.045em;transition:color .3s,transform .45s var(--ease)}
+.lx-d{font-size:clamp(16px,1.2vw,18px);line-height:1.55;color:var(--muted);padding-right:56px;max-width:52ch;transition:color .3s}
+.lx-a{position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--muted);transition:transform .35s var(--ease),color .3s}
+.lx-list:hover .lx-t{color:#5E5E5E}
+.lx-list a:hover .lx-t{color:var(--text);transform:translateX(10px)}
+.lx-list a:hover .lx-d{color:#D0D0D0}
+.lx-list a:hover .lx-a{color:var(--text);transform:translate(4px,-50%)}
+@media (max-width: 860px){
+  .lx-head,.lx-list a{grid-template-columns:1fr}
+  .lx-head{gap:18px}
+  .lx-d{margin-top:8px;padding-right:40px}
+  .lx-list:hover .lx-t{color:var(--text)}
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0"/></filter></svg>
+<a class="logo" href="/de" aria-label="websiten.ch Startseite">
+  <svg class="logo-mark" viewBox="12 10 174 188" aria-hidden="true"><path class="lm-l" d="M68.12 66.06Q63.08 63.65 68.12 61.24L169.15 13.09Q175.64 10.00 175.64 17.18L175.64 125.99Q175.64 133.18 169.21 136.39L143.74 149.12Q137.32 152.34 137.32 145.15L137.32 107.95Q137.32 99.17 129.40 95.38Z"/><path class="lm-d" d="M22.36 73.39Q22.36 64.60 30.35 68.26L114.17 106.69Q122.15 110.35 122.15 119.13L122.15 189.22Q122.15 198.00 114.38 193.91L30.14 149.64Q22.36 145.55 22.36 136.77Z"/></svg>
+  <svg class="wm" viewBox="205 50 840 118" aria-hidden="true"><path d="M 326.09 87.27 L 305.95 161.68 L 280.75 161.68 L 269.01 113.41 L 256.88 161.68 L 231.81 161.68 L 211.54 87.27 L 234.34 87.27 L 244.87 140.48 L 257.41 87.27 L 281.55 87.27 L 294.22 140.21 L 304.62 87.27 Z M 404.51 129.94 L 352.9 129.94 C 353.26 134.57 354.74 138.1 357.37 140.54 C 359.99 142.99 363.21 144.21 367.04 144.21 C 372.72 144.21 376.68 141.81 378.9 137.01 L 403.18 137.01 C 401.93 141.9 399.68 146.3 396.44 150.21 C 393.2 154.12 389.13 157.19 384.24 159.42 C 379.34 161.64 373.88 162.75 367.83 162.75 C 360.54 162.75 354.05 161.2 348.37 158.08 C 342.68 154.97 338.23 150.53 335.03 144.75 C 331.83 138.97 330.23 132.21 330.23 124.48 C 330.23 116.74 331.81 109.98 334.96 104.2 C 338.12 98.43 342.54 93.98 348.23 90.87 C 353.93 87.76 360.45 86.2 367.83 86.2 C 375.04 86.2 381.44 87.71 387.04 90.73 C 392.64 93.76 397.02 98.07 400.17 103.67 C 403.33 109.27 404.91 115.81 404.91 123.28 C 404.91 125.41 404.77 127.63 404.51 129.94 Z M 381.57 117.27 C 381.57 113.36 380.23 110.25 377.57 107.93 C 374.91 105.63 371.57 104.47 367.57 104.47 C 363.75 104.47 360.52 105.59 357.9 107.81 C 355.28 110.03 353.66 113.18 353.03 117.27 Z M 462.66 86.2 C 468.79 86.2 474.35 87.76 479.32 90.87 C 484.3 93.98 488.24 98.43 491.13 104.2 C 494.01 109.98 495.46 116.7 495.46 124.34 C 495.46 131.99 494.01 138.72 491.13 144.55 C 488.24 150.37 484.3 154.86 479.32 158.02 C 474.35 161.18 468.79 162.75 462.66 162.75 C 457.41 162.75 452.82 161.71 448.91 159.62 C 445 157.52 441.94 154.75 439.71 151.28 L 439.71 161.68 L 416.91 161.68 L 416.91 63 L 439.71 63 L 439.71 97.8 C 441.85 94.34 444.91 91.54 448.91 89.4 C 452.92 87.27 457.5 86.2 462.66 86.2 Z M 455.85 106.07 C 451.32 106.07 447.47 107.71 444.31 111.01 C 441.16 114.3 439.59 118.79 439.59 124.48 C 439.59 130.17 441.16 134.66 444.31 137.95 C 447.47 141.23 451.32 142.88 455.85 142.88 C 460.38 142.88 464.25 141.21 467.45 137.88 C 470.65 134.55 472.25 130.03 472.25 124.34 C 472.25 118.65 470.68 114.18 467.52 110.94 C 464.36 107.69 460.47 106.07 455.85 106.07 Z M 503.46 137.28 L 526 137.28 C 526.26 139.86 527.46 141.95 529.6 143.54 C 531.73 145.14 534.36 145.95 537.46 145.95 C 540.32 145.95 542.51 145.39 544.07 144.28 C 545.62 143.17 546.4 141.72 546.4 139.95 C 546.4 137.81 545.29 136.23 543.07 135.21 C 540.85 134.19 537.25 133.06 532.26 131.81 C 526.93 130.56 522.49 129.25 518.93 127.88 C 515.37 126.5 512.31 124.32 509.73 121.34 C 507.15 118.36 505.86 114.34 505.86 109.27 C 505.86 105 507.04 101.11 509.4 97.6 C 511.75 94.09 515.22 91.31 519.8 89.27 C 524.38 87.22 529.82 86.2 536.13 86.2 C 545.47 86.2 552.82 88.51 558.21 93.13 C 563.58 97.76 566.68 103.89 567.48 111.54 L 546.4 111.54 C 546.05 108.96 544.91 106.91 543 105.4 C 541.09 103.89 538.58 103.14 535.46 103.14 C 532.8 103.14 530.76 103.65 529.34 104.67 C 527.91 105.7 527.2 107.09 527.2 108.87 C 527.2 111.01 528.33 112.61 530.6 113.68 C 532.87 114.74 536.4 115.81 541.2 116.88 C 546.71 118.29 551.21 119.7 554.67 121.07 C 558.14 122.45 561.19 124.68 563.81 127.75 C 566.43 130.81 567.78 134.92 567.87 140.08 C 567.87 144.44 566.65 148.33 564.21 151.75 C 561.77 155.17 558.25 157.86 553.67 159.82 C 549.09 161.77 543.78 162.75 537.73 162.75 C 531.24 162.75 525.46 161.64 520.4 159.42 C 515.33 157.19 511.33 154.15 508.39 150.28 C 505.46 146.41 503.82 142.08 503.46 137.28 Z M 579.74 67.26 C 579.74 63.71 581.01 60.75 583.54 58.39 C 586.07 56.04 589.34 54.86 593.34 54.86 C 597.26 54.86 600.48 56.04 603.01 58.39 C 605.55 60.75 606.82 63.71 606.82 67.26 C 606.82 70.73 605.55 73.64 603.01 76 C 600.48 78.36 597.26 79.53 593.34 79.53 C 589.34 79.53 586.07 78.36 583.54 76 C 581.01 73.64 579.74 70.73 579.74 67.26 Z M 604.68 87.27 L 604.68 161.68 L 581.88 161.68 L 581.88 87.27 Z M 662.69 142.34 L 662.69 161.68 L 651.09 161.68 C 642.82 161.68 636.38 159.66 631.75 155.62 C 627.13 151.57 624.82 144.96 624.82 135.81 L 624.82 106.21 L 615.75 106.21 L 615.75 87.27 L 624.82 87.27 L 624.82 69.13 L 647.62 69.13 L 647.62 87.27 L 662.56 87.27 L 662.56 106.21 L 647.62 106.21 L 647.62 136.08 C 647.62 138.3 648.16 139.9 649.23 140.88 C 650.29 141.86 652.07 142.34 654.55 142.34 Z M 745.11 129.94 L 693.5 129.94 C 693.85 134.57 695.34 138.1 697.96 140.54 C 700.59 142.99 703.81 144.21 707.63 144.21 C 713.32 144.21 717.28 141.81 719.5 137.01 L 743.77 137.01 C 742.53 141.9 740.28 146.3 737.04 150.21 C 733.79 154.12 729.73 157.19 724.84 159.42 C 719.95 161.64 714.48 162.75 708.43 162.75 C 701.14 162.75 694.65 161.2 688.96 158.08 C 683.27 154.97 678.83 150.53 675.63 144.75 C 672.43 138.97 670.82 132.21 670.82 124.48 C 670.82 116.74 672.41 109.98 675.56 104.2 C 678.71 98.43 683.14 93.98 688.83 90.87 C 694.52 87.76 701.05 86.2 708.43 86.2 C 715.63 86.2 722.04 87.71 727.64 90.73 C 733.24 93.76 737.62 98.07 740.77 103.67 C 743.93 109.27 745.51 115.81 745.51 123.28 C 745.51 125.41 745.38 127.63 745.11 129.94 Z M 722.17 117.27 C 722.17 113.36 720.84 110.25 718.17 107.93 C 715.5 105.63 712.16 104.47 708.16 104.47 C 704.34 104.47 701.12 105.59 698.5 107.81 C 695.87 110.03 694.25 113.18 693.63 117.27 Z M 831.53 118.21 L 831.53 161.68 L 808.86 161.68 L 808.86 121.28 C 808.86 116.3 807.57 112.43 804.99 109.68 C 802.41 106.91 798.95 105.54 794.58 105.54 C 790.23 105.54 786.76 106.91 784.18 109.68 C 781.61 112.43 780.32 116.3 780.32 121.28 L 780.32 161.68 L 757.51 161.68 L 757.51 87.27 L 780.32 87.27 L 780.32 97.14 C 782.63 93.85 785.74 91.25 789.64 89.34 C 793.56 87.43 797.96 86.47 802.85 86.47 C 811.56 86.47 818.52 89.3 823.72 94.94 C 828.93 100.58 831.53 108.34 831.53 118.21 Z M 844.46 150.48 C 844.46 146.93 845.73 143.95 848.26 141.54 C 850.79 139.14 854.07 137.95 858.07 137.95 C 861.98 137.95 865.2 139.14 867.73 141.54 C 870.27 143.95 871.53 146.93 871.53 150.48 C 871.53 153.95 870.27 156.86 867.73 159.21 C 865.2 161.57 861.98 162.75 858.07 162.75 C 854.07 162.75 850.79 161.57 848.26 159.21 C 845.73 156.86 844.46 153.95 844.46 150.48 Z M 917.8 86.2 C 927.14 86.2 934.95 88.65 941.21 93.54 C 947.48 98.43 951.59 105.32 953.55 114.21 L 929.28 114.21 C 927.23 108.52 923.27 105.67 917.41 105.67 C 913.23 105.67 909.89 107.29 907.4 110.54 C 904.91 113.79 903.67 118.43 903.67 124.48 C 903.67 130.52 904.91 135.16 907.4 138.41 C 909.89 141.66 913.23 143.28 917.41 143.28 C 923.27 143.28 927.23 140.43 929.28 134.74 L 953.55 134.74 C 951.59 143.46 947.46 150.3 941.14 155.28 C 934.83 160.26 927.05 162.75 917.8 162.75 C 910.52 162.75 904.05 161.2 898.4 158.08 C 892.76 154.97 888.36 150.53 885.2 144.75 C 882.05 138.97 880.47 132.21 880.47 124.48 C 880.47 116.74 882.05 109.98 885.2 104.2 C 888.36 98.43 892.76 93.98 898.4 90.87 C 904.05 87.76 910.52 86.2 917.8 86.2 Z M 1039.7 118.21 L 1039.7 161.68 L 1017.03 161.68 L 1017.03 121.28 C 1017.03 116.3 1015.74 112.43 1013.16 109.68 C 1010.58 106.91 1007.11 105.54 1002.76 105.54 C 998.4 105.54 994.93 106.91 992.36 109.68 C 989.78 112.43 988.49 116.3 988.49 121.28 L 988.49 161.68 L 965.68 161.68 L 965.68 63 L 988.49 63 L 988.49 97.27 C 990.8 93.98 993.96 91.36 997.96 89.4 C 1001.96 87.45 1006.45 86.47 1011.43 86.47 C 1019.96 86.47 1026.81 89.3 1031.96 94.94 C 1037.12 100.58 1039.7 108.34 1039.7 118.21 Z M 1039.7 118.21 "/></svg>
+</a>
+<nav class="lang" aria-label="Sprache"><a href="/" hreflang="en" lang="en">EN</a><a href="/de" hreflang="de" lang="de" aria-current="true">DE</a></nav>
+<button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+<nav class="menu" id="menu" aria-label="Hauptmenü">
+  <svg class="grain" aria-hidden="true"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+  <div class="menu-in">
+    <div class="menu-left">
+      <ul class="menu-big">
+      <li><a href="/de/leistungen">Leistungen</a></li>
+      <li><a href="/de/preise">Preise</a></li>
+      <li><a href="/de/ueber-uns">Über uns</a></li>
+      <li><a href="/de/kontakt">Kontakt</a></li>
+    </ul>
+    </div>
+    <div class="menu-prev" aria-hidden="true"><div class="mp-mac"><div class="mp-scr"><img decoding="async" class="on" data-k="websites" data-src="/assets/img/x/17571a3aed87.webp" alt=""><img decoding="async" data-k="shops" data-src="/assets/img/x/b70771ce9bd8.webp" alt=""><img decoding="async" data-k="seo" data-src="/assets/img/x/e0a8d73a73d8.webp" alt=""><img decoding="async" data-k="hosting" data-src="/assets/img/x/3d90f7215ca9.webp" alt=""><img decoding="async" data-k="m365" data-src="/assets/img/x/9a9b3d204219.webp" alt=""><img decoding="async" data-k="ki" data-src="/assets/img/x/e7f1cf1bd0cb.webp" alt=""></div><img decoding="async" class="mp-fr" data-src="/assets/img/mac-frame.webp" alt=""></div><div class="mp-tx"><div class="md on" data-k="websites"><b>Websites</b><p>Gestaltet für Ihren Betrieb und gebaut fürs Handy. Mit Texten, die Ihre Kunden verstehen, und einem Formular, das Anfragen bringt.</p></div><div class="md" data-k="shops"><b>Online-Shops</b><p>Wir richten Ihren Shopify-Account auf professionellem Niveau ein. Mit TWINT, Karte, Rechnung und Versand in der Schweiz.</p></div><div class="md" data-k="seo"><b>Google und SEO</b><p>Damit man Sie findet, wenn jemand in Ihrer Region sucht. Mit Unternehmensprofil, sauberer Technik und Google Ads mit festem Budget.</p></div><div class="md" data-k="hosting"><b>Domains und Hosting</b><p>Domain, Website und E-Mail bei Infomaniak in Genf. Updates, Backups und Sicherheit übernehmen wir.</p></div><div class="md" data-k="m365"><b>Microsoft 365</b><p>E-Mail, Teams und Dateien für Ihr Team, sauber eingerichtet und betreut. Neue Leute haben ihr Konto am ersten Tag.</p></div><div class="md" data-k="ki"><b>KI-Chatbots</b><p>Beantwortet häufige Fragen direkt auf Ihrer Website, mit Ihren Informationen. Was er nicht weiss, gibt er an Sie weiter.</p></div></div></div>
+    <div class="menu-cols">
+      <div><h5>Leistungen</h5><a href="/de/websites" data-k="websites">Websites</a><a href="/de/online-shops" data-k="shops">Online-Shops</a><a href="/de/google-seo" data-k="seo">Google und SEO</a><a href="/de/hosting" data-k="hosting">Domains und Hosting</a><a href="/de/microsoft-365" data-k="m365">Microsoft 365</a><a href="/de/ki-chatbots" data-k="ki">KI-Chatbots</a></div>
+      <div><h5>Mehr</h5><a href="/de">Startseite</a><a href="/de/preise">Preisrechner</a><a href="/de/fragen">Häufige Fragen</a><a href="/de/impressum">Impressum</a><a href="/de/datenschutz">Datenschutz</a></div>
+    </div>
+  </div>
+  <div class="menu-foot"><span>hallo@websiten.ch</span><a href="/de/kontakt">Termin wählen</a><a href="#">Kundenlogin</a></div>
+</nav>
+<main id="top">
+
+  <section class="hero hv pad" id="hero" aria-label="Einstieg">
+    <video class="hv-vid" id="heroVid" muted playsinline autoplay loop preload="auto" poster="/assets/img/x/e2a21825caa3.webp" aria-hidden="true"><source media="(max-width: 860px)" src="/assets/websiten-hero-m.mp4" type="video/mp4"><source src="/assets/websiten-hero.mp4" type="video/mp4"></video>
+    <div class="hv-shade" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <h1><span>Websites für </span><span>Schweizer KMU. </span><span class="quiet">Gebaut, damit Ihr </span><span class="quiet"><em class="hl">Telefon klingelt.</em></span></h1>
+      <div class="hero-row">
+        <a class="btn btn-sage" href="/de/kontakt">Termin wählen <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <p>Design, Technik und Betreuung aus einer Hand. Domains und Hosting in der Schweiz.</p>
+      </div>
+    </div>
+    <button class="vid-btn" id="heroBtn" type="button" aria-label="Hintergrundfilm anhalten"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></button>
+  </section>
+
+  <section class="statement pad">
+    <h2>Wir bauen Ihre Website. Und wir sind auch danach <em class="hl">für Sie da.</em></h2>
+    <div class="two-col">
+      <p>Sie haben eine feste Ansprechperson, die Ihren Betrieb kennt. Den Preis und den Termin wissen Sie, bevor wir anfangen. Updates, Backups und kleine Änderungen erledigen wir für Sie, auch Jahre nach dem Start.</p>
+      <p>Ihre Daten liegen bei Infomaniak in Genf und bleiben in der Schweiz. Wenn einmal etwas klemmt, schreiben Sie uns kurz. Wir melden uns rasch und <em class="hl-s">kümmern uns darum.</em></p>
+    </div>
+  </section>
+
+  <section class="build" id="build" aria-label="So entsteht Ihre Website">
+    <div class="build-sticky">
+      <canvas id="bcv" aria-hidden="true"></canvas>
+      <div class="build-copy">
+        <div class="steps">
+          <div class="step on"><h2>Zuerst reden wir.</h2><p>Über Ihren Betrieb, Ihre Kunden und darüber, woher heute Ihre Anfragen kommen. Am Telefon oder bei Ihnen vor Ort.</p></div>
+          <div class="step"><h2>Dann planen wir die Seiten.</h2><p>Welche Seiten es braucht, was draufsteht und wie ein Besucher zur Anfrage kommt. Das sehen Sie als einfaches Gerüst, bevor gestaltet wird.</p></div>
+          <div class="step"><h2>Dann wird gestaltet.</h2><p>Farben, Schrift und Bilder passend zu Ihrem Betrieb. Sie sehen jeden Zwischenstand und sagen uns, was passt und was nicht.</p></div>
+          <div class="step"><h2>Dann geht sie online.</h2><p>Und die ersten Anfragen kommen über das Formular. In den Wochen danach schauen wir, was gut läuft, und bessern nach.</p></div>
+        </div>
+        <div class="bp" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+      </div>
+      <div class="build-stage">
+        <div class="frame-b" id="bsite">
+          <div class="bar" data-t><i></i><i></i><i></i><span>keller-sanitaer.ch</span></div>
+          <div class="mock m1">
+            <div class="k-top">
+              <span class="k-logo" data-t><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M10 1C10 1 2 10.5 2 15.5a8 8 0 0 0 16 0C18 10.5 10 1 10 1Z" fill="#163A5C"/></svg><span><b>Keller</b> Sanitär AG</span></span>
+              <span class="k-links"><span data-t>Badumbau</span><span data-t>Heizung</span><span data-t>Service</span><span data-t>Über uns</span><span data-t>Kontakt</span></span>
+              <span class="k-tel" data-t>056 222 14 80</span>
+            </div>
+            <div class="k-hero">
+              <div class="k-copy">
+                <p class="k-kick" data-t>Sanitär und Heizung in Baden, seit 1974</p>
+                <h4 data-t>Badumbau aus einer Hand.</h4>
+                <p class="k-p" data-t>Planung, Abbruch, Sanitär, Plättli und Elektro. Ein Team, ein Fixpreis, ein Termin, der hält.</p>
+                <div class="k-acts"><span class="k-btn" data-t>Besichtigung vereinbaren</span><span class="k-more" data-t>Unsere Bäder</span></div>
+              </div>
+              <div class="k-photo" data-t><img loading="lazy" decoding="async" src="/assets/img/x/5f9673074f62.webp" alt="Badezimmer mit freistehender Wanne und zwei Lavabos"><span class="k-cap">Einfamilienhaus in Wettingen, Umbau in 5 Wochen</span></div>
+            </div>
+            <div class="k-strip">
+              <span data-t><b>Badumbau</b>Vom Plan bis zur letzten Fuge</span>
+              <span data-t><b>Heizungsersatz</b>Wärmepumpe statt Öl</span>
+              <span data-t><b>Service</b>Boiler, Entkalkung, Leitungen</span>
+              <span class="k-sos" data-t><b>Notfall 24 h</b>056 222 14 80</span>
+            </div>
+          </div>
+        </div>
+        <div class="bnotif" id="bnotif" aria-hidden="true">
+          <div class="bn-top"><svg class="bn-logo" viewBox="12 10 174 188" aria-hidden="true"><path fill="#5B5B5B" d="M68.12 66.06Q63.08 63.65 68.12 61.24L169.15 13.09Q175.64 10.00 175.64 17.18L175.64 125.99Q175.64 133.18 169.21 136.39L143.74 149.12Q137.32 152.34 137.32 145.15L137.32 107.95Q137.32 99.17 129.40 95.38Z"/><path fill="#ECECEC" d="M22.36 73.39Q22.36 64.60 30.35 68.26L114.17 106.69Q122.15 110.35 122.15 119.13L122.15 189.22Q122.15 198.00 114.38 193.91L30.14 149.64Q22.36 145.55 22.36 136.77Z"/></svg>websiten.ch<span>jetzt</span></div>
+          <strong>Neue Anfrage über keller-sanitaer.ch</strong>
+          <p>Badsanierung, Einfamilienhaus in Wettingen. Wann hätten Sie Zeit für eine Besichtigung?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mv pad" id="leistungen" aria-labelledby="mvT">
+    <div class="lx-head"><h2 id="mvT">Was wir <em class="hl">machen</em></h2><p>Alles, was Ihr Betrieb online braucht. Von einer Ansprechperson, mit festem Preis.</p></div>
+    <div class="mv-grid">
+      <ol class="mv-list"><li class="mv-i on" data-k="0"><button type="button" aria-controls="mvScr" aria-pressed="true"><span class="mv-n">01</span><span class="mv-t">Websites</span></button><div class="mv-b"><div class="mv-bi"><p>Gestaltet für Ihren Betrieb und gebaut fürs Handy. Mit Texten, die Ihre Kunden verstehen, und einem Formular, das Anfragen bringt.</p><ul><li>Firmenwebsites</li><li>Relaunch</li><li>Mehrsprachig</li><li>Texte</li></ul><a href="/de/websites">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class="mv-i" data-k="1"><button type="button" aria-controls="mvScr" aria-pressed="false"><span class="mv-n">02</span><span class="mv-t">Online-Shops</span></button><div class="mv-b"><div class="mv-bi"><p>Wir richten Ihren Shopify-Account auf professionellem Niveau ein. Mit TWINT, Karte, Rechnung und Versand in der Schweiz.</p><ul><li>Shopify</li><li>WooCommerce</li><li>Shop-Umzug</li><li>B2B</li></ul><a href="/de/online-shops">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class="mv-i" data-k="2"><button type="button" aria-controls="mvScr" aria-pressed="false"><span class="mv-n">03</span><span class="mv-t">Google und SEO</span></button><div class="mv-b"><div class="mv-bi"><p>Damit man Sie findet, wenn jemand in Ihrer Region sucht. Mit Unternehmensprofil, sauberer Technik und Google Ads mit festem Budget.</p><ul><li>Google Maps</li><li>Lokale SEO</li><li>Google Ads</li></ul><a href="/de/google-seo">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class="mv-i" data-k="3"><button type="button" aria-controls="mvScr" aria-pressed="false"><span class="mv-n">04</span><span class="mv-t">Domains und Hosting</span></button><div class="mv-b"><div class="mv-bi"><p>Domain, Website und E-Mail bei Infomaniak in Genf. Updates, Backups und Sicherheit übernehmen wir, Sie sehen jederzeit, dass alles läuft.</p><ul><li>.ch-Domains</li><li>Backups</li><li>Updates</li><li>SSL</li></ul><a href="/de/hosting">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class="mv-i" data-k="4"><button type="button" aria-controls="mvScr" aria-pressed="false"><span class="mv-n">05</span><span class="mv-t">Microsoft 365</span></button><div class="mv-b"><div class="mv-bi"><p>E-Mail, Kalender, Teams und Dateien für Ihr Team, sauber eingerichtet und betreut. Neue Leute haben ihr Konto am ersten Tag.</p><ul><li>E-Mail-Umzug</li><li>Teams</li><li>OneDrive</li><li>Fernwartung</li></ul><a href="/de/microsoft-365">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li><li class="mv-i" data-k="5"><button type="button" aria-controls="mvScr" aria-pressed="false"><span class="mv-n">06</span><span class="mv-t">KI-Chatbots</span></button><div class="mv-b"><div class="mv-bi"><p>Beantwortet häufige Fragen direkt auf Ihrer Website, mit Ihren Informationen. Was er nicht weiss, gibt er an Sie weiter.</p><ul><li>Ihre Inhalte</li><li>Mehrsprachig</li><li>Übergabe an Sie</li></ul><a href="/de/ki-chatbots">Mehr dazu <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div></div></li></ol>
+      <div class="mv-dev"><div class="mv-mac" id="mvScr"><div class="mv-screen"><img loading="lazy" decoding="async" class="mv-s on" data-k="0" src="/assets/img/x/a268c976b6a4.webp" alt="Beispiel: Websites"><img decoding="async" class="mv-s" data-k="1" src="/assets/img/x/2a636bbd23c1.webp" alt="Beispiel: Online-Shops" loading="lazy"><img decoding="async" class="mv-s" data-k="2" src="/assets/img/x/30461f9f9d09.webp" alt="Beispiel: Google und SEO" loading="lazy"><img decoding="async" class="mv-s" data-k="3" src="/assets/img/x/6220cdec819a.webp" alt="Beispiel: Domains und Hosting" loading="lazy"><img decoding="async" class="mv-s" data-k="4" src="/assets/img/x/29a66a7c9ba4.webp" alt="Beispiel: Microsoft 365" loading="lazy"><img decoding="async" class="mv-s" data-k="5" src="/assets/img/x/b9f9a760dd10.webp" alt="Beispiel: KI-Chatbots" loading="lazy"><span class="mv-glare"></span></div><img loading="lazy" decoding="async" class="mv-frame" src="/assets/img/x/fd2813f11749.webp" alt="" aria-hidden="true"></div></div>
+    </div>
+  </section>
+
+  <section class="wks pad" id="arbeiten" aria-labelledby="wksT">
+    <div class="lx-head"><h2 id="wksT">Unsere <em class="hl">Arbeiten</em></h2><p>Zwei Websites, die wir zuletzt gebaut haben. Beide sind online, schauen Sie sie sich ruhig selbst an.</p></div>
+    <article class="wk"><div class="wk-tx"><span class="wk-n">01</span><h3>KF Bauservice GmbH</h3><span class="wk-p">Buchs AG</span><p>Gipser, Maler, Trockenbau und Fassaden. Ein junger Betrieb, der zeigen wollte, wie sauber er arbeitet. Echte Fotos von den eigenen Baustellen, klare Leistungen und ein kurzer Weg zur Anfrage.</p><ul><li>Webdesign</li><li>Umsetzung</li><li>Fürs Handy gebaut</li></ul><a class="wk-l" href="https://kf-bauservice.ch/" target="_blank" rel="noopener">Website ansehen <svg viewBox="0 0 14 14" width="13" height="13" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div><a class="wk-v" href="https://kf-bauservice.ch/" target="_blank" rel="noopener" aria-label="kf-bauservice.ch öffnen"><img decoding="async" src="/assets/img/x/8c48f3cdb932.webp" alt="Website kf-bauservice.ch auf MacBook und iPhone" loading="lazy" width="1200" height="800"></a></article><article class="wk flip"><div class="wk-tx"><span class="wk-n">02</span><h3>Kastrati Trockenbau & Innenausbau</h3><span class="wk-p">Rheda-Wiedenbrück, Deutschland</span><p>Trockenbau und Innenausbau vom Rohbau bis zum fertigen Raum. Die Website zeigt die eigenen Projekte gross und führt Bauherren direkt zur Anfrage.</p><ul><li>Webdesign</li><li>Umsetzung</li><li>Fürs Handy gebaut</li></ul><a class="wk-l" href="https://kastrati-trockenbau-innenausbau.de/" target="_blank" rel="noopener">Website ansehen <svg viewBox="0 0 14 14" width="13" height="13" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div><a class="wk-v" href="https://kastrati-trockenbau-innenausbau.de/" target="_blank" rel="noopener" aria-label="kastrati-trockenbau-innenausbau.de öffnen"><img decoding="async" src="/assets/img/x/f6e775b17a2c.webp" alt="Website kastrati-trockenbau-innenausbau.de auf MacBook und iPhone" loading="lazy" width="1200" height="800"></a></article>
+  </section>
+
+  <section class="pr pad" aria-labelledby="prT">
+    <div class="pr-left">
+      <h2 id="prT">Was es <em class="hl">kostet</em></h2>
+      <p>Sie kennen den Preis, bevor wir anfangen. Den genauen Betrag für Ihr Projekt rechnen Sie selbst aus.</p>
+      <a class="sv-all" href="/de/preise">Zum Preisrechner <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    </div>
+    <dl class="pr-list">
+      <div><dt>Website mit 4 Seiten<small>Jede weitere Seite CHF 150</small></dt><dd><small>CHF</small>590</dd></div>
+      <div><dt>Hosting und Domain<small>Mit Backups, Updates und E-Mail</small></dt><dd><small>CHF</small>25<small>im Monat</small></dd></div>
+    </dl>
+  </section>
+
+<section class="closing pad on-sage" id="kontakt-cta" data-sage>
+  <svg class="grain" aria-hidden="true"><rect width="100%" height="100%" filter="url(#noise)"/></svg>
+  <h2>Reden wir über <em class="hl-d">Ihre Website.</em></h2>
+  <div class="closing-row">
+    <div>
+      <p>Buchen Sie eine freie Viertelstunde für ein erstes Gespräch. Danach bekommen Sie eine Offerte mit festem Preis und entscheiden in Ruhe.</p>
+      <div class="actions"><a class="btn btn-ink" href="/de/kontakt">Termin wählen <svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a><a class="btn btn-line" href="/de/preise">Preise ansehen</a></div>
+    </div>
+    <span class="mail">hallo@websiten.ch</span>
+  </div>
+</section>
+</main>
+<footer class="pad">
+  <div class="foot">
+    <div><h5>websiten.ch</h5><p>Webagentur für Schweizer KMU. Domains, Hosting und E-Mail bei Infomaniak in Genf. Ihre Daten bleiben in der Schweiz.</p></div>
+    <div><h5>Seiten</h5><a href="/de">Startseite</a><a href="/de/leistungen">Alle Leistungen</a><a href="/de/preise">Preise</a><a href="/de/ueber-uns">Über uns</a><a href="/de/fragen">Häufige Fragen</a></div>
+    <div><h5>Leistungen</h5><a href="/de/websites">Websites</a><a href="/de/online-shops">Online-Shops</a><a href="/de/google-seo">Google und SEO</a><a href="/de/hosting">Domains und Hosting</a><a href="/de/microsoft-365">Microsoft 365</a><a href="/de/ki-chatbots">KI-Chatbots</a></div>
+    <div><h5>Kontakt</h5><span class="l">hallo@websiten.ch</span><span class="l">Postfach, 8021 Zürich</span><a href="/de/kontakt">Termin wählen</a><a href="#linkedin">LinkedIn</a><a href="#">Kundenlogin</a></div>
+  </div>
+  <div class="legal"><span>© 2026 websiten.ch</span><span><a href="/de/impressum">Impressum</a><a href="/de/datenschutz">Datenschutz</a></span></div>
+  <div class="ground" aria-hidden="true">
+    <canvas class="giant-px"></canvas>
+    <svg class="giant-src" viewBox="205 50 840 118" aria-hidden="true"><path d="M 326.09 87.27 L 305.95 161.68 L 280.75 161.68 L 269.01 113.41 L 256.88 161.68 L 231.81 161.68 L 211.54 87.27 L 234.34 87.27 L 244.87 140.48 L 257.41 87.27 L 281.55 87.27 L 294.22 140.21 L 304.62 87.27 Z M 404.51 129.94 L 352.9 129.94 C 353.26 134.57 354.74 138.1 357.37 140.54 C 359.99 142.99 363.21 144.21 367.04 144.21 C 372.72 144.21 376.68 141.81 378.9 137.01 L 403.18 137.01 C 401.93 141.9 399.68 146.3 396.44 150.21 C 393.2 154.12 389.13 157.19 384.24 159.42 C 379.34 161.64 373.88 162.75 367.83 162.75 C 360.54 162.75 354.05 161.2 348.37 158.08 C 342.68 154.97 338.23 150.53 335.03 144.75 C 331.83 138.97 330.23 132.21 330.23 124.48 C 330.23 116.74 331.81 109.98 334.96 104.2 C 338.12 98.43 342.54 93.98 348.23 90.87 C 353.93 87.76 360.45 86.2 367.83 86.2 C 375.04 86.2 381.44 87.71 387.04 90.73 C 392.64 93.76 397.02 98.07 400.17 103.67 C 403.33 109.27 404.91 115.81 404.91 123.28 C 404.91 125.41 404.77 127.63 404.51 129.94 Z M 381.57 117.27 C 381.57 113.36 380.23 110.25 377.57 107.93 C 374.91 105.63 371.57 104.47 367.57 104.47 C 363.75 104.47 360.52 105.59 357.9 107.81 C 355.28 110.03 353.66 113.18 353.03 117.27 Z M 462.66 86.2 C 468.79 86.2 474.35 87.76 479.32 90.87 C 484.3 93.98 488.24 98.43 491.13 104.2 C 494.01 109.98 495.46 116.7 495.46 124.34 C 495.46 131.99 494.01 138.72 491.13 144.55 C 488.24 150.37 484.3 154.86 479.32 158.02 C 474.35 161.18 468.79 162.75 462.66 162.75 C 457.41 162.75 452.82 161.71 448.91 159.62 C 445 157.52 441.94 154.75 439.71 151.28 L 439.71 161.68 L 416.91 161.68 L 416.91 63 L 439.71 63 L 439.71 97.8 C 441.85 94.34 444.91 91.54 448.91 89.4 C 452.92 87.27 457.5 86.2 462.66 86.2 Z M 455.85 106.07 C 451.32 106.07 447.47 107.71 444.31 111.01 C 441.16 114.3 439.59 118.79 439.59 124.48 C 439.59 130.17 441.16 134.66 444.31 137.95 C 447.47 141.23 451.32 142.88 455.85 142.88 C 460.38 142.88 464.25 141.21 467.45 137.88 C 470.65 134.55 472.25 130.03 472.25 124.34 C 472.25 118.65 470.68 114.18 467.52 110.94 C 464.36 107.69 460.47 106.07 455.85 106.07 Z M 503.46 137.28 L 526 137.28 C 526.26 139.86 527.46 141.95 529.6 143.54 C 531.73 145.14 534.36 145.95 537.46 145.95 C 540.32 145.95 542.51 145.39 544.07 144.28 C 545.62 143.17 546.4 141.72 546.4 139.95 C 546.4 137.81 545.29 136.23 543.07 135.21 C 540.85 134.19 537.25 133.06 532.26 131.81 C 526.93 130.56 522.49 129.25 518.93 127.88 C 515.37 126.5 512.31 124.32 509.73 121.34 C 507.15 118.36 505.86 114.34 505.86 109.27 C 505.86 105 507.04 101.11 509.4 97.6 C 511.75 94.09 515.22 91.31 519.8 89.27 C 524.38 87.22 529.82 86.2 536.13 86.2 C 545.47 86.2 552.82 88.51 558.21 93.13 C 563.58 97.76 566.68 103.89 567.48 111.54 L 546.4 111.54 C 546.05 108.96 544.91 106.91 543 105.4 C 541.09 103.89 538.58 103.14 535.46 103.14 C 532.8 103.14 530.76 103.65 529.34 104.67 C 527.91 105.7 527.2 107.09 527.2 108.87 C 527.2 111.01 528.33 112.61 530.6 113.68 C 532.87 114.74 536.4 115.81 541.2 116.88 C 546.71 118.29 551.21 119.7 554.67 121.07 C 558.14 122.45 561.19 124.68 563.81 127.75 C 566.43 130.81 567.78 134.92 567.87 140.08 C 567.87 144.44 566.65 148.33 564.21 151.75 C 561.77 155.17 558.25 157.86 553.67 159.82 C 549.09 161.77 543.78 162.75 537.73 162.75 C 531.24 162.75 525.46 161.64 520.4 159.42 C 515.33 157.19 511.33 154.15 508.39 150.28 C 505.46 146.41 503.82 142.08 503.46 137.28 Z M 579.74 67.26 C 579.74 63.71 581.01 60.75 583.54 58.39 C 586.07 56.04 589.34 54.86 593.34 54.86 C 597.26 54.86 600.48 56.04 603.01 58.39 C 605.55 60.75 606.82 63.71 606.82 67.26 C 606.82 70.73 605.55 73.64 603.01 76 C 600.48 78.36 597.26 79.53 593.34 79.53 C 589.34 79.53 586.07 78.36 583.54 76 C 581.01 73.64 579.74 70.73 579.74 67.26 Z M 604.68 87.27 L 604.68 161.68 L 581.88 161.68 L 581.88 87.27 Z M 662.69 142.34 L 662.69 161.68 L 651.09 161.68 C 642.82 161.68 636.38 159.66 631.75 155.62 C 627.13 151.57 624.82 144.96 624.82 135.81 L 624.82 106.21 L 615.75 106.21 L 615.75 87.27 L 624.82 87.27 L 624.82 69.13 L 647.62 69.13 L 647.62 87.27 L 662.56 87.27 L 662.56 106.21 L 647.62 106.21 L 647.62 136.08 C 647.62 138.3 648.16 139.9 649.23 140.88 C 650.29 141.86 652.07 142.34 654.55 142.34 Z M 745.11 129.94 L 693.5 129.94 C 693.85 134.57 695.34 138.1 697.96 140.54 C 700.59 142.99 703.81 144.21 707.63 144.21 C 713.32 144.21 717.28 141.81 719.5 137.01 L 743.77 137.01 C 742.53 141.9 740.28 146.3 737.04 150.21 C 733.79 154.12 729.73 157.19 724.84 159.42 C 719.95 161.64 714.48 162.75 708.43 162.75 C 701.14 162.75 694.65 161.2 688.96 158.08 C 683.27 154.97 678.83 150.53 675.63 144.75 C 672.43 138.97 670.82 132.21 670.82 124.48 C 670.82 116.74 672.41 109.98 675.56 104.2 C 678.71 98.43 683.14 93.98 688.83 90.87 C 694.52 87.76 701.05 86.2 708.43 86.2 C 715.63 86.2 722.04 87.71 727.64 90.73 C 733.24 93.76 737.62 98.07 740.77 103.67 C 743.93 109.27 745.51 115.81 745.51 123.28 C 745.51 125.41 745.38 127.63 745.11 129.94 Z M 722.17 117.27 C 722.17 113.36 720.84 110.25 718.17 107.93 C 715.5 105.63 712.16 104.47 708.16 104.47 C 704.34 104.47 701.12 105.59 698.5 107.81 C 695.87 110.03 694.25 113.18 693.63 117.27 Z M 831.53 118.21 L 831.53 161.68 L 808.86 161.68 L 808.86 121.28 C 808.86 116.3 807.57 112.43 804.99 109.68 C 802.41 106.91 798.95 105.54 794.58 105.54 C 790.23 105.54 786.76 106.91 784.18 109.68 C 781.61 112.43 780.32 116.3 780.32 121.28 L 780.32 161.68 L 757.51 161.68 L 757.51 87.27 L 780.32 87.27 L 780.32 97.14 C 782.63 93.85 785.74 91.25 789.64 89.34 C 793.56 87.43 797.96 86.47 802.85 86.47 C 811.56 86.47 818.52 89.3 823.72 94.94 C 828.93 100.58 831.53 108.34 831.53 118.21 Z M 844.46 150.48 C 844.46 146.93 845.73 143.95 848.26 141.54 C 850.79 139.14 854.07 137.95 858.07 137.95 C 861.98 137.95 865.2 139.14 867.73 141.54 C 870.27 143.95 871.53 146.93 871.53 150.48 C 871.53 153.95 870.27 156.86 867.73 159.21 C 865.2 161.57 861.98 162.75 858.07 162.75 C 854.07 162.75 850.79 161.57 848.26 159.21 C 845.73 156.86 844.46 153.95 844.46 150.48 Z M 917.8 86.2 C 927.14 86.2 934.95 88.65 941.21 93.54 C 947.48 98.43 951.59 105.32 953.55 114.21 L 929.28 114.21 C 927.23 108.52 923.27 105.67 917.41 105.67 C 913.23 105.67 909.89 107.29 907.4 110.54 C 904.91 113.79 903.67 118.43 903.67 124.48 C 903.67 130.52 904.91 135.16 907.4 138.41 C 909.89 141.66 913.23 143.28 917.41 143.28 C 923.27 143.28 927.23 140.43 929.28 134.74 L 953.55 134.74 C 951.59 143.46 947.46 150.3 941.14 155.28 C 934.83 160.26 927.05 162.75 917.8 162.75 C 910.52 162.75 904.05 161.2 898.4 158.08 C 892.76 154.97 888.36 150.53 885.2 144.75 C 882.05 138.97 880.47 132.21 880.47 124.48 C 880.47 116.74 882.05 109.98 885.2 104.2 C 888.36 98.43 892.76 93.98 898.4 90.87 C 904.05 87.76 910.52 86.2 917.8 86.2 Z M 1039.7 118.21 L 1039.7 161.68 L 1017.03 161.68 L 1017.03 121.28 C 1017.03 116.3 1015.74 112.43 1013.16 109.68 C 1010.58 106.91 1007.11 105.54 1002.76 105.54 C 998.4 105.54 994.93 106.91 992.36 109.68 C 989.78 112.43 988.49 116.3 988.49 121.28 L 988.49 161.68 L 965.68 161.68 L 965.68 63 L 988.49 63 L 988.49 97.27 C 990.8 93.98 993.96 91.36 997.96 89.4 C 1001.96 87.45 1006.45 86.47 1011.43 86.47 C 1019.96 86.47 1026.81 89.3 1031.96 94.94 C 1037.12 100.58 1039.7 108.34 1039.7 118.21 Z M 1039.7 118.21 "/></svg>
+  </div>
+</footer>
+<script src="/assets/js/182171dc4a68.js" defer></script>
+<script src="/assets/js/ddc5ddf4f689.js" defer></script>
+</body>
+</html>

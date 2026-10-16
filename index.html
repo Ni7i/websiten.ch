@@ -367,6 +367,14 @@ body.is-scrolling:not(.menu-open) .menu-btn{opacity:.18;transform:scale(.92)}
   #cfGo{width:100%;justify-content:center;white-space:normal;text-align:center;padding-left:18px;padding-right:18px}
 }
 
+
+.lang{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 14px);right:calc(max(16px,calc(var(--pad) - 44px)) + 54px);height:52px;display:flex;align-items:center;gap:2px;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--text);transition:opacity .45s ease,color .3s}
+.lang a{padding:8px 6px;opacity:.42;transition:opacity .2s}
+.lang a:hover,.lang a[aria-current]{opacity:1}
+[data-tone=mid] .lang,[data-tone=light] .lang,.menu-open .lang{color:var(--ink)}
+body.is-scrolling:not(.menu-open) .lang{opacity:.18}
+.lang:hover,.lang:focus-within{opacity:1!important}
+
 </style>
 <style>
 

@@ -33,7 +33,7 @@ SVC = {
         ('Gestaltung', 'Für Ihren Betrieb gemacht. Mit Ihrem Logo, Ihren Farben und Ihren Fotos.'),
         ('Fürs Handy gebaut', 'Die meisten Besucher kommen übers Handy. Darauf bauen wir zuerst.'),
         ('Kontaktformular', 'Anfragen landen direkt in Ihrem Postfach, mit Schutz gegen Spam.'),
-        ('Texte', 'Auf Wunsch schreiben wir die Texte. Pro Seite CHF 90.–.'),
+        ('Texte', 'Auf Wunsch schreiben wir die Texte. Pro Seite CHF 45.'),
         ('Weitere Sprachen', 'Französisch, Italienisch oder Englisch. Pro Sprache und Seite CHF 70.–.'),
         ('Google-Grundlagen', 'Schnelle Ladezeit, saubere Struktur und Titel, die Google versteht.'),
         ('Einführung', 'Wir zeigen Ihnen, wie Sie Texte und Bilder selbst ändern.')],
@@ -298,7 +298,7 @@ def preise():
         <div class="ps-prod" id="psProd" hidden><label class="ps-lbl" for="psProducts">Wie viele Produkte? <b id="psProductsOut">bis 30</b></label><input type="range" id="psProducts" min="0" max="3" value="0"><div class="ps-scale" aria-hidden="true"><span>30</span><span>150</span><span>500</span><span>mehr</span></div></div>
         <div class="ps-lang"><span class="ps-lbl" id="langLbl">Wie viele Sprachen?</span><div class="seg" role="group" aria-labelledby="langLbl"><button type="button" data-l="1" aria-pressed="true">1</button><button type="button" data-l="2" aria-pressed="false">2</button><button type="button" data-l="3" aria-pressed="false">3</button><button type="button" data-l="4" aria-pressed="false">4</button></div></div>
         <div class="ps-opts">
-          <label><input type="checkbox" id="psTexts" data-p="90" data-per="1"><span>Texte schreiben wir<small>CHF 90.– pro Seite</small></span></label>
+          <label><input type="checkbox" id="psTexts" data-p="45" data-per="1"><span>Texte schreiben wir<small>CHF 45 pro Seite</small></span></label>
           <label><input type="checkbox" id="psBook" data-p="290"><span>Online-Terminbuchung<small>CHF 290.–</small></span></label>
           <label><input type="checkbox" id="psBlog" data-p="190"><span>News oder Blog<small>CHF 190.–</small></span></label>
           <label><input type="checkbox" id="psGmb" data-p="150"><span>Google-Profil einrichten<small>CHF 150.–</small></span></label>
@@ -422,7 +422,7 @@ FQ = [('Wie lange geht es, bis meine Website online ist?', 'Eine Website mit 4 S
       ('Wo sind meine Daten gespeichert?', 'In der Schweiz. Server, Domains und E-Mail laufen bei Infomaniak in Genf.'),
       ('Kann ich Texte und Bilder selbst ändern?', 'Ja, Sie bekommen eine kurze Einführung. Oder Sie schicken uns eine Nachricht, und wir machen es.'),
       ('Bringt ihr mich bei Google auf Platz 1?', 'Das kann niemand ehrlich versprechen. Wir machen die Seite technisch sauber und schreiben Inhalte zu dem, was Ihre Kunden suchen. Das ist die Grundlage, damit Sie gefunden werden.'),
-      ('Schreibt ihr auch die Texte?', 'Ja, auf Wunsch. Pro Seite CHF 90.–. Sie lesen alles, bevor es online geht.'),
+      ('Schreibt ihr auch die Texte?', 'Ja, auf Wunsch. Pro Seite CHF 45. Sie lesen alles, bevor es online geht.'),
       ('Wie läuft die Bezahlung?', 'Die Hälfte bei Auftrag, der Rest, wenn die Website online ist. Hosting rechnen wir monatlich ab.'),
       ('Arbeitet ihr nur in meiner Region?', 'Nein, wir arbeiten für Betriebe in der ganzen Schweiz. Das erste Gespräch läuft per Video, alles Weitere per E-Mail und Video.')]
 

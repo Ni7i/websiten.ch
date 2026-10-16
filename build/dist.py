@@ -2,6 +2,7 @@
 # Ausführen nach build.py:  cd build && python3 dist.py
 # Danach im Ordner dist:  vercel deploy --prod --yes   (oder Cloudflare Pages / Netlify: Ordner dist hochladen)
 import glob, os, re, shutil
+import i18n
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OUT = os.path.join(ROOT, 'dist')
@@ -34,8 +35,20 @@ for pat in DYNAMIC:
 
 shutil.rmtree(OUT, ignore_errors=True)
 os.makedirs(OUT)
+# Englisch (Standard) an der Wurzel, Deutsch unter /de/
+missing = {}
 for p in pages:
-    shutil.copy2(p, OUT)
+    slug = os.path.basename(p)[:-5]
+    src = open(p, encoding='utf-8').read()
+    for lang in ('en', 'de'):
+        out = i18n.build_page(src, slug, lang, OUT)
+        name = (i18n.SLUG_EN[slug] or 'index') if lang == 'en' else slug
+        dst = os.path.join(OUT, '' if lang == 'en' else 'de', name + '.html')
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        open(dst, 'w', encoding='utf-8').write(out)
+        if lang == 'en':
+            for t in i18n.leftovers(out):
+                missing.setdefault(t, slug)
 for r in sorted(need):
     os.makedirs(os.path.join(OUT, os.path.dirname(r)), exist_ok=True)
     shutil.copy2(os.path.join(ROOT, r), os.path.join(OUT, r))
@@ -45,6 +58,10 @@ for f in ('vercel.json', '_headers', 'favicon.ico', 'speculation.json'):
 size = sum(os.path.getsize(os.path.join(d, f)) for d, _, fs in os.walk(OUT) for f in fs)
 print(f'dist: {len(pages)} Seiten, {len(need)} Dateien, {size / 1e6:.1f} MB')
 # Prüfung aus CLAUDE.md: keine Gedankenstriche im HTML
-bad = [os.path.basename(p) for p in pages if re.search('[–—]', open(p, encoding='utf-8').read())]
+bad = [os.path.relpath(p, OUT) for p in glob.glob(os.path.join(OUT, '**/*.html'), recursive=True) if re.search('[–—]', open(p, encoding='utf-8').read())]
 if bad:
     print('ACHTUNG Gedankenstriche in:', ', '.join(bad))
+if missing:
+    print(f'Englisch: {len(missing)} Texte noch deutsch (build/i18n/en.json ergänzen):')
+    for t, f in sorted(missing.items(), key=lambda x: x[1]):
+        print(f'  [{f}] {t[:110]}')

@@ -365,6 +365,14 @@ body.is-scrolling:not(.menu-open) .menu-btn{opacity:.18;transform:scale(.92)}
   #cfGo{width:100%;justify-content:center;white-space:normal;text-align:center;padding-left:18px;padding-right:18px}
 }
 
+
+.lang{position:fixed;z-index:80;top:calc(env(safe-area-inset-top,0px) + 14px);right:calc(max(16px,calc(var(--pad) - 44px)) + 54px);height:52px;display:flex;align-items:center;gap:2px;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--text);transition:opacity .45s ease,color .3s}
+.lang a{padding:8px 6px;opacity:.42;transition:opacity .2s}
+.lang a:hover,.lang a[aria-current]{opacity:1}
+[data-tone=mid] .lang,[data-tone=light] .lang,.menu-open .lang{color:var(--ink)}
+body.is-scrolling:not(.menu-open) .lang{opacity:.18}
+.lang:hover,.lang:focus-within{opacity:1!important}
+
 </style>
 <style>
 
@@ -898,7 +906,7 @@ input:focus,textarea:focus{box-shadow:inset 0 0 0 1.5px var(--acc-s)}
     </div>
   </section>
 
-  <section class="xs pad" id="alle" aria-labelledby="apT"><div class="xs-h"><h2 id="apT">Alle Preise</h2><p>In CHF, einmalig, wenn nichts anderes steht.</p></div><div class="pgs"><div class="pg"><h3>Website</h3><dl class="tiers"><div><dt>4 Seiten</dt><dd>CHF 590</dd></div><div><dt>6 Seiten</dt><dd>CHF 890</dd></div><div><dt>8 Seiten</dt><dd>CHF 1’190</dd></div><div><dt>10 Seiten</dt><dd>CHF 1’490</dd></div><div><dt>Jede weitere Seite</dt><dd>CHF 150</dd></div></dl><p class="pnote">Mit Gestaltung, Handy-Version, Kontaktformular, Google Maps und SSL.</p></div><div class="pg"><h3>Online-Shop</h3><dl class="tiers"><div><dt>4 Seiten, bis 30 Produkte</dt><dd>CHF 1’890</dd></div><div><dt>Bis 150 Produkte</dt><dd>+ CHF 490</dd></div><div><dt>Bis 500 Produkte</dt><dd>+ CHF 990</dd></div><div><dt>Über 500, mit Import</dt><dd>+ CHF 1’890</dd></div></dl><p class="pnote">Mit TWINT, Karte, Rechnung und Versand. Das Shopify-Abo zahlen Sie direkt an Shopify.</p></div><div class="pg"><h3>Dazu nach Wunsch</h3><dl class="tiers"><div><dt>Texte von uns, pro Seite</dt><dd>CHF 90</dd></div><div><dt>Weitere Sprache</dt><dd>CHF 50</dd></div><div><dt>Online-Terminbuchung</dt><dd>CHF 290</dd></div><div><dt>News oder Blog</dt><dd>CHF 190</dd></div><div><dt>Google-Profil einrichten</dt><dd>CHF 150</dd></div><div><dt>Google Ads einrichten</dt><dd>CHF 390</dd></div></dl></div><div class="pg"><h3>Hosting</h3><dl class="tiers"><div><dt>Hosting und .ch-Domain</dt><dd>CHF 25 im Monat</dd></div></dl><p class="pnote">Server bei Infomaniak in Genf. Mit SSL, E-Mail-Adresse, Backups und Updates.</p></div></div></section>
+  <section class="xs pad" id="alle" aria-labelledby="apT"><div class="xs-h"><h2 id="apT">Alle Preise</h2><p>In CHF, einmalig, wenn nichts anderes steht.</p></div><div class="pgs"><div class="pg"><h3>Website</h3><dl class="tiers"><div><dt>4 Seiten</dt><dd>CHF 590</dd></div><div><dt>6 Seiten</dt><dd>CHF 890</dd></div><div><dt>8 Seiten</dt><dd>CHF 1’190</dd></div><div><dt>10 Seiten</dt><dd>CHF 1’490</dd></div><div><dt>Jede weitere Seite</dt><dd>CHF 150</dd></div></dl><p class="pnote">Mit Gestaltung, Handy-Version, Kontaktformular, Google Maps und SSL.</p></div><div class="pg"><h3>Online-Shop</h3><dl class="tiers"><div><dt>4 Seiten, bis 30 Produkte</dt><dd>CHF 1’890</dd></div><div><dt>Bis 150 Produkte</dt><dd>+ CHF 490</dd></div><div><dt>Bis 500 Produkte</dt><dd>+ CHF 990</dd></div><div><dt>Über 500, mit Import</dt><dd>+ CHF 1’890</dd></div></dl><p class="pnote">Mit TWINT, Karte, Rechnung und Versand. Das Shopify-Abo zahlen Sie direkt an Shopify.</p></div><div class="pg"><h3>Dazu nach Wunsch</h3><dl class="tiers"><div><dt>Texte von uns, pro Seite</dt><dd>CHF 45</dd></div><div><dt>Weitere Sprache</dt><dd>CHF 50</dd></div><div><dt>Online-Terminbuchung</dt><dd>CHF 290</dd></div><div><dt>News oder Blog</dt><dd>CHF 190</dd></div><div><dt>Google-Profil einrichten</dt><dd>CHF 150</dd></div><div><dt>Google Ads einrichten</dt><dd>CHF 390</dd></div></dl></div><div class="pg"><h3>Hosting</h3><dl class="tiers"><div><dt>Hosting und .ch-Domain</dt><dd>CHF 25 im Monat</dd></div></dl><p class="pnote">Server bei Infomaniak in Genf. Mit SSL, E-Mail-Adresse, Backups und Updates.</p></div></div></section>
 
   <section class="xs pad" aria-labelledby="gwT"><div class="xs-h"><h2 id="gwT">Gut zu wissen</h2></div><ul class="get get3">
       <li><h3>Immer dabei</h3><p>Gestaltung, Handy-Version, SSL, Kontaktformular, die Einrichtung bei Infomaniak und eine Einführung.</p></li>
@@ -931,6 +939,6 @@ input:focus,textarea:focus{box-shadow:inset 0 0 0 1.5px var(--acc-s)}
   </div>
 </footer>
 <script src="assets/site.js?v=182171dc4a68" defer></script>
-<script src="assets/js/6cf9d477baff.js" defer></script>
+<script src="assets/js/666686167295.js" defer></script>
 </body>
 </html>

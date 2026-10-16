@@ -66,7 +66,7 @@ jobs:
           sleep 5
           B=https://websiten.ch
           fail=""
-          for p in "" websites google-seo ueber-uns; do
+          for p in "" websites about de de/preise de/ueber-uns; do
             code=$(curl -s -o /tmp/p.html -w '%{http_code}' "$B/$p")
             [ "$code" = 200 ] || fail="$fail $p:$code"
           done
@@ -77,8 +77,10 @@ jobs:
           size=$(curl -s "$B/" | wc -c)
           loc=$(curl -sI "$B/index.html" | tr -d '\r' | grep -i '^location:' | awk '{print $2}')
           [ "$loc" = "/" ] || fail="$fail index.html-leitet-nicht-um:$loc"
+          loc=$(curl -sI "$B/preise" | tr -d '\r' | grep -i '^location:' | awk '{print $2}')
+          [ "$loc" = "/de/preise" ] || fail="$fail preise-leitet-nicht-auf-de:$loc"
           if [ -n "$fail" ]; then echo "::error::Live-Prüfung:$fail"; exit 1; fi
-          echo "::notice::Live-Prüfung ok: 4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv, Startseite $size Bytes"
+          echo "::notice::Live-Prüfung ok: 6 Seiten erreichbar (EN und DE), neue Fassung, CSP und HSTS aktiv, Startseite $size Bytes"
       # Echter Chrome: Script-Fehler, fehlende Dateien, Menü-Vorschau
       - name: Live-Test im Browser
         run: |

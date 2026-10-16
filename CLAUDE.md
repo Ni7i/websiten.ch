@@ -75,3 +75,11 @@ Vor jedem Deploy prüfen: keine "–" und "—" in den HTML-Dateien (dist.py war
 - LinkedIn-Link fehlt (`LINKEDIN` in build/parts.py). Datenschutz vor dem Livegang juristisch prüfen lassen.
 - `BOOKING_API` in build/build.py ist leer: Terminbuchung läuft im Vorschau-Modus, bis das Google Apps Script bereitgestellt ist.
 - Shop-Beispiel im MacBook (Rösterei Linde) ist erfunden. Durch einen echten Kunden-Shop ersetzen, sobald einer genannt wird.
+
+## Sprachen (EN Standard, DE unter /de)
+- Gebaut wird nur Deutsch (build.py). dist.py macht über build/i18n.py beide Sprachen: Englisch an der Wurzel (websiten.ch/pricing), Deutsch unter /de (websiten.ch/de/preise).
+- Übersetzungen: build/i18n/en.json (deutscher Text -> englischer Text). JS-Sonderfälle (Wochentage, Monate, Mehrzahl) in JS_EN in i18n.py.
+- Neuer deutscher Text ohne Übersetzung: dist.py listet ihn unter "Englisch: ... noch deutsch". Dann in en.json ergänzen.
+- Englische Slugs: SLUG_EN in i18n.py. Alte deutsche Adressen an der Wurzel (/preise usw.) leiten auf /de/... um (vercel.json redirects).
+- Englisch: keine Gedankenstriche, Apostroph im JS als ’. Bilder mit deutschem Text (Menü-Vorschau, Ad-Film) bleiben deutsch.
+- Umschalter EN DE: .lang neben dem Menü-Knopf, wird in i18n.localize() eingesetzt.
