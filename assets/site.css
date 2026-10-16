@@ -327,3 +327,29 @@ body.is-scrolling:not(.menu-open) .menu-btn{opacity:.18;transform:scale(.92)}
 :root{--acc-a1:#C4D8C8;--acc-a2:#8FAE96;--acc-s:#A3C2AA;--acc-d1:#4F6B58;--acc-d2:#3B5244}
 .lm-d,[data-tone=color] .lm-d{fill:var(--acc-s);transition:fill .3s}
 [data-tone=mid] .lm-d,[data-tone=light] .lm-d,.menu-open .lm-d{fill:#1F3127}
+
+/* Menü am Handy: eine Spalte, grosse Links oben, Leistungen und Mehr als ruhige Zweierraster, nichts läuft aus dem Bild */
+@media (max-width: 860px){
+  .menu{justify-content:flex-start;gap:0;padding:calc(env(safe-area-inset-top,0px) + 100px) max(24px,var(--pad)) calc(env(safe-area-inset-bottom,0px) + 28px)}
+  .menu-in{grid-template-columns:minmax(0,1fr);gap:34px}
+  .menu-big a{font-size:clamp(40px,11.5vw,60px);line-height:1.1;padding:2px 0}
+  .menu-cols{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:0;max-width:560px}
+  .menu-cols a[data-k].on{opacity:1}
+  .menu-cols > div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
+  .menu-cols h5{grid-column:1 / -1;font-size:13px;letter-spacing:.02em;text-transform:uppercase;margin-bottom:6px}
+  .menu-cols a{font-size:16px;line-height:1.3;padding:9px 0}
+  .menu-foot{margin-top:auto;padding-top:36px;flex-direction:column;gap:12px;font-size:16px}
+  .menu-foot span:first-child{font-size:18px}
+}
+@media (max-width: 860px) and (max-height: 700px){
+  .menu{padding-top:calc(env(safe-area-inset-top,0px) + 88px)}
+  .menu-in{gap:26px}
+  .menu-big a{font-size:clamp(34px,10vw,48px)}
+  .menu-cols a{padding:6px 0}
+  .menu-cols{gap:20px}
+  .menu-foot{padding-top:24px;gap:8px}
+}
+/* Preisrechner am Handy: Knopf passt in die Karte */
+@media (max-width: 560px){
+  #cfGo{width:100%;justify-content:center;white-space:normal;text-align:center;padding-left:18px;padding-right:18px}
+}
