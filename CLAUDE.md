@@ -71,6 +71,7 @@ Vor jedem Deploy prüfen: keine "–" und "—" in den HTML-Dateien (dist.py war
 
 ## Offen
 
-- Adresse fehlt ([Strasse Nr.], [PLZ Ort]), LinkedIn-Link fehlt (`LINKEDIN` in build/parts.py), Impressum und Datenschutz brauchen echte Angaben.
+- PLATZHALTER: Impressum, Datenschutz und Footer enthalten erfundene Angaben (Inhaber Leandro Hofer, Hohlstrasse 216, 8004 Zürich). Vor dem echten Livegang von websiten.ch durch echte Angaben ersetzen (IMPRESSUM_MAIN und DATENSCHUTZ_MAIN in build/pages.py, FOOTER in build/parts.py).
+- LinkedIn-Link fehlt (`LINKEDIN` in build/parts.py). Datenschutz vor dem Livegang juristisch prüfen lassen.
 - `BOOKING_API` in build/build.py ist leer: Terminbuchung läuft im Vorschau-Modus, bis das Google Apps Script bereitgestellt ist.
 - Shop-Beispiel im MacBook (Rösterei Linde) ist erfunden. Durch einen echten Kunden-Shop ersetzen, sobald einer genannt wird.

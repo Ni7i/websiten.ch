@@ -606,17 +606,20 @@ LEGAL_CSS = r'''
 IMPRESSUM_MAIN = '''
   <section class="page-hero pad"><h1>Impressum.</h1></section>
   <section class="legal-text pad">
-    <span class="draft">Entwurf, Angaben vor dem Livegang ergänzen</span>
-    <h2>Verantwortlich für den Inhalt</h2>
-    <p>[Firmenname]<br>[Strasse Nr.]<br>[PLZ Ort]<br>Schweiz</p>
+    <h2>Betreiberin dieser Website</h2>
+    <p>websiten.ch<br>Inhaber: Leandro Hofer<br>Hohlstrasse 216<br>8004 Zürich<br>Schweiz</p>
     <h2>Kontakt</h2>
-    <p>E-Mail: hallo@websiten.ch<br>Telefon: [Telefon]</p>
-    <h2>Handelsregister</h2>
-    <p>[Eintrag und UID-Nummer, falls vorhanden]</p>
+    <p>E-Mail: hallo@websiten.ch<br>Termine: <a href="kontakt.html">online buchen</a>, das Gespräch findet per Video statt.</p>
+    <h2>Rechtsform</h2>
+    <p>Einzelunternehmen, nicht im Handelsregister eingetragen. Nicht mehrwertsteuerpflichtig.</p>
     <h2>Haftung</h2>
-    <p>Wir prüfen die Inhalte dieser Website sorgfältig. Für Vollständigkeit, Richtigkeit und Aktualität übernehmen wir dennoch keine Gewähr. Für Inhalte verlinkter Websites sind deren Betreiber verantwortlich.</p>
+    <p>Wir prüfen die Inhalte dieser Website sorgfältig. Für Vollständigkeit, Richtigkeit und Aktualität übernehmen wir dennoch keine Gewähr. Haftungsansprüche wegen Schäden, die durch den Zugriff auf diese Website oder die Nutzung der Informationen entstehen, sind ausgeschlossen, soweit das Gesetz es zulässt.</p>
+    <h2>Links auf andere Websites</h2>
+    <p>Für Inhalte verlinkter Websites, zum Beispiel unserer Referenzen, sind deren Betreiber verantwortlich. Zum Zeitpunkt der Verlinkung waren keine rechtswidrigen Inhalte erkennbar.</p>
     <h2>Urheberrechte</h2>
     <p>Texte, Bilder und Gestaltung dieser Website gehören websiten.ch oder den genannten Rechteinhabern. Eine Verwendung braucht unsere schriftliche Zustimmung.</p>
+    <h2>Bildnachweis</h2>
+    <p>Fotos: Unsplash (unsplash.com/license). Abbildungen der Websites unserer Kunden KF Bauservice GmbH und Kastrati Trockenbau und Innenausbau.</p>
   </section>
 '''
 
@@ -625,7 +628,7 @@ DATENSCHUTZ_MAIN = '''
   <section class="legal-text pad">
     <span class="draft">Entwurf nach revDSG, vor dem Livegang juristisch prüfen lassen</span>
     <h2>Wer ist verantwortlich?</h2>
-    <p>[Firmenname], [Strasse Nr.], [PLZ Ort], hallo@websiten.ch</p>
+    <p>websiten.ch, Inhaber Leandro Hofer, Hohlstrasse 216, 8004 Zürich, hallo@websiten.ch</p>
     <h2>Welche Daten wir bearbeiten</h2>
     <ul><li>Angaben, die Sie bei der Terminbuchung oder per E-Mail angeben, zum Beispiel Name, Firma, E-Mail, Telefonnummer und Ihre Nachricht.</li><li>Technische Daten beim Besuch der Website, zum Beispiel IP-Adresse, Browser und Zeitpunkt des Zugriffs. Diese speichert unser Hosting-Anbieter in Protokolldateien.</li></ul>
     <h2>Wozu wir sie verwenden</h2>
@@ -637,7 +640,7 @@ DATENSCHUTZ_MAIN = '''
     <h2>Ihre Rechte</h2>
     <p>Sie können jederzeit Auskunft über Ihre gespeicherten Daten verlangen und deren Berichtigung oder Löschung beantragen. Schreiben Sie dafür an hallo@websiten.ch.</p>
     <h2>Stand</h2>
-    <p>[Datum]</p>
+    <p>Oktober 2026</p>
   </section>
 '''
 
