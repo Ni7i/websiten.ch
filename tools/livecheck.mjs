@@ -12,7 +12,8 @@ const problems = [];
 for (const name of PAGES) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   page.on('pageerror', e => problems.push(`${name}: JS-Fehler ${e.message.slice(0, 120)}`));
-  page.on('console', m => { if (m.type() === 'error') problems.push(`${name}: ${m.text().slice(0, 140)}`); });
+  page.on('console', m => { if (m.type() === 'error') problems.push(`${name}: ${m.text().slice(0, 100)} [${(m.location().url || '').replace(BASE, '')}]`); });
+  page.on('requestfailed', r => problems.push(`${name}: fehlgeschlagen ${r.url().replace(BASE, '')}`));
   page.on('response', r => { if (r.status() >= 400) problems.push(`${name}: ${r.status()} ${r.url().replace(BASE, '')}`); });
   await page.goto(`${BASE}/${name}`, { waitUntil: 'load' });
   if (/\.html/.test(page.url())) problems.push(`${name}: Adresse zeigt .html (${page.url()})`);
