@@ -607,7 +607,7 @@ IMPRESSUM_MAIN = '''
   <section class="page-hero pad"><h1>Impressum.</h1></section>
   <section class="legal-text pad">
     <h2>Betreiberin dieser Website</h2>
-    <p>websiten.ch<br>Inhaber: Leandro Hofer<br>Hohlstrasse 216<br>8004 Zürich<br>Schweiz</p>
+    <p>websiten.ch<br>Inhaber: Leandro Tschanzer<br>Postfach<br>8021 Zürich<br>Schweiz</p>
     <h2>Kontakt</h2>
     <p>E-Mail: hallo@websiten.ch<br>Termine: <a href="kontakt.html">online buchen</a>, das Gespräch findet per Video statt.</p>
     <h2>Rechtsform</h2>
@@ -628,7 +628,7 @@ DATENSCHUTZ_MAIN = '''
   <section class="legal-text pad">
     <span class="draft">Entwurf nach revDSG, vor dem Livegang juristisch prüfen lassen</span>
     <h2>Wer ist verantwortlich?</h2>
-    <p>websiten.ch, Inhaber Leandro Hofer, Hohlstrasse 216, 8004 Zürich, hallo@websiten.ch</p>
+    <p>websiten.ch, Inhaber Leandro Tschanzer, Postfach, 8021 Zürich, hallo@websiten.ch</p>
     <h2>Welche Daten wir bearbeiten</h2>
     <ul><li>Angaben, die Sie bei der Terminbuchung oder per E-Mail angeben, zum Beispiel Name, Firma, E-Mail, Telefonnummer und Ihre Nachricht.</li><li>Technische Daten beim Besuch der Website, zum Beispiel IP-Adresse, Browser und Zeitpunkt des Zugriffs. Diese speichert unser Hosting-Anbieter in Protokolldateien.</li></ul>
     <h2>Wozu wir sie verwenden</h2>
