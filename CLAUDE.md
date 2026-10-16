@@ -18,7 +18,7 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
 
 - Website: CHF 590 für 4 Seiten, CHF 890 bis 6, CHF 1’190 bis 8, CHF 1’490 bis 10, jede weitere Seite CHF 150
 - Online-Shop: ab CHF 1’890 (4 Seiten, bis 30 Produkte), bis 150 Produkte + CHF 490, bis 500 + CHF 990, über 500 mit Import + CHF 1’890. Shopify-Abo zahlt der Kunde direkt.
-- Extras: Texte CHF 90 pro Seite, weitere Sprache CHF 70 pro Seite, Terminbuchung CHF 290, News/Blog CHF 190, Google-Profil CHF 150, Google Ads einrichten CHF 390
+- Extras: Texte CHF 90 pro Seite, weitere Sprache CHF 50 pro Sprache (fester Betrag, unabhängig von der Seitenzahl), Terminbuchung CHF 290, News/Blog CHF 190, Google-Profil CHF 150, Google Ads einrichten CHF 390
 - Hosting und Domain: CHF 25 im Monat. Das alte Angebot "3 Monate für CHF 10" gibt es nicht mehr.
 - Microsoft 365 und KI-Chatbots: kein fester Preis, Offerte nach Gespräch.
 - Bezahlung: Hälfte bei Auftrag, Rest bei Livegang.
@@ -38,6 +38,8 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
   - ueber-uns.html: Werbefilm "Websiten Ad v3" direkt unter dem Einstieg (FILM, FILM_CSS, FILM_JS in pages3.py). Abspielen nur per Klick, dann mit Ton. Die Startseite bleibt ohne diesen Film.
   - leistungen.html, preise.html (Satz zum Ausfüllen als Preisrechner), ueber-uns.html, kontakt.html, fragen.html, impressum.html, datenschutz.html
 - Leistungsseiten kompakt halten (Kunde: sonst zu unübersichtlich): "Das bekommen Sie" (gets) nur als Häkchen-Liste mit Titeln in 2 Spalten, "So läuft es" (steps) eine Zeile pro Schritt (Woche, Titel, ein Satz), ohne grosse Zahlen und ohne Linien.
+- Preise auf den Leistungsseiten (price in pages3.py): keine Riesenzahlen, sondern eine ruhige Liste "Leistung links, Preis rechts" unter "Was es kostet". Der Kunde fand die grosse Zahl ohne Zusammenhang unübersichtlich.
+- Google-Suche auf google-seo.html: Browserfenster in 1280 x 800 gebaut und ins MacBook verkleinert, damit es wie ein echter Bildschirm wirkt (nicht wie ein generiertes Bild).
 - MacBook-Grafiken: immer ohne Notch, nur Kamerapunkt im Rand (`macbook()` in pages3.py, `assets/img/mac-frame.webp`).
 - Menü (MENU in parts.py, Logik in site.js): fährt man über eine Leistung, zeigt ein MacBook in der Mitte deren Bildschirm (scr-*.jpg), darunter Titel und Kurztext. Die Bilder laden erst beim ersten Öffnen. Unter 1100 px und auf Touch-Geräten ausgeblendet.
 - `build/pages2.py` und `build/pages.py`: ältere Fassungen, liefern noch Daten und die Terminbuchung (KONTAKT_JS) an pages3.

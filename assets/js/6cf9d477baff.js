@@ -15,7 +15,7 @@
     L.push([shop ? 'Shop mit 4 Seiten und 30 Produkten' : 'Website mit 4 Seiten', shop ? 1890 : 590]);
     if (S.pages > 4) L.push([(S.pages - 4) + ' weitere Seite' + (S.pages > 5 ? 'n' : ''), (S.pages - 4) * 150]);
     if (shop && PROD[S.prod][1]) L.push(['Produkte ' + PROD[S.prod][0], PROD[S.prod][1]]);
-    if (S.lang > 1) L.push([(S.lang - 1) + ' weitere Sprache' + (S.lang > 2 ? 'n' : '') + ' für ' + S.pages + ' Seiten', (S.lang - 1) * S.pages * 70]);
+    if (S.lang > 1) L.push([(S.lang - 1) + ' weitere Sprache' + (S.lang > 2 ? 'n' : ''), (S.lang - 1) * 50]);
     if (S.texts) L.push(['Texte für ' + S.pages + ' Seiten', S.pages * 90]);
     document.querySelectorAll('.cf-x').forEach(b => { if (S.x[b.dataset.x]) L.push([b.textContent, +b.dataset.p]); });
     const total = L.reduce((a, l) => a + l[1], 0);

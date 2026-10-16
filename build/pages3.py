@@ -50,27 +50,23 @@ def steps(items):
     return f'<section class="xs pad" aria-labelledby="stT">{head("So läuft es", "Sie wissen in jedem Schritt, wo wir stehen und was als Nächstes kommt.", "stT")}<ol class="stp3">{body}</ol></section>'
 
 
-def price(main_pre, main_val, main_post, label, tiers=(), note='', words=()):
-    t = ''
-    if tiers:
-        t = '<dl class="tiers">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in tiers) + '</dl>'
-    w = ''
-    if words:
-        w = '<ul class="inwords">' + ''.join(f'<li>{CHECK}{x}</li>' for x in words) + '</ul>'
+def price(rows, label, note=''):
+    """Was es kostet: ruhige Liste, Leistung links, Preis rechts. Die erste Zeile ist das Hauptangebot."""
+    lst = '<dl class="plist">' + ''.join(f'<div{" class=\'pmain\'" if i == 0 else ""}><dt>{a}</dt><dd>{b}</dd></div>' for i, (a, b) in enumerate(rows)) + '</dl>'
     n = f'<p class="pnote">{note}</p>' if note else ''
-    post = f'<small>{main_post}</small>' if main_post else ''
-    return f'''<section class="xs xp pad" id="preis" aria-labelledby="prT">
-    <h2 id="prT" class="vh">Was es kostet</h2>
-    <div class="big"><span class="big-pre">{main_pre}</span><span class="big-v">{main_val}</span>{post}</div>
-    <div class="xp-r"><p class="xp-l">{label}</p>{t}{w}{n}<div class="xp-act"><a class="btn btn-sage" href="kontakt.html">Termin wählen {ARROW}</a><a class="lnk" href="preise.html">Zum Preisrechner {ARROW}</a></div></div>
-  </section>'''
+    return f"""<section class="xs pad" id="preis" aria-labelledby="prT">
+    {head("Was es kostet", label, "prT")}
+    {lst}{n}
+    <div class="xp-act"><a class="btn btn-sage" href="kontakt.html">Termin wählen {ARROW}</a><a class="lnk" href="preise.html">Zum Preisrechner {ARROW}</a></div>
+  </section>"""
 
 
 def price_offer(text):
-    return f'''<section class="xs xp pad" id="preis" aria-labelledby="prT">
-    <h2 id="prT" class="big big-t">Fester Preis, nach einem Gespräch.</h2>
-    <div class="xp-r"><p class="xp-l">{text}</p><div class="xp-act"><a class="btn btn-sage" href="kontakt.html">Termin wählen {ARROW}</a></div></div>
-  </section>'''
+    return f"""<section class="xs pad" id="preis" aria-labelledby="prT">
+    {head("Was es kostet", "Fester Preis, nach einem Gespräch.", "prT")}
+    <p class="pnote pbig">{text}</p>
+    <div class="xp-act"><a class="btn btn-sage" href="kontakt.html">Termin wählen {ARROW}</a></div>
+  </section>"""
 
 
 def faq(items):
@@ -174,38 +170,56 @@ def shop_scrub():
 
 # ------------------------------------------------------------------ Google: Suche, vorher und nachher
 def seo_demo():
-    mag = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+    """Google-Suche in einem Browserfenster im MacBook. Gebaut in 1280 x 800 und verkleinert, damit Schrift und Dichte wie auf einem echten Bildschirm wirken."""
+    ic = lambda d, c='#5F6368', w=20: f'<svg viewBox="0 0 24 24" width="{w}" height="{w}" aria-hidden="true"><path d="{d}" fill="{c}"/></svg>'
+    mag = ic('M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14')
+    mic = ic('M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3m5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11z', '#4285F4')
+    xx = ic('M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z', '#70757A', 22)
+    lock = ic('M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2m-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4m3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0z', '#5F6368', 14)
     pin = lambda x, y, c, s=1: f'<g transform="translate({x} {y}) scale({s})"><path d="M0 0c-7-9-11-14-11-20a11 11 0 0 1 22 0c0 6-4 11-11 20z" fill="{c}"/><circle cy="-20" r="4" fill="#fff"/></g>'
-    mapsvg = f'''<svg class="gs-map" viewBox="0 0 400 130" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="130" fill="#E9EEE7"/>
-      <path d="M-10 104C60 84 110 112 170 92S280 52 410 68" fill="none" stroke="#C9DCE6" stroke-width="11"/>
-      <path d="M0 34h400M0 80h400M70 0v130M190 0v130M300 0v130M0 8L400 122" fill="none" stroke="#fff" stroke-width="5"/>
-      <path d="M120 0l36 130M250 0l-26 130" fill="none" stroke="#fff" stroke-width="3"/>
-      {pin(96, 66, '#9AA3A0', .75)}{pin(318, 54, '#9AA3A0', .75)}<g class="gs-pin">{pin(206, 74, '#C5221F', 1.05)}</g></svg>'''
-    star = lambda n: '<span class="gs-st">' + '★' * n + '</span>'
-    res = lambda url, t, d, me=False: f'<div class="gs-r{" gs-me" if me else ""}"><span class="gs-u">{url}</span><b>{t}</b><p>{d}</p></div>'
-    before = '<div class="gs-list" data-v="0">' + ''.join([
-        res('vergleichsportal.ch › sanitaer › baden', 'Sanitär in Baden: 14 Betriebe im Vergleich', 'Offerten von Sanitärfirmen in Baden und Umgebung vergleichen. Kostenlos und unverbindlich.'),
-        res('bauratgeber.ch › bad', 'Was kostet eine Badsanierung? Preise 2026', 'Richtwerte für Bad, Dusche und Plattenarbeiten in der Schweiz.'),
-        res('firmenverzeichnis.ch › baden › sanitaer', 'Sanitär Baden: Adressen und Öffnungszeiten', 'Alle Einträge in Baden, sortiert nach Ort.'),
-        res('handwerkerportal.ch › aargau', 'Handwerker im Aargau finden', 'Bewertungen, Offerten und Termine für Ihr Projekt.'),
-    ]) + '</div>'
-    after = f'''<div class="gs-list" data-v="1"><div class="gs-cols"><div>
-        <div class="gs-pack">{mapsvg}
-          <div class="gs-biz gs-me"><b>Keller Sanitär</b><span>4,9 {star(5)} (38) · Sanitär</span><span>Baden · Geöffnet bis 17:00</span></div>
-          <div class="gs-biz"><b>Sanitär Baden AG</b><span>4,1 {star(4)} (12) · Sanitär</span><span>Baden · Geschlossen</span></div></div>
-        {res('keller-sanitaer.ch › badsanierung', 'Badsanierung in Baden | Keller Sanitär', 'Neues Bad mit Fixpreis und festem Termin. Beratung vor Ort in Baden, Wettingen und Umgebung.', True)}
-        {res('vergleichsportal.ch › sanitaer › baden', 'Sanitär in Baden: 14 Betriebe im Vergleich', 'Offerten von Sanitärfirmen in Baden und Umgebung vergleichen.')}
-      </div><aside class="gs-kp"><img src="assets/img/bad-keller-1200.jpg" alt="" width="1200" height="800"><b>Keller Sanitär</b><span>4,9 {star(5)} 38 Rezensionen</span><span>Sanitärbetrieb in Baden</span><span class="gs-bt"><i>Website</i><i>Route</i><i>Speichern</i></span></aside></div></div>'''
-    screen = f'''<div class="gs" aria-hidden="true">
-      <div class="gs-top"><div class="gs-bar">{mag}<span class="sr-q" data-q="badsanierung baden"></span><span class="sr-c"></span></div><i class="gs-av"></i></div>
-      <div class="gs-tabs"><b>Alle</b><span>Maps</span><span>Bilder</span><span>News</span><span>Videos</span></div>
-      <div class="gs-res">{before}{after}</div></div>'''
-    return f'''<div class="sd" id="seoDemo">
+    mapsvg = f"""<svg class="gs-map" viewBox="0 0 620 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="620" height="150" fill="#E8EDE6"/>
+      <path d="M-10 122C90 98 170 132 260 108S430 60 630 80" fill="none" stroke="#B9D3E3" stroke-width="13"/>
+      <path d="M0 40h620M0 96h620M90 0v150M260 0v150M420 0v150M540 0v150M0 12L620 140" fill="none" stroke="#fff" stroke-width="6"/>
+      <path d="M170 0l50 150M360 0l-34 150M480 0l30 150" fill="none" stroke="#fff" stroke-width="3"/>
+      <g fill="#C9D9C4"><rect x="300" y="48" width="70" height="38" rx="3"/><rect x="455" y="104" width="62" height="30" rx="3"/></g>
+      {pin(140, 84, '#8E9693', .8)}{pin(470, 62, '#8E9693', .8)}<g class="gs-pin">{pin(318, 92, '#EA4335', 1.1)}</g></svg>"""
+    stars = lambda n, r: f'<span class="gs-rt">{r}</span><span class="gs-st">{"★" * n}{"☆" * (5 - n)}</span>'
+    fav = lambda t, bg, fg='#fff': f'<i class="gs-fav" style="background:{bg};color:{fg}">{t}</i>'
+
+    def res(fv, site, url, title, snip, links=''):
+        return f'<div class="gs-r"><div class="gs-src">{fv}<div><b>{site}</b><span>{url}</span></div></div><a>{title}</a><p>{snip}</p>{links}</div>'
+
+    ad = f'<div class="gs-r"><div class="gs-src"><span class="gs-ad">Gesponsert</span></div><div class="gs-src">{fav("S", "#1E5BB8")}<div><b>Sanitär Meier AG</b><span>www.sanitaer-meier.ch</span></div></div><a>Badsanierung zum Fixpreis | Offerte in 48 Stunden</a><p>Komplettbad aus einer Hand. Beratung, Planung und Umsetzung im ganzen Aargau.</p></div>'
+    portal = res(fav('v', '#F29900'), 'Vergleichsportal', 'https://www.vergleichsportal.ch › sanitaer › baden', 'Sanitär in Baden: 14 Betriebe im Vergleich', 'Offerten von Sanitärfirmen in Baden und Umgebung vergleichen. Kostenlos und unverbindlich.')
+    before = '<div class="gs-list" data-v="0"><div class="gs-main">' + ad + portal + ''.join([
+        res(fav('b', '#188038'), 'Bauratgeber', 'https://www.bauratgeber.ch › bad › kosten', 'Was kostet eine Badsanierung? Preise 2026', '15.03.2026 · Richtwerte für Bad, Dusche und Plattenarbeiten in der Schweiz, mit Beispielen.'),
+        res(fav('f', '#5F6368'), 'Firmenverzeichnis', 'https://www.firmenverzeichnis.ch › baden', 'Sanitär Baden: Adressen und Öffnungszeiten', 'Alle Einträge in Baden AG, sortiert nach Ort und Bewertung.'),
+    ]) + '</div></div>'
+    after = f"""<div class="gs-list" data-v="1"><div class="gs-main">
+        <div class="gs-loc"><b class="gs-h">Unternehmen</b>{mapsvg}
+          <div class="gs-biz"><div><b>Keller Sanitär</b><span>{stars(5, '4,9')} (38) · Sanitärbetrieb</span><span>Baden · <em>Geöffnet</em> · Schliesst um 17:00</span></div><span class="gs-bt"><i>Website</i><i>Route</i></span></div>
+          <div class="gs-biz"><div><b>Sanitär Meier AG</b><span>{stars(4, '4,2')} (17) · Sanitärbetrieb</span><span>Wettingen · <em>Geöffnet</em> · Schliesst um 18:00</span></div><span class="gs-bt"><i>Website</i><i>Route</i></span></div>
+        </div>
+        {res(fav('K', '#2E5E3F'), 'Keller Sanitär', 'https://www.keller-sanitaer.ch › badsanierung', 'Badsanierung in Baden | Keller Sanitär', 'Neues Bad mit Fixpreis und festem Termin. Beratung vor Ort in Baden, Wettingen und Umgebung.', '<span class="gs-sl"><a>Ablauf</a><a>Referenzen</a><a>Offerte anfragen</a></span>')}
+        {portal}
+      </div>
+      <aside class="gs-kp"><img src="assets/img/bad-keller-1200.jpg" alt="" width="1200" height="800"><div class="gs-kpb"><b>Keller Sanitär</b><span>{stars(5, '4,9')} 38 Google-Rezensionen</span><span class="gs-mut">Sanitärbetrieb in Baden</span>
+        <span class="gs-bt"><i>Website</i><i>Route</i><i>Speichern</i></span>
+        <p><b>Adresse:</b> Bruggerstrasse 12, 5400 Baden</p><p><b>Öffnungszeiten:</b> <em>Geöffnet</em> · Schliesst um 17:00</p></div></aside></div>"""
+    page = f"""<div class="gs-in">
+      <div class="gs-top"><div class="gs-bar">{mag}<span class="sr-q" data-q="badsanierung baden"></span><span class="sr-c"></span><span class="gs-ico">{xx}<i></i>{mic}</span></div><i class="gs-av">K</i></div>
+      <div class="gs-tabs"><b>Alle</b><span>Maps</span><span>Bilder</span><span>News</span><span>Videos</span><span>Mehr</span><span class="gs-tl">Tools</span></div>
+      <div class="gs-res">{before}{after}</div></div>"""
+    screen = f"""<div class="gs" aria-hidden="true"><div class="gs-win">
+      <div class="gs-chrome"><span class="gs-dots"><i></i><i></i><i></i></span><span class="gs-tab">badsanierung baden - Google Suche</span></div>
+      <div class="gs-addr">{lock}<span>google.ch/search?q=badsanierung+baden</span></div>
+      {page}</div></div>"""
+    return f"""<div class="sd" id="seoDemo">
       <div class="stage" data-stage="1040x660"><div class="st-in sd-in"><div class="sc-shm"></div>{macbook(screen)}</div></div>
       <div class="sd-ctl"><div class="sr-sw" role="group" aria-label="Suchergebnis zeigen"><button type="button" data-v="0" aria-pressed="false">Vorher</button><button type="button" data-v="1" aria-pressed="true">Nachher</button></div>
         <p class="sd-cap" data-v="0">Keller Sanitär ist nicht auf Seite 1.</p><p class="sd-cap" data-v="1">Keller Sanitär steht ganz oben, mit Karte und Bewertungen.</p></div>
       <p class="demo-n">Beispiel mit einem erfundenen Betrieb</p>
-    </div>'''
+    </div>"""
 
 
 # ------------------------------------------------------------------ Hosting: Schweizer Karte, alles läuft nach Genf
@@ -320,13 +334,13 @@ HERO = {
 }
 
 PRICE = {
- 'websites': lambda: price('CHF', '590', '', 'Website mit 4 Seiten. Gestaltung, Handy-Version, Kontaktformular, SSL und Einführung sind dabei.',
-                           [('6 Seiten', 'CHF 890'), ('8 Seiten', 'CHF 1’190'), ('10 Seiten', 'CHF 1’490'), ('Jede weitere Seite', 'CHF 150'), ('Hosting und Domain', 'CHF 25 im Monat')]),
- 'shops': lambda: price('ab CHF', '1’890', '', 'Shop mit 4 Seiten und bis 30 Produkten. Mit TWINT, Karte, Rechnung und Versand.',
-                        [('Bis 150 Produkte', '+ CHF 490'), ('Bis 500 Produkte', '+ CHF 990'), ('Über 500, mit Import', '+ CHF 1’890')], 'Das Shopify-Abo zahlen Sie direkt an Shopify.'),
- 'seo': lambda: price('CHF', '150', '', 'Google-Unternehmensprofil einrichten, mit Fotos, Leistungen und Öffnungszeiten.',
-                      [('Google Ads einrichten', 'CHF 390')], 'Das Werbebudget zahlen Sie direkt an Google. Seiten für Ihre Region und die laufende Betreuung rechnen wir nach Umfang, mit fester Offerte.'),
- 'hosting': lambda: price('CHF', '25', 'im Monat', 'Alles, damit Ihre Website läuft. Ohne Zusatzkosten.', words=['Hosting bei Infomaniak in Genf', '.ch-Domain', 'E-Mail-Adresse', 'Tägliche Backups', 'Updates', 'SSL-Zertifikat']),
+ 'websites': lambda: price([('Website mit 4 Seiten', 'CHF 590'), ('Bis 6 Seiten', 'CHF 890'), ('Bis 8 Seiten', 'CHF 1’190'), ('Bis 10 Seiten', 'CHF 1’490'), ('Jede weitere Seite', 'CHF 150'), ('Weitere Sprache', 'CHF 50'), ('Hosting und Domain', 'CHF 25 im Monat')],
+                           'Gestaltung, Handy-Version, Kontaktformular, SSL und Einführung sind immer dabei.'),
+ 'shops': lambda: price([('Shop mit 4 Seiten, bis 30 Produkte', 'ab CHF 1’890'), ('Bis 150 Produkte', '+ CHF 490'), ('Bis 500 Produkte', '+ CHF 990'), ('Über 500, mit Import', '+ CHF 1’890')],
+                        'Mit TWINT, Karte, Rechnung und Versand.', 'Das Shopify-Abo zahlen Sie direkt an Shopify.'),
+ 'seo': lambda: price([('Google-Unternehmensprofil einrichten', 'CHF 150'), ('Google Ads einrichten', 'CHF 390')],
+                      'Profil mit Fotos, Leistungen und Öffnungszeiten.', 'Das Werbebudget zahlen Sie direkt an Google. Seiten für Ihre Region und die laufende Betreuung rechnen wir nach Umfang, mit fester Offerte.'),
+ 'hosting': lambda: price([('Hosting, Domain und E-Mail', 'CHF 25 im Monat')], 'Alles, damit Ihre Website läuft. Ohne Zusatzkosten.'),
  'm365': lambda: price_offer('Der Preis hängt davon ab, wie viele Personen und Geräte Sie haben. Nach dem ersten Gespräch bekommen Sie eine Offerte mit festem Preis. Die Lizenzen laufen auf Ihren Namen.'),
  'ki': lambda: price_offer('Der Preis hängt davon ab, wie viele Inhalte der Chatbot kennen soll und ob er Termine vorschlägt. Nach dem ersten Gespräch bekommen Sie eine Offerte mit festem Preis.'),
 }
@@ -389,7 +403,7 @@ def preise():
   </section>'''
     groups = [('Website', [('4 Seiten', 'CHF 590'), ('6 Seiten', 'CHF 890'), ('8 Seiten', 'CHF 1’190'), ('10 Seiten', 'CHF 1’490'), ('Jede weitere Seite', 'CHF 150')], 'Mit Gestaltung, Handy-Version, Kontaktformular, Google Maps und SSL.'),
               ('Online-Shop', [('4 Seiten, bis 30 Produkte', 'CHF 1’890'), ('Bis 150 Produkte', '+ CHF 490'), ('Bis 500 Produkte', '+ CHF 990'), ('Über 500, mit Import', '+ CHF 1’890')], 'Mit TWINT, Karte, Rechnung und Versand. Das Shopify-Abo zahlen Sie direkt an Shopify.'),
-              ('Dazu nach Wunsch', [('Texte von uns, pro Seite', 'CHF 90'), ('Weitere Sprache, pro Seite', 'CHF 70'), ('Online-Terminbuchung', 'CHF 290'), ('News oder Blog', 'CHF 190'), ('Google-Profil einrichten', 'CHF 150'), ('Google Ads einrichten', 'CHF 390')], ''),
+              ('Dazu nach Wunsch', [('Texte von uns, pro Seite', 'CHF 90'), ('Weitere Sprache', 'CHF 50'), ('Online-Terminbuchung', 'CHF 290'), ('News oder Blog', 'CHF 190'), ('Google-Profil einrichten', 'CHF 150'), ('Google Ads einrichten', 'CHF 390')], ''),
               ('Hosting', [('Hosting und .ch-Domain', 'CHF 25 im Monat')], 'Server bei Infomaniak in Genf. Mit SSL, E-Mail-Adresse, Backups und Updates.')]
     gl = ''.join(f'<div class="pg"><h3>{h}</h3><dl class="tiers">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in rows) + '</dl>' + (f'<p class="pnote">{n}</p>' if n else '') + '</div>' for h, rows, n in groups)
     allp = f'<section class="xs pad" aria-labelledby="apT">{head("Alle Preise", "In CHF, einmalig, wenn nichts anderes steht.", "apT")}<div class="pgs">{gl}</div></section>'
@@ -534,6 +548,14 @@ CSS = r'''
 .inwords li{display:inline-flex;align-items:center;gap:9px}
 .inwords svg{width:16px;height:16px;color:var(--acc-s)}
 .pnote{font-size:15.5px;line-height:1.6;color:#8E8E8E;margin-top:22px;max-width:52ch}
+.plist{max-width:760px;margin:0}
+.plist > div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:9px 0}
+.plist dt{font-size:clamp(17px,1.3vw,19px);color:#C4C4C4}
+.plist dd{margin:0;font-size:clamp(17px,1.3vw,19px);font-weight:600;color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.plist .pmain{padding-bottom:16px}
+.plist .pmain dt{font-size:clamp(21px,1.8vw,27px);font-weight:700;letter-spacing:-.03em;color:var(--text)}
+.plist .pmain dd{font-size:clamp(21px,1.8vw,27px);font-weight:700;letter-spacing:-.03em;color:var(--acc-s)}
+.pnote.pbig{font-size:clamp(18px,1.45vw,22px);line-height:1.55;color:#D6D6D6;max-width:46ch}
 .xp-act{display:flex;flex-wrap:wrap;align-items:center;gap:20px 30px;margin-top:36px}
 
 /* Fragen */
@@ -685,42 +707,67 @@ details[open] .pm2{transform:rotate(45deg)}
 .sp-done p{font-size:14px;color:#6E675E;margin-top:6px}
 .sp-done .sp-sum{width:100%;text-align:left;margin-top:30px}
 
-/* Google-Suche im MacBook */
+/* Google-Suche im MacBook: Browserfenster in 1280 x 800, auf den Bildschirm (854 x 534) verkleinert */
 .sd .sc-mbp{left:70px;top:8px}
 .sd .sc-shm{left:0;width:1040px;top:598px}
-.gs{position:absolute;inset:0;background:#fff;color:#202124;font-family:Arial,"Helvetica Neue",sans-serif;overflow:hidden}
-.gs-top{display:flex;align-items:center;gap:18px;padding:18px 26px 12px}
-.gs-bar{flex:1;max-width:560px;display:flex;align-items:center;gap:12px;height:44px;padding:0 18px;border-radius:999px;background:#fff;box-shadow:0 1px 6px rgba(32,33,36,.28);font-size:16px}
-.gs-bar svg{width:18px;height:18px;color:#70757A;flex:none}
+.gs{position:absolute;inset:0;overflow:hidden;background:#fff}
+.gs-win{position:absolute;left:0;top:0;width:1280px;height:800px;transform:scale(.66719);transform-origin:0 0;font-family:Arial,"Helvetica Neue",sans-serif;color:#202124;background:#fff}
+.gs-chrome{height:38px;background:#DEE1E6;display:flex;align-items:flex-end;padding:0 12px;gap:18px}
+.gs-dots{display:flex;gap:8px;align-self:center}
+.gs-dots i{width:12px;height:12px;border-radius:50%;background:#FF5F57}
+.gs-dots i:nth-child(2){background:#FEBC2E}.gs-dots i:nth-child(3){background:#28C840}
+.gs-tab{height:30px;min-width:240px;padding:0 16px;display:flex;align-items:center;font-size:12px;color:#3C4043;background:#fff;border-radius:8px 8px 0 0}
+.gs-addr{height:36px;display:flex;align-items:center;gap:10px;margin:0;padding:0 16px;background:#fff;box-shadow:0 1px 0 #E4E6EA}
+.gs-addr span{flex:1;max-width:820px;height:26px;display:flex;align-items:center;padding:0 14px;border-radius:13px;background:#F1F3F4;font-size:13px;color:#202124}
+.gs-in{position:relative;height:726px}
+.gs-top{display:flex;align-items:center;padding:20px 28px 0 150px}
+.gs-bar{width:692px;height:46px;display:flex;align-items:center;gap:14px;padding:0 8px 0 16px;border-radius:24px;box-shadow:0 1px 6px rgba(32,33,36,.28);font-size:16px}
+.gs-ico{margin-left:auto;display:flex;align-items:center;gap:12px}
+.gs-ico > i{width:1px;height:26px;background:#DADCE0}
 .sr-q{white-space:pre}
-.sr-c{width:2px;height:20px;background:#1A0DAB;animation:blink 1s steps(1) infinite}
+.sr-c{width:1px;height:20px;background:#202124;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-.gs-av{margin-left:auto;width:32px;height:32px;border-radius:50%;background:#8FAE96}
-.gs-tabs{display:flex;gap:22px;padding:0 26px 0 44px;font-size:13px;color:#5F6368;border-bottom:1px solid #EBEBEB}
-.gs-tabs > *{padding:8px 0 10px}
-.gs-tabs b{font-weight:400;color:#1A0DAB;border-bottom:3px solid #1A0DAB}
-.gs-res{position:relative;height:calc(100% - 112px)}
-.gs-list{position:absolute;inset:0;padding:14px 26px 0 44px;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s var(--ease)}
+.gs-av{margin-left:auto;width:32px;height:32px;border-radius:50%;background:#2E5E3F;color:#fff;font-style:normal;font-size:14px;display:grid;place-items:center}
+.gs-tabs{display:flex;gap:24px;padding:16px 0 0 166px;font-size:14px;color:#5F6368;box-shadow:0 1px 0 #EBEBEB}
+.gs-tabs > *{padding:0 2px 11px}
+.gs-tabs b{font-weight:400;color:#1A0DAB;box-shadow:inset 0 -3px 0 #1A0DAB}
+.gs-tl{margin-left:auto;margin-right:40px}
+.gs-res{position:relative;height:620px}
+.gs-list{position:absolute;inset:0;display:flex;gap:56px;padding:20px 0 0 166px;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .5s var(--ease)}
 .gs-list.on{opacity:1;transform:none}
-.gs-cols{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:28px}
-.gs-r{padding:8px 0 12px;max-width:560px}
-.gs-u{display:block;font-size:12px;color:#4D5156}
-.gs-r b{display:block;font-size:19px;font-weight:400;color:#1A0DAB;margin-top:3px;line-height:1.25}
-.gs-r p{font-size:13px;line-height:1.5;color:#4D5156;margin-top:3px}
-.gs-pack{border:1px solid #DADCE0;border-radius:12px;overflow:hidden;margin-bottom:8px}
-.gs-map{display:block;width:100%;height:96px}
-.gs-pin{transform-origin:206px 74px;animation:pinIn .7s var(--ease) both}
+.gs-main{width:652px;flex:none}
+.gs-r{margin-bottom:28px}
+.gs-src{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.gs-src b{display:block;font-size:14px;font-weight:400;color:#202124;line-height:20px}
+.gs-src span{display:block;font-size:12px;color:#4D5156;line-height:18px}
+.gs-fav{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;font-weight:700;box-shadow:0 0 0 1px #ECEDEF}
+.gs-ad{font-size:14px;font-weight:700;color:#202124}
+.gs-r > a{display:block;font-size:20px;line-height:26px;color:#1A0DAB}
+.gs-r p{font-size:14px;line-height:22px;color:#4D5156;margin-top:4px}
+.gs-sl{display:flex;gap:22px;margin-top:6px}
+.gs-sl a{font-size:14px;color:#1A0DAB}
+.gs-loc{margin-bottom:26px}
+.gs-h{display:block;font-size:20px;font-weight:400;margin-bottom:12px}
+.gs-map{display:block;width:100%;height:150px;border-radius:12px}
+.gs-pin{transform-origin:318px 92px;animation:pinIn .7s var(--ease) both}
 @keyframes pinIn{from{transform:translateY(-16px);opacity:0}to{transform:none;opacity:1}}
-.gs-biz{padding:7px 14px;border-top:1px solid #EBEBEB}
-.gs-biz b{display:block;font-size:15px;font-weight:400;color:#1A0DAB}
-.gs-biz > span{display:block;font-size:12px;color:#4D5156;margin-top:2px}
-.gs-st{color:#F4B400;letter-spacing:-.05em;margin:0 2px}
-.gs-kp{border:1px solid #DADCE0;border-radius:12px;overflow:hidden;align-self:start}
-.gs-kp img{display:block;width:100%;height:120px;object-fit:cover}
-.gs-kp b{display:block;font-size:19px;font-weight:400;padding:10px 14px 0}
-.gs-kp > span{display:block;font-size:12px;color:#4D5156;padding:3px 14px 0}
-.gs-kp .gs-bt{display:flex;gap:6px;padding:12px 14px 14px}
-.gs-bt i{font-style:normal;font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid #DADCE0;color:#1A0DAB}
+.gs-biz{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+.gs-biz b{display:block;font-size:16px;font-weight:400;color:#1A0DAB}
+.gs-biz > div > span{display:block;font-size:14px;color:#4D5156;margin-top:3px;line-height:20px}
+.gs-biz em,.gs-kp em{font-style:normal;color:#188038}
+.gs-rt{color:#4D5156;margin-right:4px}
+.gs-st{color:#FBBC04;letter-spacing:-.04em}
+.gs-bt{display:flex;gap:8px}
+.gs-bt i{font-style:normal;font-size:14px;padding:7px 14px;border-radius:18px;box-shadow:0 0 0 1px #DADCE0;color:#1A0DAB}
+.gs-kp{width:368px;flex:none;align-self:flex-start;border-radius:8px;box-shadow:0 0 0 1px #DADCE0;overflow:hidden}
+.gs-kp img{display:block;width:100%;height:150px;object-fit:cover}
+.gs-kpb{padding:14px 16px 18px}
+.gs-kpb > b{display:block;font-size:22px;font-weight:400;line-height:28px}
+.gs-kpb > span{display:block;font-size:14px;margin-top:4px}
+.gs-mut{color:#70757A}
+.gs-kpb .gs-bt{margin:14px 0}
+.gs-kpb p{font-size:14px;line-height:22px;color:#202124}
+.gs-kpb p b{font-weight:700}
 .sd-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:clamp(14px,2vw,26px)}
 .sr-sw{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:#1F1F1F}
 .sr-sw button{padding:8px 16px;border-radius:999px;font-size:14px;color:#B9B9B9}
@@ -1053,7 +1100,7 @@ PREISE_JS = r'''
     L.push([shop ? 'Shop mit 4 Seiten und 30 Produkten' : 'Website mit 4 Seiten', shop ? 1890 : 590]);
     if (S.pages > 4) L.push([(S.pages - 4) + ' weitere Seite' + (S.pages > 5 ? 'n' : ''), (S.pages - 4) * 150]);
     if (shop && PROD[S.prod][1]) L.push(['Produkte ' + PROD[S.prod][0], PROD[S.prod][1]]);
-    if (S.lang > 1) L.push([(S.lang - 1) + ' weitere Sprache' + (S.lang > 2 ? 'n' : '') + ' für ' + S.pages + ' Seiten', (S.lang - 1) * S.pages * 70]);
+    if (S.lang > 1) L.push([(S.lang - 1) + ' weitere Sprache' + (S.lang > 2 ? 'n' : ''), (S.lang - 1) * 50]);
     if (S.texts) L.push(['Texte für ' + S.pages + ' Seiten', S.pages * 90]);
     document.querySelectorAll('.cf-x').forEach(b => { if (S.x[b.dataset.x]) L.push([b.textContent, +b.dataset.p]); });
     const total = L.reduce((a, l) => a + l[1], 0);
