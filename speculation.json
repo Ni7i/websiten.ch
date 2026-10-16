@@ -1,4 +1,3 @@
 {
-  "prerender": [{"where": {"and": [{"href_matches": "/*.html"}, {"not": {"selector_matches": "[target=_blank]"}}]}, "eagerness": "moderate"}],
-  "prefetch": [{"where": {"href_matches": "/*.html"}, "eagerness": "moderate"}]
+  "prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "/assets/*"}}, {"not": {"selector_matches": "[target=_blank]"}}]}, "eagerness": "moderate"}]
 }

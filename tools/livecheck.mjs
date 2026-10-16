@@ -1,5 +1,5 @@
 // Prüft die Live-Seite in einem echten Chrome (läuft nach jedem Deploy in GitHub Actions).
-//   node tools/livecheck.mjs https://beispiel13241324.vercel.app
+//   node tools/livecheck.mjs https://websiten.ch
 // Meldet Fehler als GitHub-Annotation und endet dann mit Code 1.
 import { chromium } from 'playwright-core';
 
@@ -13,7 +13,12 @@ for (const name of PAGES) {
   page.on('pageerror', e => problems.push(`${name}: JS-Fehler ${e.message.slice(0, 120)}`));
   page.on('console', m => { if (m.type() === 'error') problems.push(`${name}: ${m.text().slice(0, 140)}`); });
   page.on('response', r => { if (r.status() >= 400) problems.push(`${name}: ${r.status()} ${r.url().replace(BASE, '')}`); });
-  await page.goto(`${BASE}/${name}`, { waitUntil: 'load' });
+  // Saubere Adressen: /websites statt websites.html, / statt index.html
+  const path = name === 'index.html' ? '' : name.replace(/\.html$/, '');
+  await page.goto(`${BASE}/${path}`, { waitUntil: 'load' });
+  if (/\.html/.test(page.url())) problems.push(`${name}: Adresse zeigt .html (${page.url()})`);
+  const bad = await page.evaluate(() => [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(h => /\.html/.test(h)).slice(0, 3));
+  if (bad.length) problems.push(`${name}: Links mit .html ${bad.join(' ')}`);
   await page.waitForTimeout(400);
   if (name === 'index.html' || name === 'hosting.html') {
     // Menü öffnen: MacBook-Vorschau muss sofort Bild und Text zeigen, ohne Zeigen auf eine Leistung

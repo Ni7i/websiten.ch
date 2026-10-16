@@ -1,6 +1,8 @@
 /* websiten.ch – gemeinsame Skripte */
 (function(){
   const body = document.body;
+  /* Seitenname ohne .html und Schrägstrich: /websites, websites.html und / (index) zählen gleich */
+  const pg = h => (h || '').split('#')[0].split('/').pop().replace(/\.html$/, '') || 'index';
 
   /* Logo: Schriftzug beim Scrollen ausblenden.
      Die Farbe richtet sich nach der Fläche direkt unter dem Logo:
@@ -70,7 +72,7 @@
     const prev = menu.querySelector('.menu-prev');
     if (prev) {
       const mds = [...prev.querySelectorAll('.md')], shots = [...prev.querySelectorAll('.mp-scr img')], links = [...menu.querySelectorAll('.menu-cols a[data-k]')];
-      const page = links.find(a => a.getAttribute('href') === (location.pathname.split('/').pop() || 'index.html'));
+      const page = links.find(a => pg(a.getAttribute('href')) === pg(location.pathname));
       const base = page ? page.dataset.k : 'websites';
       const show = k => { k = k || base; mds.forEach(d => d.classList.toggle('on', d.dataset.k === k)); shots.forEach(i => i.classList.toggle('on', i.dataset.k === k)); links.forEach(a => a.classList.toggle('on', a.dataset.k === k)); };
       links.forEach(a => { a.addEventListener('mouseenter', () => show(a.dataset.k)); a.addEventListener('focus', () => show(a.dataset.k)); });
@@ -80,8 +82,8 @@
       ['pointerenter', 'focus', 'click'].forEach(ev => btn.addEventListener(ev, load));
       show(null);
     }
-    const here = location.pathname.split('/').pop() || 'index.html';
-    menu.querySelectorAll('.menu-big a').forEach(a => { if(a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
+    const here = pg(location.pathname);
+    menu.querySelectorAll('.menu-big a').forEach(a => { if(pg(a.getAttribute('href')) === here) a.setAttribute('aria-current', 'page'); });
   }
 
   /* Footer: Schriftzug aus Pixeln, steigt aus dem Boden und pixelt leise weiter */
@@ -170,8 +172,8 @@
   if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules'))) {
     const got = new Set();
     const pre = e => {
-      const a = e.target.closest && e.target.closest('a[href$=".html"]');
-      if (!a || a.origin !== location.origin || got.has(a.href)) return;
+      const a = e.target.closest && e.target.closest('a[href^="/"]');
+      if (!a || a.origin !== location.origin || a.pathname.startsWith('/assets/') || a.pathname === location.pathname || got.has(a.href)) return;
       got.add(a.href);
       const l = document.createElement('link'); l.rel = 'prefetch'; l.href = a.href; document.head.appendChild(l);
     };

@@ -117,4 +117,7 @@ def finish(html):
         return f'<script src="{asset("js", m.group(1), "js")}" defer></script>'
     html = re.sub(r'<script>\n?(.*?)\n?</script>', js, html, flags=re.S)
     html = html.replace('<script src="assets/site.js"></script>', f'<script src="{version("assets/site.js")}" defer></script>')
+    # Saubere Adressen ohne .html (Vercel liefert /websites aus websites.html, cleanUrls in vercel.json)
+    html = re.sub(r'href="index\.html(#[^"]*)?"', lambda m: f'href="/{m.group(1) or ""}"', html)
+    html = re.sub(r'href="([a-z0-9-]+)\.html(#[^"]*)?"', lambda m: f'href="/{m.group(1)}{m.group(2) or ""}"', html)
     return _lazy(html)

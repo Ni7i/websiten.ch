@@ -64,21 +64,23 @@ jobs:
       - name: Live-Seite prüfen
         run: |
           sleep 5
-          B=https://beispiel13241324.vercel.app
+          B=https://websiten.ch
           fail=""
-          for p in index.html websites.html google-seo.html ueber-uns.html; do
+          for p in "" websites google-seo ueber-uns; do
             code=$(curl -s -o /tmp/p.html -w '%{http_code}' "$B/$p")
             [ "$code" = 200 ] || fail="$fail $p:$code"
           done
-          curl -s "$B/index.html" | grep -q 'websiten-hero-m.mp4' || fail="$fail index:alte-Fassung"
-          h=$(curl -sI "$B/index.html")
+          curl -s "$B/" | grep -q 'websiten-hero-m.mp4' || fail="$fail index:alte-Fassung"
+          h=$(curl -sI "$B/")
           echo "$h" | grep -qi '^content-security-policy:' || fail="$fail CSP-fehlt"
           echo "$h" | grep -qi '^strict-transport-security:' || fail="$fail HSTS-fehlt"
-          size=$(curl -s "$B/index.html" | wc -c)
+          size=$(curl -s "$B/" | wc -c)
+          loc=$(curl -sI "$B/index.html" | tr -d '\r' | grep -i '^location:' | awk '{print $2}')
+          [ "$loc" = "/" ] || fail="$fail index.html-leitet-nicht-um:$loc"
           if [ -n "$fail" ]; then echo "::error::Live-Prüfung:$fail"; exit 1; fi
           echo "::notice::Live-Prüfung ok: 4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv, Startseite $size Bytes"
       # Echter Chrome: Script-Fehler, fehlende Dateien, Menü-Vorschau
       - name: Live-Test im Browser
         run: |
           npm install --no-save playwright-core@1.56.1 >/dev/null
-          node tools/livecheck.mjs https://beispiel13241324.vercel.app
+          node tools/livecheck.mjs https://websiten.ch

@@ -3,7 +3,7 @@
   "installCommand": "echo 'nichts zu installieren'",
   "buildCommand": "echo 'dist ist schon gebaut (build.py und dist.py)'",
   "outputDirectory": "dist",
-  "cleanUrls": false,
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -104,5 +104,6 @@
         }
       ]
     }
-  ]
+  ],
+  "trailingSlash": false
 }
