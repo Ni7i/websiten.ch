@@ -44,6 +44,20 @@ jobs:
           fi
           echo "$out"
           echo "::notice::Deploy fertig: $(echo "$out" | grep -Eo 'https://[^ ]+' | tail -n 1)"
+      # Eigene Domain: websiten.ch und www.websiten.ch mit dem Projekt verbinden und DNS-Stand melden
+      - name: Domain websiten.ch
+        continue-on-error: true
+        run: |
+          S=${SCOPE:+--scope $SCOPE}
+          for d in websiten.ch www.websiten.ch; do
+            out=$(vercel domains add $d beispiel13241324 $S --token "$VERCEL_TOKEN" 2>&1); echo "$out"
+            echo "::notice::Domain $d hinzufügen: $(echo "$out" | grep -v '^Vercel CLI' | tail -n 4 | tr '\n' ' ')"
+            ins=$(vercel domains inspect $d $S --token "$VERCEL_TOKEN" 2>&1); echo "$ins"
+            echo "::notice::Domain $d Stand: $(echo "$ins" | grep -iE 'nameserver|record|misconfig|verified|A |CNAME|TXT|intended|current' | tr -s ' ' | tr '\n' ' ' | cut -c1-900)"
+          done
+          echo "::notice::DNS jetzt: NS $(dig +short NS websiten.ch | tr '\n' ' ') | A $(dig +short A websiten.ch | tr '\n' ' ') | www $(dig +short www.websiten.ch | tr '\n' ' ') | Registrar $(whois websiten.ch 2>/dev/null | grep -iA2 registrar | tr -s ' ' | tr '\n' ' ' | cut -c1-200)"
+          code=$(curl -s -o /dev/null -w '%{http_code}' https://websiten.ch/index.html || true)
+          echo "::notice::https://websiten.ch antwortet mit: $code"
       # Live-Seite prüfen: neue Fassung online, Sicherheits-Header aktiv
       - name: Live-Seite prüfen
         run: |

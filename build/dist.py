@@ -39,7 +39,7 @@ for p in pages:
 for r in sorted(need):
     os.makedirs(os.path.join(OUT, os.path.dirname(r)), exist_ok=True)
     shutil.copy2(os.path.join(ROOT, r), os.path.join(OUT, r))
-for f in ('vercel.json', '_headers', 'favicon.ico'):
+for f in ('vercel.json', '_headers', 'favicon.ico', 'speculation.json'):
     shutil.copy2(os.path.join(ROOT, f), OUT)
 
 size = sum(os.path.getsize(os.path.join(d, f)) for d, _, fs in os.walk(OUT) for f in fs)

@@ -8,6 +8,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
+  Speculation-Rules: "/speculation.json"
+
+/speculation.json
+  Content-Type: application/speculationrules+json
 
 /assets/js/*
   Cache-Control: public, max-age=31536000, immutable

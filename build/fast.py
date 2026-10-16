@@ -98,6 +98,12 @@ def _lazy(html):
 
 def finish(html):
     html = DATA_IMG.sub(_image, html)
+    # Startbild des Hero-Films früh laden (grösstes Element beim ersten Zeichnen), je Bildschirm das passende
+    m = re.search(r'<video[^>]*id="heroVid"[^>]*poster="([^"]+)"', html)
+    if m:
+        pre = (f'<link rel="preload" as="image" href="{m.group(1)}" media="(min-width: 861px)" fetchpriority="high">\n'
+               '<link rel="preload" as="image" href="assets/img/hero-poster-m.jpg" media="(max-width: 860px)" fetchpriority="high">\n')
+        html = html.replace('<link rel="preload"', pre + '<link rel="preload"', 1)
     html = FILE_IMG.sub(_file_image, html)
     # CSS bleibt im HTML: kein zusätzlicher Weg zum Server vor dem ersten Bild (zählt am Handy am meisten).
     # Auch site.css wird eingebettet; die Schrift-Pfade darin zeigen dann von der Seite aus auf assets/fonts.

@@ -166,4 +166,16 @@
     const done = () => { b.textContent = 'Kopiert'; setTimeout(() => b.textContent = old, 1600); };
     try { navigator.clipboard.writeText(txt).then(done, () => { b.textContent = txt; }); } catch(e){ b.textContent = txt; }
   }));
+  /* Nächste Seite vorladen, sobald der Zeiger auf einem Link ruht (Chrome erledigt das über speculation.json) */
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules'))) {
+    const got = new Set();
+    const pre = e => {
+      const a = e.target.closest && e.target.closest('a[href$=".html"]');
+      if (!a || a.origin !== location.origin || got.has(a.href)) return;
+      got.add(a.href);
+      const l = document.createElement('link'); l.rel = 'prefetch'; l.href = a.href; document.head.appendChild(l);
+    };
+    document.addEventListener('pointerover', pre, { passive: true });
+    document.addEventListener('touchstart', pre, { passive: true });
+  }
 })();
