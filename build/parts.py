@@ -8,7 +8,7 @@ LI = LINKEDIN or '#linkedin'
 WA_ICON = '<svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5l1.3-3.9A8 8 0 1 1 8.6 19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.6c0 3.3 3 6.3 6.3 6.3l.9-1.6-1.9-.9-.8.9c-1-.4-2.1-1.5-2.5-2.5l.9-.8-.9-1.9z" fill="currentColor"/></svg>'
 
 # Schriften liegen in assets/fonts (selbst gehostet, kein Google). Die Hauptschrift wird vorgeladen.
-FONTS = '<link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">\n<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">'
+FONTS = '<link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">\n<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">\n<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">'
 
 ARROW = '<svg width="20" height="13" viewBox="0 0 22 14" aria-hidden="true"><path d="M1 7h19M14 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
 
