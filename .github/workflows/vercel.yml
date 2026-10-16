@@ -61,3 +61,8 @@ jobs:
           size=$(curl -s "$B/index.html" | wc -c)
           if [ -n "$fail" ]; then echo "::error::Live-Prüfung:$fail"; exit 1; fi
           echo "::notice::Live-Prüfung ok: 4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv, Startseite $size Bytes"
+      # Echter Chrome: Script-Fehler, fehlende Dateien, Menü-Vorschau
+      - name: Live-Test im Browser
+        run: |
+          npm install --no-save playwright-core@1.56.1 >/dev/null
+          node tools/livecheck.mjs https://beispiel13241324.vercel.app

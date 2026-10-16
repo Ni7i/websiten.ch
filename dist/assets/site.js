@@ -68,15 +68,16 @@
     addEventListener('keydown', e => { if(e.key === 'Escape' && menu.classList.contains('open')){ set(false); btn.focus(); } });
     /* Leistung rechts: das MacBook in der Mitte zeigt sie, darunter Titel und Kurztext */
     const prev = menu.querySelector('.menu-prev');
-    if (prev && matchMedia('(hover: hover) and (min-width: 1101px)').matches) {
+    if (prev) {
       const mds = [...prev.querySelectorAll('.md')], shots = [...prev.querySelectorAll('.mp-scr img')], links = [...menu.querySelectorAll('.menu-cols a[data-k]')];
       const page = links.find(a => a.getAttribute('href') === (location.pathname.split('/').pop() || 'index.html'));
       const base = page ? page.dataset.k : 'websites';
       const show = k => { k = k || base; mds.forEach(d => d.classList.toggle('on', d.dataset.k === k)); shots.forEach(i => i.classList.toggle('on', i.dataset.k === k)); links.forEach(a => a.classList.toggle('on', a.dataset.k === k)); };
       links.forEach(a => { a.addEventListener('mouseenter', () => show(a.dataset.k)); a.addEventListener('focus', () => show(a.dataset.k)); });
       const col = menu.querySelector('.menu-cols'); if (col) col.addEventListener('mouseleave', () => show(null));
-      /* Bilder erst laden, wenn das Menü zum ersten Mal aufgeht */
-      btn.addEventListener('click', () => prev.querySelectorAll('img[data-src]').forEach(i => { i.src = i.dataset.src; i.removeAttribute('data-src'); }));
+      /* Bilder erst laden, wenn jemand zum Menü greift (Zeigen, Fokus oder Klick), nur wenn die Vorschau sichtbar ist */
+      const load = () => { if (getComputedStyle(prev).display === 'none') return; prev.querySelectorAll('img[data-src]').forEach(i => { i.src = i.dataset.src; i.removeAttribute('data-src'); }); };
+      ['pointerenter', 'focus', 'click'].forEach(ev => btn.addEventListener(ev, load));
       show(null);
     }
     const here = location.pathname.split('/').pop() || 'index.html';

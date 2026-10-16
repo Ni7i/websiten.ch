@@ -39,8 +39,9 @@ def head(h2, p='', id_=''):
 
 
 def gets(items):
-    body = ''.join(f'<li><h3>{t}</h3><p>{d}</p></li>' for t, d in items)
-    return f'<section class="xs pad" aria-labelledby="getT">{head("Das bekommen Sie", id_="getT")}<ul class="get">{body}</ul></section>'
+    # kompakt: nur die Titel mit Häkchen, zwei Spalten
+    body = ''.join(f'<li>{CHECK}<span>{t}</span></li>' for t, d in items)
+    return f'<section class="xs pad" aria-labelledby="getT">{head("Das bekommen Sie", id_="getT")}<ul class="getc">{body}</ul></section>'
 
 
 def steps(items):
@@ -358,12 +359,10 @@ def leistungen():
     why = [('Eine Ansprechperson', 'Sie erklären Ihr Anliegen einmal. Wir kennen Ihren Betrieb, Ihre Website und Ihre Zugänge.'),
            ('Fester Preis', 'Sie kennen den Betrag, bevor wir anfangen. Kommt etwas dazu, besprechen wir es vorher.'),
            ('Daten in der Schweiz', 'Domains, Hosting und E-Mail laufen bei Infomaniak in Genf.')]
-    who = ['Handwerk und Bau', 'Gastronomie und Cafés', 'Coiffeur und Kosmetik', 'Praxen und Therapie', 'Läden und Shops', 'Treuhand und Beratung']
     main = '\n  ' + '\n\n  '.join([
         hero('Alles, was Ihr Betrieb <em class="hl">online braucht.</em>', 'Sechs Leistungen von einer Ansprechperson. Mit festem Preis und Servern in der Schweiz. Sie nehmen, was Sie brauchen, den Rest lassen Sie weg.', second=('Preise ansehen', 'preise.html')),
         f'<section class="ov2 pad" aria-label="Unsere Leistungen"><div class="ov2-list">{blocks}</div>{sticky}</section>',
-        f'<section class="xs pad" aria-labelledby="whyT">{head("Warum aus einer Hand", "Sie müssen nicht fünf Firmen koordinieren, die sich bei einem Problem gegenseitig die Schuld geben.", "whyT")}<ul class="get get3">' + ''.join(f'<li><h3>{t}</h3><p>{d}</p></li>' for t, d in why) + '</ul></section>',
-        f'<section class="xs pad" aria-labelledby="whoT">{head("Für wen wir arbeiten", "Für Betriebe, die gut in ihrer Arbeit sind und das auch online zeigen wollen.", "whoT")}<ul class="who2">' + ''.join(f'<li>{w}</li>' for w in who) + '</ul></section>',
+        f'<section class="xs pad" aria-label="Aus einer Hand"><div class="oneh"><span class="oneh-l">Aus einer Hand</span><ul>' + ''.join(f'<li>{CHECK}<span>{t}</span></li>' for t, d in why) + '</ul></div></section>',
     ]) + '\n'
     return ('Leistungen | websiten.ch', 'Websites, Online-Shops, Google und SEO, Hosting bei Infomaniak, Microsoft 365 und KI-Chatbots für Schweizer KMU.', main)
 
@@ -497,17 +496,27 @@ CSS = r'''
 
 /* Abschnitte: Abstand statt Linien */
 .xs{padding-top:clamp(90px,11vw,170px);padding-bottom:0}
+.xs:has(+ .closing){padding-bottom:clamp(90px,11vw,170px)}
 .xs-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(20px,6vw,120px);align-items:end;margin-bottom:clamp(40px,5vw,80px)}
 .xs-h h2,.xq h2,.xm h2{font-size:clamp(38px,4.6vw,80px);line-height:1;font-weight:700;letter-spacing:-.055em}
 .xs-h p{font-size:clamp(17px,1.3vw,20px);line-height:1.6;color:#B9B9B9;max-width:42ch}
 .get{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(40px,4.5vw,72px) clamp(28px,4vw,72px)}
 .get h3{font-size:clamp(21px,1.75vw,27px);line-height:1.15;font-weight:700;letter-spacing:-.035em}
 .get p{font-size:17px;line-height:1.6;color:#ABABAB;margin-top:12px;max-width:34ch}
-.stp3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(28px,3.5vw,56px)}
+.oneh{display:flex;flex-wrap:wrap;align-items:center;gap:18px clamp(28px,4vw,64px)}
+.oneh-l{font-size:15px;font-weight:600;color:var(--acc-s)}
+.oneh ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:16px clamp(28px,4vw,64px)}
+.oneh li{display:flex;align-items:center;gap:12px;font-size:clamp(20px,1.7vw,26px);font-weight:600;letter-spacing:-.025em}
+.oneh svg{flex:none;width:24px;height:24px;padding:4px;border-radius:50%;color:var(--acc-s);background:rgba(163,194,170,.12)}
+.getc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px clamp(28px,5vw,96px);max-width:980px}
+.getc li{display:flex;align-items:center;gap:14px;font-size:clamp(19px,1.5vw,23px);font-weight:600;letter-spacing:-.025em;line-height:1.3}
+.getc svg{flex:none;width:24px;height:24px;padding:4px;border-radius:50%;color:var(--acc-s);background:rgba(163,194,170,.12)}
+.stp3{list-style:none;margin:0;padding:0;display:grid;gap:clamp(14px,1.6vw,22px)}
+.stp3 li{display:grid;grid-template-columns:minmax(0,150px) minmax(0,280px) minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:baseline}
+.stp3 .sw{font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--acc-s)}
+.stp3 h3{font-size:clamp(20px,1.6vw,24px);font-weight:700;letter-spacing:-.03em}
+.stp3 p{font-size:16.5px;line-height:1.55;color:#ABABAB}
 .shop-st .sn{display:block;font-size:clamp(64px,6vw,104px);line-height:.85;font-weight:700;letter-spacing:-.06em;color:var(--acc-s);font-variant-numeric:tabular-nums}
-.stp3 .sw{display:block;font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--acc-s)}
-.stp3 h3{font-size:clamp(22px,1.8vw,28px);font-weight:700;letter-spacing:-.035em;margin-top:8px}
-.stp3 p{font-size:16.5px;line-height:1.6;color:#ABABAB;margin-top:10px;max-width:30ch}
 
 /* Preis als Aussage */
 .xp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,6vw,120px);align-items:end}
@@ -867,7 +876,6 @@ input:focus,textarea:focus{box-shadow:inset 0 0 0 1.5px var(--acc-s)}
 /* Handy */
 @media (max-width: 1000px){
   .get,.get3,.tl2{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stp3{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:50px}
 }
 @media (max-width: 860px){
   .xh{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:118px;gap:48px}
@@ -898,7 +906,8 @@ input:focus,textarea:focus{box-shadow:inset 0 0 0 1.5px var(--acc-s)}
   .cf-s{font-size:clamp(26px,7.4vw,40px)}
 }
 @media (max-width: 560px){
-  .get,.get3,.tl2,.stp3{grid-template-columns:minmax(0,1fr)}
+  .get,.get3,.tl2,.getc{grid-template-columns:minmax(0,1fr)}
+  .stp3 li{grid-template-columns:minmax(0,1fr);gap:4px}
   .xh-act .btn{flex:1 1 100%;justify-content:center}
   .qa2 summary{padding:18px 18px}
   .qa2 p{padding:0 18px 20px}

@@ -37,7 +37,7 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
   - ki-chatbots.html: Chat mit vorbereiteten Fragen
   - ueber-uns.html: Werbefilm "Websiten Ad v3" direkt unter dem Einstieg (FILM, FILM_CSS, FILM_JS in pages3.py). Abspielen nur per Klick, dann mit Ton. Die Startseite bleibt ohne diesen Film.
   - leistungen.html, preise.html (Satz zum Ausfüllen als Preisrechner), ueber-uns.html, kontakt.html, fragen.html, impressum.html, datenschutz.html
-- "So läuft es" (steps in pages3.py) auf allen Leistungsseiten: ohne grosse Zahlen, die Woche steht klein in Salbei über dem Titel.
+- Leistungsseiten kompakt halten (Kunde: sonst zu unübersichtlich): "Das bekommen Sie" (gets) nur als Häkchen-Liste mit Titeln in 2 Spalten, "So läuft es" (steps) eine Zeile pro Schritt (Woche, Titel, ein Satz), ohne grosse Zahlen und ohne Linien.
 - MacBook-Grafiken: immer ohne Notch, nur Kamerapunkt im Rand (`macbook()` in pages3.py, `assets/img/mac-frame.webp`).
 - Menü (MENU in parts.py, Logik in site.js): fährt man über eine Leistung, zeigt ein MacBook in der Mitte deren Bildschirm (scr-*.jpg), darunter Titel und Kurztext. Die Bilder laden erst beim ersten Öffnen. Unter 1100 px und auf Touch-Geräten ausgeblendet.
 - `build/pages2.py` und `build/pages.py`: ältere Fassungen, liefern noch Daten und die Terminbuchung (KONTAKT_JS) an pages3.
@@ -49,7 +49,7 @@ Statische Website, erzeugt mit Python. Live-Vorschau auf Vercel: https://beispie
 
 ## Veröffentlichen
 
-Jeder Push auf `main` von GitHub-Repo Ni7i/websiten.ch geht automatisch live: GitHub Actions (`.github/workflows/vercel.yml`) lädt mit der Vercel-CLI ins Projekt beispiel13241324 hoch. Dafür braucht das Repo das Actions-Secret `VERCEL_TOKEN`. `.vercelignore` sorgt dafür, dass nur `dist/` und `vercel.json` hochgeladen werden. Nach jedem Deploy prüft der Ablauf die Live-Seite (4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv). Ergebnis und Fehler stehen als Hinweise im Actions-Lauf auf GitHub. Vercel baut dabei nichts, sondern liefert den fertigen Ordner `dist/` aus (`outputDirectory` in `vercel.json` im Hauptordner). Deshalb gehört `dist/` ins Repo.
+Jeder Push auf `main` von GitHub-Repo Ni7i/websiten.ch geht automatisch live: GitHub Actions (`.github/workflows/vercel.yml`) lädt mit der Vercel-CLI ins Projekt beispiel13241324 hoch. Dafür braucht das Repo das Actions-Secret `VERCEL_TOKEN`. `.vercelignore` sorgt dafür, dass nur `dist/` und `vercel.json` hochgeladen werden. Nach jedem Deploy prüft der Ablauf die Live-Seite (4 Seiten erreichbar, neue Fassung, CSP und HSTS aktiv) und öffnet danach 10 Seiten in einem echten Chrome (`tools/livecheck.mjs`: keine Script-Fehler, keine fehlenden Dateien, Menü-Vorschau sofort sichtbar). Ergebnis und Fehler stehen als Hinweise im Actions-Lauf auf GitHub. Vercel baut dabei nichts, sondern liefert den fertigen Ordner `dist/` aus (`outputDirectory` in `vercel.json` im Hauptordner). Deshalb gehört `dist/` ins Repo.
 
 1. `cd build && python3 build.py` (erzeugt die Seiten, `fast.py` optimiert jede Seite)
 2. `python3 dist.py` (stellt `dist/` neu zusammen: alle Seiten und genau die Dateien, auf die sie verweisen)
